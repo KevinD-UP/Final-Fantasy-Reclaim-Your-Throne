@@ -11,6 +11,7 @@ int main(){
     PersonnageType TYPE_Amazone = PT_Amazone;
     PersonnageType TYPE_Moine = PT_Moine;
     PersonnageType TYPE_Sorcier = PT_Sorcier;
+
     Personnage* guerrier = PersonnageFactory::initPersonnage(TYPE_Guerrier,"Test");
     Personnage* sorcier = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Test2");
     Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");

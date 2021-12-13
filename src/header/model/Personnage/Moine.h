@@ -19,7 +19,7 @@ class Moine : public IMoine, public Personnage {
 
     public:
         void print() override;
-        friend class PersonnageFactory;
+        friend class MoineFactory;
 };
 
 

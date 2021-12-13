@@ -20,7 +20,7 @@ class Guerrier : public IGuerrier, public Personnage{
 
     public:
         void print() override;
-        friend class PersonnageFactory;
+        friend class GuerrierFactory;
 };
 
 

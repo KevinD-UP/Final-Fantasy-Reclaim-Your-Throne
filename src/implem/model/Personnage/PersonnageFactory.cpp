@@ -6,30 +6,47 @@
 
 Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, const std::string& nom){
     if(personnagetype == PT_Amazone) {
-        int sante = 50;
-        int attaque = 10;
-        int defense = 10;
-        std::vector<Objet *> sac;
-        return new Amazone(nom, sante, attaque, defense, sac);
+        return (new AmazoneFactory)->FactoryMethod(nom);
     } else if (personnagetype == PT_Guerrier){
-        int sante = 50;
-        int attaque = 10;
-        int defense = 10;
-        std::vector<Objet *> sac;
-        return new Guerrier(nom, sante, attaque, defense, sac);
+        return (new GuerrierFactory)->FactoryMethod(nom);
     } else if (personnagetype == PT_Moine){
-        int sante = 50;
-        int attaque = 10;
-        int defense = 10;
-        std::vector<Objet *> sac;
-        return new Moine(nom, sante, attaque, defense, sac);
+        return (new MoineFactory)->FactoryMethod(nom);
     } else if (personnagetype == PT_Sorcier){
-        int sante = 50;
-        int attaque = 10;
-        int defense = 10;
-        std::vector<Objet *> sac;
-        return new Sorcier(nom, sante, attaque, defense, sac);
+        return (new SorcierFactory)->FactoryMethod(nom);
     } else {
-        throw std::invalid_argument( "Aucun type de personnage ne correspond, échec de la création de personnage" );
+        throw std::invalid_argument( "Aucun type de personnage ne correspond, échec de la création de personnage");
     }
+}
+
+Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
+    int sante = 50;
+    int attaque = 10;
+    int defense = 10;
+    std::vector<Objet *> sac;
+    return new Guerrier(nom, sante, attaque, defense, sac);
+}
+
+
+Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
+    int sante = 50;
+    int attaque = 10;
+    int defense = 10;
+    std::vector<Objet *> sac;
+    return new Amazone(nom, sante, attaque, defense, sac);
+}
+
+Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
+    int sante = 50;
+    int attaque = 10;
+    int defense = 10;
+    std::vector<Objet *> sac;
+    return new Moine(nom, sante, attaque, defense, sac);
+}
+
+Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
+    int sante = 50;
+    int attaque = 10;
+    int defense = 10;
+    std::vector<Objet *> sac;
+    return new Sorcier(nom, sante, attaque, defense, sac);
 }

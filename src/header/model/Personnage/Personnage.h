@@ -41,7 +41,6 @@ class Personnage {
         friend class Moine;
         friend class Guerrier;
         friend class Sorcier;
-
 };
 
 

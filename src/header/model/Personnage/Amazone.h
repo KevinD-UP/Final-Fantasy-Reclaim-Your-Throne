@@ -20,7 +20,7 @@ class Amazone : public IAmazone, public Personnage{
 
     public:
         void print() override;
-        friend class PersonnageFactory;
+        friend class AmazoneFactory;
 
 };
 

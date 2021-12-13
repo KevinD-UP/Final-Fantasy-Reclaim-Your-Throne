@@ -3,6 +3,7 @@
 //
 
 #include "../../../header/model/Personnage/Personnage.h"
+#include "../../../header/model/Action/Action.h"
 
 #include <utility>
 
@@ -52,3 +53,11 @@ int Personnage::setDefense(int defenseArg) {
     return defense;
 }
 
+void Personnage::pushSac(Objet * x) {
+    sac.push_back(x);
+}
+
+void Personnage::action(std::string, Personnage *) {}
+/*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
+    statut.push_back(x);
+}*/

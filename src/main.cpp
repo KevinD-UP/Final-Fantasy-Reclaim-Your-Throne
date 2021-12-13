@@ -17,6 +17,8 @@ int main(){
     Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");
     Personnage* amazone = PersonnageFactory::initPersonnage(TYPE_Amazone,"Test4");
 
+    sorcier->action("boule de feu", guerrier);
+
     guerrier->print();
     sorcier->print();
     moine->print();

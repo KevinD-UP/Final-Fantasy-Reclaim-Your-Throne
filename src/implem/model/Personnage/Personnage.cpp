@@ -3,6 +3,7 @@
 //
 
 #include "../../../header/model/Personnage/Personnage.h"
+#include "../../../header/model/Action/Action.h"
 
 #include <utility>
 
@@ -29,11 +30,28 @@ int Personnage::getSante() const {
     return indice_de_sante;
 }
 
-std::pair<Personnage::Statut, int> Personnage::getStatut() {
-    return statut;
-}
 
 std::vector<Objet *> Personnage::getSac() {
     return sac;
 }
 
+void Personnage::setSante(int x) {
+    indice_de_sante = x;
+}
+
+void Personnage::setAttaque(int x) {
+    attaque = x;
+}
+
+void Personnage::setDefense(int x) {
+    defense = x;
+}
+
+void Personnage::pushSac(Objet * x) {
+    sac.push_back(x);
+}
+
+void Personnage::action(std::string, Personnage *) {}
+/*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
+    statut.push_back(x);
+}*/

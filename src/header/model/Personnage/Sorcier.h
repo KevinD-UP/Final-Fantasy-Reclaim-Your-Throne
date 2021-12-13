@@ -19,6 +19,7 @@ class Sorcier : public ISorcier, public Personnage {
         Sorcier(std::string nom, int sante, int attaque, int defense, std::vector<Objet*> sac);
 
     public:
+        void action(std::string,Personnage*) override;
         void print() override;
         friend class PersonnageFactory;
 };

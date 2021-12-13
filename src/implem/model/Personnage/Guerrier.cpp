@@ -9,4 +9,5 @@ Guerrier::Guerrier(std::string nom, int sante, int attaque, int defense, std::ve
 
 void Guerrier::print() {
     std::cout << "Je suis une Guerrier" << std::endl;
+    std::cout << "J'ai " << getSante() << "HP" << std::endl;
 }

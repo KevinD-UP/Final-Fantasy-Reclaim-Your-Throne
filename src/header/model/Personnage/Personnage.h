@@ -9,9 +9,9 @@
 #include <iostream>
 #include "../Objet/Objet.h"
 
-class Personnage {
+enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
 
-    enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
+class Personnage {
 
     private:
         const std::string nom;
@@ -32,11 +32,14 @@ class Personnage {
         int getSante() const;
         int getAttaque() const;
         int getDefense() const;
+
         int setSante(int santeArg);
         int setAttaque(int attaqueArg);
         int setDefense(int defenseArg);
-        std::pair<Personnage::Statut, int> getStatut();
+
+        std::pair<Statut, int> getStatut();
         std::vector<Objet*> getSac();
+
         friend class Amazone;
         friend class Moine;
         friend class Guerrier;

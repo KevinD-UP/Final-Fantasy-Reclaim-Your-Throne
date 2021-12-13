@@ -4,7 +4,9 @@
 
 #include "../../../header/model/Piece/Piece.h"
 
-Piece::Piece(std::vector<Objet*> vecO, std::vector<Piece*> vecPie) : vecObjet(vecO), vecPiece(vecPie){}
+#include <utility>
+
+Piece::Piece(std::vector<Objet*> vecO, std::vector<Piece*> vecPie) : vecObjet(std::move(vecO)), vecPiece(std::move(vecPie)){}
 
 void Piece::pushPerso(Personnage* p) {
     vecPerso.push_back(p);
@@ -15,7 +17,7 @@ void Piece::pushObjet(Objet* o) {
 }
 
 void Piece::setPiece(std::vector<Piece*> vec) {
-    vecPiece = vec;
+    vecPiece = std::move(vec);
 }
 
 std::vector<Personnage*> Piece::getVecPerso() const{

@@ -10,3 +10,5 @@ Moine::Moine(std::string nom, int sante, int attaque, int defense, std::vector<O
 void Moine::print() {
     std::cout << "Je suis une Moine" << std::endl;
 }
+
+void Moine::action(std::string nom, Personnage * ennemie){}

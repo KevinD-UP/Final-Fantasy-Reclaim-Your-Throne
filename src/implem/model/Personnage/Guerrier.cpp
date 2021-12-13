@@ -11,3 +11,5 @@ void Guerrier::print() {
     std::cout << "Je suis une Guerrier" << std::endl;
     std::cout << "J'ai " << getSante() << "HP" << std::endl;
 }
+
+void Guerrier::action(std::string nom, Personnage * ennemie){}

@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include "../Objet/Objet.h"
+#include "../Piece/Piece.h"
 
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
 
@@ -21,6 +22,7 @@ class Personnage {
         int indice_de_sante_actuel = indice_de_sante_max;
         int attaque;
         int defense;
+        Piece* pieceCourante;
         std::pair<Statut, int> statut;
         std::vector<Objet*> sac;
         Personnage(std::string nom_arg,

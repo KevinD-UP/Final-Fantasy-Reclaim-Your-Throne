@@ -10,3 +10,7 @@ Amazone::Amazone(std::string nom, int sante, int attaque, int defense, std::vect
 void Amazone::print() {
     std::cout << "Je suis une Amazone" << std::endl;
 }
+
+void Amazone::action(std::string nom, Personnage * ennemie){
+
+}

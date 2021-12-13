@@ -32,10 +32,13 @@ class Personnage {
         int getSante() const;
         int getAttaque() const;
         int getDefense() const;
+        void pushStatut(std::pair<Statut, int> *);
+        void pushSac(Objet*);
 
         int setSante(int santeArg);
         int setAttaque(int attaqueArg);
         int setDefense(int defenseArg);
+        virtual void action(std::string,Personnage*);
 
         std::pair<Statut, int> getStatut();
         std::vector<Objet*> getSac();
@@ -44,6 +47,8 @@ class Personnage {
         friend class Moine;
         friend class Guerrier;
         friend class Sorcier;
+
+
 };
 
 

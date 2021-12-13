@@ -32,6 +32,9 @@ class Personnage {
         int getSante() const;
         int getAttaque() const;
         int getDefense() const;
+        int setSante(int santeArg);
+        int setAttaque(int attaqueArg);
+        int setDefense(int defenseArg);
         std::pair<Personnage::Statut, int> getStatut();
         std::vector<Objet*> getSac();
         friend class Amazone;

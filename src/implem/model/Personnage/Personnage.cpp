@@ -37,3 +37,18 @@ std::vector<Objet *> Personnage::getSac() {
     return sac;
 }
 
+int Personnage::setSante(int santeArg) {
+    indice_de_sante = santeArg;
+    return indice_de_sante;
+}
+
+int Personnage::setAttaque(int attaqueArg) {
+    attaque = attaqueArg;
+    return attaque;
+}
+
+int Personnage::setDefense(int defenseArg) {
+    defense = defenseArg;
+    return defense;
+}
+

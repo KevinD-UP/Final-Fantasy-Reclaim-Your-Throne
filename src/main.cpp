@@ -19,6 +19,8 @@ int main(){
 
     sorcier->action("boule de feu", guerrier);
 
+    sorcier->action("boule de feu", guerrier);
+
     guerrier->print();
     sorcier->print();
     moine->print();

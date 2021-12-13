@@ -32,7 +32,7 @@ class Personnage {
         int getSante() const;
         int getAttaque() const;
         int getDefense() const;
-        void pushStatut(std::pair<Personnage::Statut, int> *);
+        void pushStatut(std::pair<Statut, int> *);
         void pushSac(Objet*);
 
         int setSante(int santeArg);

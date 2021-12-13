@@ -18,6 +18,7 @@ class Moine : public IMoine, public Personnage {
         Moine(std::string nom, int sante, int attaque, int defense, std::vector<Objet*> sac);
 
     public:
+        void action(std::string nom, Personnage * ennemie) override;
         void print() override;
         friend class MoineFactory;
 };

@@ -9,7 +9,6 @@
 #include "../Objet/Objet.h"
 
 class IGuerrier {
-
 };
 
 class Guerrier : public IGuerrier, public Personnage{
@@ -19,6 +18,7 @@ class Guerrier : public IGuerrier, public Personnage{
         Guerrier(std::string nom, int sante, int attaque, int defense, std::vector<Objet*> sac);
 
     public:
+        void action(std::string nom, Personnage * ennemie) override;
         void print() override;
         friend class GuerrierFactory;
 };

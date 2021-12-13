@@ -129,6 +129,54 @@ final_fantasy___reclaim_your_throne/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/build
 .PHONY : final_fantasy___reclaim_your_throne/fast
 
+src/implem/model/Action/Action.o: src/implem/model/Action/Action.cpp.o
+.PHONY : src/implem/model/Action/Action.o
+
+# target to build an object file
+src/implem/model/Action/Action.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Action/Action.cpp.o
+.PHONY : src/implem/model/Action/Action.cpp.o
+
+src/implem/model/Action/Action.i: src/implem/model/Action/Action.cpp.i
+.PHONY : src/implem/model/Action/Action.i
+
+# target to preprocess a source file
+src/implem/model/Action/Action.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Action/Action.cpp.i
+.PHONY : src/implem/model/Action/Action.cpp.i
+
+src/implem/model/Action/Action.s: src/implem/model/Action/Action.cpp.s
+.PHONY : src/implem/model/Action/Action.s
+
+# target to generate assembly for a file
+src/implem/model/Action/Action.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Action/Action.cpp.s
+.PHONY : src/implem/model/Action/Action.cpp.s
+
+src/implem/model/Joueur/Joueur.o: src/implem/model/Joueur/Joueur.cpp.o
+.PHONY : src/implem/model/Joueur/Joueur.o
+
+# target to build an object file
+src/implem/model/Joueur/Joueur.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Joueur/Joueur.cpp.o
+.PHONY : src/implem/model/Joueur/Joueur.cpp.o
+
+src/implem/model/Joueur/Joueur.i: src/implem/model/Joueur/Joueur.cpp.i
+.PHONY : src/implem/model/Joueur/Joueur.i
+
+# target to preprocess a source file
+src/implem/model/Joueur/Joueur.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Joueur/Joueur.cpp.i
+.PHONY : src/implem/model/Joueur/Joueur.cpp.i
+
+src/implem/model/Joueur/Joueur.s: src/implem/model/Joueur/Joueur.cpp.s
+.PHONY : src/implem/model/Joueur/Joueur.s
+
+# target to generate assembly for a file
+src/implem/model/Joueur/Joueur.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/final_fantasy___reclaim_your_throne.dir/build.make CMakeFiles/final_fantasy___reclaim_your_throne.dir/src/implem/model/Joueur/Joueur.cpp.s
+.PHONY : src/implem/model/Joueur/Joueur.cpp.s
+
 src/implem/model/Objet/Consommable.o: src/implem/model/Objet/Consommable.cpp.o
 .PHONY : src/implem/model/Objet/Consommable.o
 
@@ -426,6 +474,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... final_fantasy___reclaim_your_throne"
+	@echo "... src/implem/model/Action/Action.o"
+	@echo "... src/implem/model/Action/Action.i"
+	@echo "... src/implem/model/Action/Action.s"
+	@echo "... src/implem/model/Joueur/Joueur.o"
+	@echo "... src/implem/model/Joueur/Joueur.i"
+	@echo "... src/implem/model/Joueur/Joueur.s"
 	@echo "... src/implem/model/Objet/Consommable.o"
 	@echo "... src/implem/model/Objet/Consommable.i"
 	@echo "... src/implem/model/Objet/Consommable.s"

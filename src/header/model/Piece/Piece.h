@@ -8,6 +8,8 @@
 #include "../Personnage/Personnage.h"
 #include "../Objet/Objet.h"
 
+class Personnage;
+
 class Piece{
 
 

@@ -3,9 +3,10 @@
 //
 
 #include "../../../header/model/Personnage/Sorcier.h"
-#include "../../../header/model/Action//Action.h"
+#include "../../../header/model/Action/Action.h"
 
-Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) : Personnage(nom, sante, attaque, defense, sac)
+Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) :
+Personnage(nom, sante, attaque, defense, sac)
 {}
 
 void Sorcier::print() {
@@ -24,6 +25,6 @@ void Sorcier::action(std::string nom, Personnage * ennemie){
         std::cout<< "ECHEC cette action n'existe pas" << nom <<std::endl;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    Action *x = new Action(this,ennemie,nom,dommage,type);
+    Action *x = new Action(this, ennemie, nom, dommage, type);
     x->utilisation();
 }

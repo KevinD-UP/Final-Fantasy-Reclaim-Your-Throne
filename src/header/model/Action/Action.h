@@ -15,7 +15,7 @@ class Action{
         int dommage;
         //std::pair<Personnage::Statut,int> effet;
     public:
-        Action(Personnage*,Personnage*,std::string,int);
+        Action(Personnage*,Personnage*, std::string, int, std::string);
         void utilisation();
 };
 #endif //LOA_ACTION_H

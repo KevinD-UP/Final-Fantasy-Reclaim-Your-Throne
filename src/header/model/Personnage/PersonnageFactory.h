@@ -32,20 +32,20 @@ class GuerrierFactory : public PersonnageFactory {
 
 class AmazoneFactory : public PersonnageFactory {
 
-public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    public:
+        Personnage* FactoryMethod(const std::string& nom) const override;
 };
 
 class MoineFactory : public PersonnageFactory {
 
-public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    public:
+        Personnage* FactoryMethod(const std::string& nom) const override;
 };
 
 class SorcierFactory : public PersonnageFactory {
 
-public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    public:
+        Personnage* FactoryMethod(const std::string& nom) const override;
 };
 
 

@@ -6,7 +6,7 @@
 #include "header/model/Personnage/PersonnageFactory.h"
 
 int main(){
-
+    /*
     PersonnageType TYPE_Guerrier = PT_Guerrier;
     PersonnageType TYPE_Amazone = PT_Amazone;
     PersonnageType TYPE_Moine = PT_Moine;
@@ -19,10 +19,11 @@ int main(){
 
     sorcier->action("boule de feu", guerrier);
 
-    sorcier->action("boule de feu", guerrier);
-
     guerrier->print();
     sorcier->print();
     moine->print();
     amazone->print();
+     */
+
+
 }

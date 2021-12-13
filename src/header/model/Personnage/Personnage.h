@@ -11,11 +11,14 @@
 
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
 
+class Piece;
+
 class Personnage {
 
     private:
         const std::string nom;
-        int indice_de_sante;
+        int indice_de_sante_max;
+        int indice_de_sante_actuel = indice_de_sante_max;
         int attaque;
         int defense;
         std::pair<Statut, int> statut;
@@ -38,7 +41,11 @@ class Personnage {
         int setSante(int santeArg);
         int setAttaque(int attaqueArg);
         int setDefense(int defenseArg);
-        virtual void action(std::string,Personnage*);
+        Piece* setPiece(Piece*);
+        Piece* getPieceCour();
+        virtual void action(std::string, Personnage *) = 0;
+
+        bool estMort();
 
         std::pair<Statut, int> getStatut();
         std::vector<Objet*> getSac();

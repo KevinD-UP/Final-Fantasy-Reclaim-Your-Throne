@@ -11,7 +11,7 @@ Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
-                       std::vector<Objet*>  sac_arg) : nom(std::move(nom_arg)), indice_de_sante(sante_arg), attaque(attaque_arg), defense(defense_arg), sac(std::move(sac_arg))
+                       std::vector<Objet*> sac_arg) : nom(std::move(nom_arg)), indice_de_sante_max(sante_arg), attaque(attaque_arg), defense(defense_arg), sac(std::move(sac_arg))
 {}
 
 std::string Personnage::getNom() const {
@@ -27,7 +27,7 @@ int Personnage::getDefense() const {
 }
 
 int Personnage::getSante() const {
-    return indice_de_sante;
+    return indice_de_sante_actuel;
 }
 
 std::pair<Statut, int> Personnage::getStatut() {
@@ -39,8 +39,8 @@ std::vector<Objet *> Personnage::getSac() {
 }
 
 int Personnage::setSante(int santeArg) {
-    indice_de_sante = santeArg;
-    return indice_de_sante;
+    indice_de_sante_actuel = santeArg;
+    return indice_de_sante_actuel;
 }
 
 int Personnage::setAttaque(int attaqueArg) {
@@ -55,6 +55,19 @@ int Personnage::setDefense(int defenseArg) {
 
 void Personnage::pushSac(Objet * x) {
     sac.push_back(x);
+}
+
+bool Personnage::estMort() {
+    return indice_de_sante_actuel == 0;
+}
+
+Piece* Personnage::getPieceCour() {
+    return pieceCourante;
+}
+
+Piece* Personnage::setPiece(Piece * nouvellePiece) {
+    pieceCourante = nouvellePiece;
+    return pieceCourante;
 }
 
 void Personnage::action(std::string, Personnage *) {}

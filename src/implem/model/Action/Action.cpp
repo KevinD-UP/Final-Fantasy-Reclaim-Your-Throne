@@ -3,14 +3,8 @@
 //
 #include "../../../header/model/Action/Action.h"
 
-Action::Action(Personnage* lanceur,Personnage* receveur,std::string nom,int dommage,std::string type){
-    this->type = type;
-    this->lanceur = lanceur;
-    this->receveur = receveur;
-    this->nom = nom;
-    this->dommage = dommage;
-    //this->effet = effet;
-}
+Action::Action(Personnage* lanceurArg, Personnage* receveurArg, std::string nomArg, int dommageArg, std::string typeArg)
+: type(typeArg), lanceur(lanceurArg), receveur(receveurArg), nom(nomArg), dommage(dommageArg) {}
 
 void Action::utilisation(){
     if (type == "offensive") {

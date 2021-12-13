@@ -7,10 +7,14 @@
 
 int main(){
 
-    Personnage* guerrier = PersonnageFactory::initPersonnage("Guerrier","Test");
-    Personnage* sorcier = PersonnageFactory::initPersonnage("Sorcier","Test2");
-    Personnage* moine = PersonnageFactory::initPersonnage("Moine","Test3");
-    Personnage* amazone = PersonnageFactory::initPersonnage("Amazone","Test4");
+    PersonnageType TYPE_Guerrier = PT_Guerrier;
+    PersonnageType TYPE_Amazone = PT_Amazone;
+    PersonnageType TYPE_Moine = PT_Moine;
+    PersonnageType TYPE_Sorcier = PT_Sorcier;
+    Personnage* guerrier = PersonnageFactory::initPersonnage(TYPE_Guerrier,"Test");
+    Personnage* sorcier = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Test2");
+    Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");
+    Personnage* amazone = PersonnageFactory::initPersonnage(TYPE_Amazone,"Test4");
 
     guerrier->print();
     sorcier->print();

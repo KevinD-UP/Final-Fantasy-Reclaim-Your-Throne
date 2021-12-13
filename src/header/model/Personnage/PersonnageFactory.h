@@ -10,11 +10,17 @@
 #include "Moine.h"
 #include "Sorcier.h"
 
+enum PersonnageType{
+    PT_Guerrier,
+    PT_Amazone,
+    PT_Moine,
+    PT_Sorcier,
+};
+
 class PersonnageFactory {
 
-
 public:
-    static Personnage* initPersonnage(const std::string& personnagetype, const std::string& nom);
+    static Personnage* initPersonnage(PersonnageType& personnagetype, const std::string& nom);
 };
 
 

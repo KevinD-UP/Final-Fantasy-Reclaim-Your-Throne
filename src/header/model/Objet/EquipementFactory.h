@@ -7,10 +7,6 @@
 
 #include "Equipement.h"
 
-enum EquipementType {
-
-};
-
 class EquipementFactory {
 public:
     virtual Equipement* FactoryMethod() const = 0;

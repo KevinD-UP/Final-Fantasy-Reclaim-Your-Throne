@@ -6,6 +6,11 @@
 #define FINAL_FANTASY___RECLAIM_YOUR_THRONE_EQUIPEMENT_H
 
 #include "Objet.h"
+
+enum EquipementType {
+
+};
+
 class Equipement : public Objet {
 
 private:

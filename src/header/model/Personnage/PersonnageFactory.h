@@ -10,13 +10,6 @@
 #include "Moine.h"
 #include "Sorcier.h"
 
-enum PersonnageType{
-    PT_Guerrier,
-    PT_Amazone,
-    PT_Moine,
-    PT_Sorcier,
-};
-
 class PersonnageFactory {
 
 public:

@@ -5,8 +5,8 @@
 #include "../../../header/model/Personnage/Sorcier.h"
 #include "../../../header/model/Action/Action.h"
 
-Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) :
-Personnage(nom, sante, attaque, defense, sac)
+Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, sante, attaque, typePersonnage, defense, sac)
 {}
 
 void Sorcier::print() {

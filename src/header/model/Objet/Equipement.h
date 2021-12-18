@@ -8,6 +8,10 @@
 #include "Objet.h"
 class Equipement : public Objet {
 
+private:
+
+public:
+
 };
 
 

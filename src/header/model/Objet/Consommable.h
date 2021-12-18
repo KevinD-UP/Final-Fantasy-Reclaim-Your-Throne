@@ -8,6 +8,7 @@
 #include "Objet.h"
 class Consommable : public Objet{
 
+
 };
 
 

@@ -35,4 +35,4 @@ add_executable(final_fantasy___reclaim_your_throne
         src/implem/model/Personnage/Sorcier.cpp
         src/implem/model/Piece/Map.cpp
         src/implem/model/Piece/Piece.cpp
-        src/main.cpp src/header/model/Joueur/Joueur.h src/implem/model/Joueur/Joueur.cpp)
+        src/main.cpp src/header/model/Joueur/Joueur.h src/implem/model/Joueur/Joueur.cpp src/header/model/Objet/ObjetFactory.h src/header/model/Objet/ConsommableFactory.h src/header/model/Objet/EquipementFactory.h)

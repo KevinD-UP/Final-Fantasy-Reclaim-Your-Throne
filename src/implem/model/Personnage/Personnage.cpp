@@ -5,11 +5,20 @@
 #include "../../../header/model/Personnage/Personnage.h"
 #include "../../../header/model/Action/Action.h"
 
-Personnage::Personnage(std::string nom_arg,
+#include <utility>
+
+Personnage::Personnage(const std::string &nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
-                       std::vector<Objet*> sac_arg) : nom(std::move(nom_arg)), indice_de_sante_max(sante_arg), attaque(attaque_arg), defense(defense_arg), sac(std::move(sac_arg))
+                       const PersonnageType &personnageType_arg,
+                       std::vector<Objet*> &sac_arg) :
+                       nom(nom_arg),
+                       indice_de_sante_max(sante_arg),
+                       attaque(attaque_arg),
+                       defense(defense_arg),
+                       typePersonnage(personnageType),
+                       sac(sac_arg)
 {}
 
 std::string Personnage::getNom() const {
@@ -26,6 +35,10 @@ int Personnage::getDefense() const {
 
 int Personnage::getSante() const {
     return indice_de_sante_actuel;
+}
+
+PersonnageType Personnage::personnageType() const {
+    return typePersonnage;
 }
 
 std::pair<Statut, int> Personnage::getStatut() {

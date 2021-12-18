@@ -16,7 +16,7 @@ class Amazone : public IAmazone, public Personnage{
 
 
     private:
-        Amazone(std::string nom, int sante, int attaque, int defense, std::vector<Objet*> sac);
+        Amazone(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
         void action(std::string nom, Personnage * ennemie) override;

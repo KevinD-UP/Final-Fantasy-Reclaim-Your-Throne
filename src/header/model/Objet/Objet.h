@@ -5,12 +5,27 @@
 #ifndef FINAL_FANTASY___RECLAIM_YOUR_THRONE_OBJET_H
 #define FINAL_FANTASY___RECLAIM_YOUR_THRONE_OBJET_H
 
+#include <iostream>
+
+enum ObjetType {
+    OT_Equipement,
+    OT_Consommable
+};
 
 class Objet {
 
 private:
+    const std::string nom;
+    const ObjetType objetType;
+    Objet();
 
 public:
+    std::string getNom() const;
+    ObjetType getObjetType() const;
+
+    friend class Consommable;
+    friend class Equipement;
+};
 
 };
 

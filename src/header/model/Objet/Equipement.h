@@ -15,7 +15,11 @@ class Equipement : public Objet {
 
 private:
 
+    EquipementType typeEquipement;
+
 public:
+    EquipementType getTypeEquipement() const;
+
 
 };
 

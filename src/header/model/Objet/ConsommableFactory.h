@@ -7,13 +7,6 @@
 
 #include "Consommable.h"
 
-enum ConsommableType {
-    CT_POTIONSOIN,
-    CT_POTIONBRULURE,
-    CT_POTIONPOISON,
-    CT_POTIONSOMNOLENCE
-};
-
 class ConsommableFactory {
 public:
     virtual Consommable* FactoryMethod() const = 0;

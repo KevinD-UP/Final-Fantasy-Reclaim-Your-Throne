@@ -22,6 +22,7 @@ private:
 public:
     std::string getNom() const;
     ObjetType getObjetType() const;
+    virtual void appliquerEffet() = 0;
 
     friend class Consommable;
     friend class Equipement;

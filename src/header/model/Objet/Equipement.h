@@ -18,6 +18,7 @@ private:
 
 public:
     EquipementType getTypeEquipement() const;
+    void appliquerEffet() override;
 
 
 };

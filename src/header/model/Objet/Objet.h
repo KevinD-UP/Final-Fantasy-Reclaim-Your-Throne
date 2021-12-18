@@ -27,7 +27,5 @@ public:
     friend class Equipement;
 };
 
-};
-
 
 #endif //FINAL_FANTASY___RECLAIM_YOUR_THRONE_OBJET_H

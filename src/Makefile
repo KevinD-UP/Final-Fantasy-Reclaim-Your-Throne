@@ -36,6 +36,15 @@ Equipement.o : implem/model/Objet/Equipement.cpp header/model/Objet/Equipement.h
 Objet.o : implem/model/Objet/Objet.cpp header/model/Objet/Objet.h
 	$(CPP) $(CFLAGS) -c $<
 
+ConsommableFactory.o : implem/model/Objet/Consommable.cpp header/model/Objet/Consommable.h
+	$(CPP) $(CFLAGS) -c $<
+
+EquipementFactory.o : implem/model/Objet/Equipement.cpp header/model/Objet/Equipement.h
+	$(CPP) $(CFLAGS) -c $<
+
+ObjetFactory.o : implem/model/Objet/Objet.cpp header/model/Objet/Objet.h
+	$(CPP) $(CFLAGS) -c $<
+
 Action.o : implem/model/Action/Action.cpp header/model/Action/Action.h
 	$(CPP) $(CFLAGS) -c $<
 

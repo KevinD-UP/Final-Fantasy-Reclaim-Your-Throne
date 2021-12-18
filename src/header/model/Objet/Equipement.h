@@ -14,7 +14,6 @@ enum EquipementType {
 class Equipement : public Objet {
 
 private:
-
     EquipementType typeEquipement;
 
 public:

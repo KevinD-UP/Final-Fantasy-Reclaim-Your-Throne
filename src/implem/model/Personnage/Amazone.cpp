@@ -4,7 +4,7 @@
 
 #include "../../../header/model/Personnage/Amazone.h"
 
-Amazone::Amazone(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+Amazone::Amazone(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac) :
     Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}
 

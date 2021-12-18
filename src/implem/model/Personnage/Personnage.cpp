@@ -17,7 +17,7 @@ Personnage::Personnage(const std::string &nom_arg,
                        indice_de_sante_max(sante_arg),
                        attaque(attaque_arg),
                        defense(defense_arg),
-                       typePersonnage(personnageType),
+                       typePersonnage(personnageType_arg),
                        sac(sac_arg)
 {}
 

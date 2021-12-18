@@ -23,7 +23,7 @@ Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
     int attaque = 10;
     int defense = 10;
     std::vector<Objet *> sac;
-    return new Guerrier(nom, sante, attaque, defense, sac);
+    return new Guerrier(nom, sante, attaque, defense, PT_Guerrier ,sac);
 }
 
 
@@ -32,7 +32,7 @@ Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
     int attaque = 10;
     int defense = 10;
     std::vector<Objet *> sac;
-    return new Amazone(nom, sante, attaque, defense, sac);
+    return new Amazone(nom, sante, attaque, defense, PT_Amazone, sac);
 }
 
 Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
@@ -40,7 +40,7 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
     int attaque = 10;
     int defense = 10;
     std::vector<Objet *> sac;
-    return new Moine(nom, sante, attaque, defense, sac);
+    return new Moine(nom, sante, attaque, defense, PT_Moine, sac);
 }
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
@@ -48,5 +48,5 @@ Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
     int attaque = 10;
     int defense = 10;
     std::vector<Objet *> sac;
-    return new Sorcier(nom, sante, attaque, defense, sac);
+    return new Sorcier(nom, sante, attaque, defense, PT_Sorcier, sac);
 }

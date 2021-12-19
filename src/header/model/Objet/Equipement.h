@@ -20,8 +20,11 @@ enum EquipementType {
 class Equipement : public Objet {
 
 private:
+    PersonnageType bonusClass;
     EquipementType typeEquipement;
     bool estEquipe;
+    int buffDeClasse;
+    int buffAutre;
 
 public:
     Equipement(std::string, ObjetType, std::string, PersonnageType, EquipementType, bool, int, int);

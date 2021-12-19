@@ -7,7 +7,6 @@
 #include "header/model/Joueur/Joueur.h"
 #include "header/Partie.h"
 
-
 int main(){
     /*
     PersonnageType TYPE_Guerrier = PT_Guerrier;
@@ -28,8 +27,8 @@ int main(){
     guerrier->print();
     sorcier->print();
     moine->print();
-    amazone->print();
-     */
+    amazone->print();*/
+
 
     PersonnageType TYPE_Guerrier = PT_Guerrier;
     PersonnageType TYPE_Amazone = PT_Amazone;

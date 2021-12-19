@@ -15,6 +15,7 @@ class Equipement : public Objet {
 
 private:
     EquipementType typeEquipement;
+    bool estEquipe;
 
 public:
     EquipementType getTypeEquipement() const;

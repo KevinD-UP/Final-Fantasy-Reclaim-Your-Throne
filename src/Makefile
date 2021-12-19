@@ -3,10 +3,10 @@ CFLAGS= -Wall
 
 all : main
 
-main: main.o PersonnageFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Partie.o Joueur.o
+main: main.o PersonnageFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
-main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h header/model/Joueur/Joueur.h
+main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h header/model/Joueur/Joueur.h header/Partie.h
 	$(CPP) $(CFLAGS) -c $<
 
 Guerrier.o : implem/model/Personnage/Guerrier.cpp header/model/Personnage/Guerrier.h

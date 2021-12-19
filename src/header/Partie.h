@@ -5,11 +5,8 @@
 #ifndef FINAL_FANTASY_RECLAIM_YOUR_THRONE_PARTIE_H
 #define FINAL_FANTASY_RECLAIM_YOUR_THRONE_PARTIE_H
 
-#include <vector>
-#include <iostream>
 #include "model/Personnage/Personnage.h"
 #include "model/Joueur/Joueur.h"
-#include "model/Personnage/PersonnageFactory.h"
 
 class Partie {
 

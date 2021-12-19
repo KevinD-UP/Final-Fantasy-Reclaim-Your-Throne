@@ -18,3 +18,6 @@ const std::vector<Personnage *> Partie::getPersoEnJeu() const {
 const Joueur *Partie::getJoueur() const {
     return joueur;
 }
+
+Partie::Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg) : persoEnJeu(persoEnJeuArg), joueur(joueurArg)
+{}

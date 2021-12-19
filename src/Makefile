@@ -3,10 +3,10 @@ CFLAGS= -Wall
 
 all : main
 
-main: main.o PersonnageFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o
+main: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
-main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h
+main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h header/model/Joueur/Joueur.h header/Partie.h
 	$(CPP) $(CFLAGS) -c $<
 
 Guerrier.o : implem/model/Personnage/Guerrier.cpp header/model/Personnage/Guerrier.h
@@ -27,6 +27,9 @@ Personnage.o : implem/model/Personnage/Personnage.cpp header/model/Personnage/Pe
 PersonnageFactory.o : implem/model/Personnage/PersonnageFactory.cpp header/model/Personnage/PersonnageFactory.h
 	$(CPP) $(CFLAGS) -c $<
 
+ConsommableFactory.o : implem/model/Objet/ConsommableFactory.cpp header/model/Objet/ConsommableFactory.h
+	$(CPP) $(CFLAGS) -c $<
+
 Consommable.o : implem/model/Objet/Consommable.cpp header/model/Objet/Consommable.h
 	$(CPP) $(CFLAGS) -c $<
 
@@ -38,6 +41,13 @@ Objet.o : implem/model/Objet/Objet.cpp header/model/Objet/Objet.h
 
 Action.o : implem/model/Action/Action.cpp header/model/Action/Action.h
 	$(CPP) $(CFLAGS) -c $<
+
+Joueur.o : implem/model/Joueur/Joueur.cpp header/model/Joueur/Joueur.h
+	$(CPP) $(CFLAGS) -c $<
+
+Partie.o : implem/Partie.cpp header/Partie.h
+	$(CPP) $(CFLAGS) -c $<
+
 
 clean :
 	rm *.o main

@@ -4,7 +4,8 @@
 
 #include "../../../header/model/Personnage/Guerrier.h"
 
-Guerrier::Guerrier(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) : Personnage(nom, sante, attaque, defense, sac)
+Guerrier::Guerrier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}
 
 void Guerrier::print() {
@@ -13,3 +14,9 @@ void Guerrier::print() {
 }
 
 void Guerrier::action(std::string nom, Personnage * ennemie){}
+
+std::ostream& operator<<(std::ostream& out, Guerrier *GuerrierArg){
+    //GuerrierArg->print();
+    out << "BABABAAB";
+    return  out;
+}

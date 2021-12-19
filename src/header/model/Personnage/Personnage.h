@@ -10,9 +10,15 @@
 #include "../Objet/Objet.h"
 #include "../Piece/Piece.h"
 
-enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
+enum PersonnageType{
+    PT_Guerrier,
+    PT_Amazone,
+    PT_Moine,
+    PT_Sorcier,
+};
 
-class Piece;
+enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
+enum Type { Offensive, Defensive, Utilitaire};
 
 class Personnage {
 
@@ -22,35 +28,45 @@ class Personnage {
         int indice_de_sante_actuel = indice_de_sante_max;
         int attaque;
         int defense;
+        PersonnageType typePersonnage;
         Piece* pieceCourante;
         std::pair<Statut, int> statut;
         std::vector<Objet*> sac;
-        Personnage(std::string nom_arg,
+        Personnage(const std::string &nom_arg,
                    const int &sante_arg,
                    const int &attaque_arg,
                    const int &defense_arg,
-                   std::vector<Objet*> sac_arg);
+                   const PersonnageType &personnageType_arg,
+                   std::vector<Objet*> &sac_arg);
 
     public:
         virtual void print() = 0;
+
+        //Getter
         std::string getNom() const;
         int getSante() const;
+        int getSanteMax() const;
         int getAttaque() const;
         int getDefense() const;
+        PersonnageType getPersonnageType() const;
+        Piece* getPieceCour();
+        std::pair<Statut, int> getStatut();
+        std::vector<Objet*> getSac();
+
+        //Opé sur les sac
         void pushStatut(std::pair<Statut, int> *);
         void pushSac(Objet*);
 
+        //Setter
         int setSante(int santeArg);
         int setAttaque(int attaqueArg);
         int setDefense(int defenseArg);
         Piece* setPiece(Piece*);
-        Piece* getPieceCour();
+
         virtual void action(std::string, Personnage *) = 0;
+        friend std::ostream& operator<<(std::ostream& out, Personnage *personnageArg);
 
         bool estMort();
-
-        std::pair<Statut, int> getStatut();
-        std::vector<Objet*> getSac();
 
         friend class Amazone;
         friend class Moine;

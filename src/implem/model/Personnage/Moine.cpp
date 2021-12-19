@@ -4,7 +4,8 @@
 
 #include "../../../header/model/Personnage/Moine.h"
 
-Moine::Moine(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) : Personnage(std::move(nom), sante, attaque, defense, std::move(sac))
+Moine::Moine(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, sante, attaque, defense, typePersonnage ,sac)
 {}
 
 void Moine::print() {

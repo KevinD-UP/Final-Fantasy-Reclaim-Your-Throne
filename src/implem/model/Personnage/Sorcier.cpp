@@ -5,8 +5,8 @@
 #include "../../../header/model/Personnage/Sorcier.h"
 #include "../../../header/model/Action/Action.h"
 
-Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, std::vector<Objet *> sac) :
-Personnage(nom, sante, attaque, defense, sac)
+Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}
 
 void Sorcier::print() {
@@ -14,11 +14,11 @@ void Sorcier::print() {
 }
 
 void Sorcier::action(std::string nom, Personnage * ennemie){
-    std::cout<< "La sorciere utilise " << nom <<std::endl;
+    std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string type = "";
-    if(nom == "boule de feu"){
-            type = "offensive";
+    Type type;
+    if(nom == "boule_de_feu"){
+            type = Offensive;
             dommage = attaque + 10 - ennemie->getDefense();
     }
     else{

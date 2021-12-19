@@ -5,13 +5,18 @@
 #include "../../../header/model/Personnage/Personnage.h"
 #include "../../../header/model/Action/Action.h"
 
-#include <utility>
-
-Personnage::Personnage(std::string nom_arg,
+Personnage::Personnage(const std::string &nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
-                       std::vector<Objet*> sac_arg) : nom(std::move(nom_arg)), indice_de_sante_max(sante_arg), attaque(attaque_arg), defense(defense_arg), sac(std::move(sac_arg))
+                       const PersonnageType &personnageType_arg,
+                       std::vector<Objet*> &sac_arg) :
+                       nom(nom_arg),
+                       indice_de_sante_max(sante_arg),
+                       attaque(attaque_arg),
+                       defense(defense_arg),
+                       typePersonnage(personnageType_arg),
+                       sac(sac_arg)
 {}
 
 std::string Personnage::getNom() const {
@@ -28,6 +33,14 @@ int Personnage::getDefense() const {
 
 int Personnage::getSante() const {
     return indice_de_sante_actuel;
+}
+
+int Personnage::getSanteMax() const {
+    return indice_de_sante_max;
+};
+
+PersonnageType Personnage::getPersonnageType() const {
+    return typePersonnage;
 }
 
 std::pair<Statut, int> Personnage::getStatut() {
@@ -70,7 +83,12 @@ Piece* Personnage::setPiece(Piece * nouvellePiece) {
     return pieceCourante;
 }
 
-void Personnage::action(std::string, Personnage *) {}
 /*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
     statut.push_back(x);
 }*/
+
+std::ostream& operator<<(std::ostream& out, Personnage *PersonageArg){
+    PersonageArg->print();
+    out << "TESTING";
+    return  out;
+}

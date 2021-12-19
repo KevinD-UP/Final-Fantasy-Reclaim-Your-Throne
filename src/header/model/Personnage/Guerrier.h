@@ -7,6 +7,8 @@
 
 #include "Personnage.h"
 #include "../Objet/Objet.h"
+#include <iostream>
+using namespace std;
 
 class IGuerrier {
 };
@@ -15,12 +17,13 @@ class Guerrier : public IGuerrier, public Personnage{
 
 
     private:
-        Guerrier(std::string nom, int sante, int attaque, int defense, std::vector<Objet*> sac);
+        Guerrier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
         void action(std::string nom, Personnage * ennemie) override;
         void print() override;
         friend class GuerrierFactory;
+        friend std::ostream& operator<<(std::ostream& out, Guerrier *guerrierArg);
 };
 
 

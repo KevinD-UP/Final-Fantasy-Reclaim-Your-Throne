@@ -6,22 +6,35 @@
 #define FINAL_FANTASY_RECLAIM_YOUR_THRONE_JOUEUR_H
 
 #include "../Personnage/Personnage.h"
-#include "../Piece/Piece.h"
-
+#include <iostream>
+using namespace std;
 class IJoueur{
 
 };
 
-enum Interaction{Check, Objet, Attaque};
+enum Interaction{Examine, Objet, Attaque};
 
 class Joueur : public IJoueur {
     private:
-        const Personnage* personnageJoueur;
+        Personnage* personnageJoueur;
         //Piece* pieceCourante;
 
     public:
-        Joueur(Personnage*);
-        void interagir(Interaction &actionType, std::string cible);
+        Joueur(Personnage* personnageJoueurArg);
+        template<class T> void interagir (Interaction actionType, T *cible){
+            if(actionType == Examine){
+                std::cout << "CHECKING" << std::endl;
+                std::cout << cible << std::endl;
+            } else if(actionType == Objet){
+
+            } else if(actionType == Attaque){
+                std::string attaque;
+                std::cout << "Attaqué avec ";
+                std::cin >> attaque;
+                std::cout << std::endl;
+                personnageJoueur->action(attaque,cible);
+            }
+        }
         //Piece setPiece(Piece*);
 
 };

@@ -19,7 +19,7 @@ enum PersonnageType{
 
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
 enum Type { Offensive, Defensive, Utilitaire};
-class Piece;
+
 class Personnage {
 
     private:
@@ -45,9 +45,10 @@ class Personnage {
         //Getter
         std::string getNom() const;
         int getSante() const;
+        int getSanteMax() const;
         int getAttaque() const;
         int getDefense() const;
-        PersonnageType personnageType() const;
+        PersonnageType getPersonnageType() const;
         Piece* getPieceCour();
         std::pair<Statut, int> getStatut();
         std::vector<Objet*> getSac();

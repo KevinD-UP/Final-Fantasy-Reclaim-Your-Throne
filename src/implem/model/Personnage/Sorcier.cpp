@@ -14,7 +14,7 @@ void Sorcier::print() {
 }
 
 void Sorcier::action(std::string nom, Personnage * ennemie){
-    std::cout<< "La sorciere utilise " << nom <<std::endl;
+    std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
     Type type;
     if(nom == "boule_de_feu"){

@@ -10,7 +10,7 @@
 class ConsommableFactory {
 public:
     virtual Consommable* FactoryMethod() const = 0;
-    static Consommable* initObjet();
+    static Consommable* initConsommable(ConsommableType&);
 };
 
 class PotionSoinFactory : public ConsommableFactory {

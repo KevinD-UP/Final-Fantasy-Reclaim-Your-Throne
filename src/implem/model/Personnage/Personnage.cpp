@@ -5,8 +5,6 @@
 #include "../../../header/model/Personnage/Personnage.h"
 #include "../../../header/model/Action/Action.h"
 
-#include <utility>
-
 Personnage::Personnage(const std::string &nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -37,7 +35,11 @@ int Personnage::getSante() const {
     return indice_de_sante_actuel;
 }
 
-PersonnageType Personnage::personnageType() const {
+int Personnage::getSanteMax() const {
+    return indice_de_sante_max;
+};
+
+PersonnageType Personnage::getPersonnageType() const {
     return typePersonnage;
 }
 
@@ -81,7 +83,6 @@ Piece* Personnage::setPiece(Piece * nouvellePiece) {
     return pieceCourante;
 }
 
-void Personnage::action(std::string, Personnage *) {}
 /*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
     statut.push_back(x);
 }*/

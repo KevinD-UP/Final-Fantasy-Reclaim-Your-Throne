@@ -6,6 +6,7 @@
 #include "header/model/Personnage/PersonnageFactory.h"
 #include "header/model/Joueur/Joueur.h"
 #include "header/Partie.h"
+#include "header/model/Action/Action.h"
 
 int main(){
     /*

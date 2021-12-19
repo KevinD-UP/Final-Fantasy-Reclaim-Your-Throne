@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+class Personnage;
+
 enum ObjetType {
     OT_Equipement,
     OT_Consommable
@@ -17,12 +19,14 @@ class Objet {
 private:
     const std::string nom;
     const ObjetType objetType;
-    Objet();
+    std::string description;
+    Objet(std::string, ObjetType, std::string);
 
 public:
     std::string getNom() const;
     ObjetType getObjetType() const;
-    virtual void appliquerEffet() = 0;
+    std::string getDescription() const;
+    virtual void appliquerEffet(Personnage *) = 0;
 
     friend class Consommable;
     friend class Equipement;

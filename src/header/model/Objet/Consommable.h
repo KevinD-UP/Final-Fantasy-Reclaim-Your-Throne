@@ -22,6 +22,7 @@ private:
 public:
     ConsommableType getTypeConsommable() const;
     void appliquerEffet() override;
+    virtual void appliquerConsommable() = 0;
 };
 
 

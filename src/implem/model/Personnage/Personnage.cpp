@@ -5,8 +5,6 @@
 #include "../../../header/model/Personnage/Personnage.h"
 #include "../../../header/model/Action/Action.h"
 
-#include <utility>
-
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -74,3 +72,9 @@ void Personnage::action(std::string, Personnage *) {}
 /*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
     statut.push_back(x);
 }*/
+
+std::ostream& operator<<(std::ostream& out, Personnage *PersonageArg){
+    PersonageArg->print();
+    out << "TESTING";
+    return  out;
+}

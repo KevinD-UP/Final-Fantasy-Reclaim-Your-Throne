@@ -13,3 +13,9 @@ void Guerrier::print() {
 }
 
 void Guerrier::action(std::string nom, Personnage * ennemie){}
+
+std::ostream& operator<<(std::ostream& out, Guerrier *GuerrierArg){
+    //GuerrierArg->print();
+    out << "BABABAAB";
+    return  out;
+}

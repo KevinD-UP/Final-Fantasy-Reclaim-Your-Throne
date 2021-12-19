@@ -9,11 +9,10 @@
 #include <iostream>
 #include "../Objet/Objet.h"
 #include "../Piece/Piece.h"
-
+using namespace std;
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent };
-
+enum Type { Offensive, Defensive, Utilitaire};
 class Piece;
-
 class Personnage {
 
     private:
@@ -46,6 +45,7 @@ class Personnage {
         Piece* setPiece(Piece*);
         Piece* getPieceCour();
         virtual void action(std::string, Personnage *) = 0;
+        friend std::ostream& operator<<(std::ostream& out, Personnage *personnageArg);
 
         bool estMort();
 

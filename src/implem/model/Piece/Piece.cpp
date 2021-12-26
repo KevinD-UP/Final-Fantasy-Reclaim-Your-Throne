@@ -12,7 +12,7 @@ void Piece::pushPerso(Personnage* p) {
     vecPerso.push_back(p);
 }
 
-void Piece::pushObjet(Objet* o) {
+void Piece::pushObjet(Objet *o) {
     vecObjet.push_back(o);
 }
 

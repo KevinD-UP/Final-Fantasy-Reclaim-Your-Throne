@@ -3,7 +3,7 @@ CFLAGS= -Wall
 
 all : main
 
-main: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o
+main: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
 main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h header/model/Joueur/Joueur.h header/Partie.h
@@ -48,6 +48,8 @@ Joueur.o : implem/model/Joueur/Joueur.cpp header/model/Joueur/Joueur.h
 Partie.o : implem/Partie.cpp header/Partie.h
 	$(CPP) $(CFLAGS) -c $<
 
+Piece.o : implem/model/Piece/Piece.cpp header/model/Piece/Piece.h
+	$(CPP) $(CFLAGS) -c $<
 
 clean :
 	rm *.o main

@@ -14,7 +14,7 @@
 #include "../Piece/Piece.h"
 
 class Joueur;
-
+class Piece;
 
 enum PersonnageType{
     PT_Guerrier,
@@ -68,8 +68,11 @@ class Personnage {
 
         //Setter
         int setSante(int santeArg);
+        int setMaxSante(int santeArg);
         int setAttaque(int attaqueArg);
+        int setMaxAttaque(int attaqueArg);
         int setDefense(int defenseArg);
+        int setMaxDefense(int defenseArg);
         Piece* setPiece(Piece*);
 
         //Statut changement
@@ -78,6 +81,11 @@ class Personnage {
         bool effetPresent(Statut);
         void resetEffet(Statut);
         void enleverEffet(Statut);
+        void reset();
+
+        //Equipement check
+        void equipeAll();
+        void desequipe();
 
         virtual void actionIa(Personnage *) = 0;
         virtual void actionJoueur(const Joueur *,Personnage *) = 0;

@@ -17,7 +17,9 @@ Personnage::Personnage(const std::string &nom_arg,
                        defense_max(defense_arg),
                        typePersonnage(personnageType_arg),
                        sac(sac_arg)
-{}
+{
+    equipeAll();
+}
 
 std::string Personnage::getNom() const {
     return nom;
@@ -72,6 +74,21 @@ int Personnage::setDefense(int defenseArg) {
     return defense;
 }
 
+int Personnage::setMaxSante(int santeArg) {
+    indice_de_sante_max = santeArg;
+    return indice_de_sante_max;
+}
+
+int Personnage::setMaxAttaque(int attaqueArg) {
+    attaque_max = attaqueArg;
+    return attaque_max;
+}
+
+int Personnage::setMaxDefense(int defenseArg) {
+    defense_max = defenseArg;
+    return defense_max;
+}
+
 void Personnage::pushSac(Objet * x) {
     std::cout << x->getNom();
     sac.push_back(x);
@@ -93,6 +110,13 @@ Piece* Personnage::setPiece(Piece * nouvellePiece) {
 Statut Personnage::pushStatut(Statut newStatut, int temp) {
     statut.push_back(std::make_pair(newStatut,temp));
     return newStatut;
+}
+
+void Personnage::reset(){
+    setSante(getSante() + getSanteMax()/6);
+    setAttaque(getAttaqueMax());
+    setDefense(getDefenseMax());
+    statut.clear();
 }
 
 bool Personnage::effetPresent(Statut effet){
@@ -259,6 +283,34 @@ void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
         i++;
     }
 
+}
+
+void Personnage::equipeAll() {
+    for (auto & objet: sac) {
+        if(objet->getObjetType() == OT_Equipement){
+            objet->appliquerEffet(this);
+        }
+    }
+}
+
+void Personnage::desequipe(){
+    size_t i = 0;
+    std::string choix = "";
+    while(i < sac.size()){
+        std::cout << i << ":"<< sac[i]->getNom()
+                  << " " << sac[i]->getDescription() << std::endl;
+        i++;
+    }
+    std::cin >> choix;
+    i = 0;
+    while(i < sac.size()) {
+        if (std::to_string(i) == choix) {
+            getPieceCour()->pushObjet(sac.at(i));
+            sac[i]->enleverEffet(this);
+            sac.erase(sac.begin() + i);
+        }
+        i++;
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, Personnage *PersonageArg){

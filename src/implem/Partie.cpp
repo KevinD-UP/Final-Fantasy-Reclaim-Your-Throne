@@ -29,7 +29,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
             if (a->estMort()) {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 std::cout << a << std::endl;
-                b->setSante(b->getSanteMax());
+                b->reset();
                 return;
             }
             if (etat == false) {
@@ -40,7 +40,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
             if (b->estMort()) {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 std::cout << a << std::endl;
-                a->setSante(a->getSanteMax());
+                a->reset();
                 return;
             }
             if (etat == false) {

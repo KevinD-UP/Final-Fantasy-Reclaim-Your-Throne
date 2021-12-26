@@ -3,6 +3,11 @@
 //
 
 #include "../../../header/model/Personnage/PersonnageFactory.h"
+#include "../../../header/model/Objet/ConsommableFactory.h"
+
+
+
+
 
 Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, const std::string& nom){
     if(personnagetype == PT_Amazone) {
@@ -44,6 +49,7 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
 }
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
+
     int sante = 50;
     int attaque = 10;
     int defense = 10;

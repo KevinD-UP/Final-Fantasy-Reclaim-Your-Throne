@@ -3,7 +3,7 @@
 //
 
 #include "../../../header/model/Personnage/Personnage.h"
-#include "../../../header/model/Action/Action.h"
+#include "../../../header/model/Joueur/Joueur.h"
 
 Personnage::Personnage(const std::string &nom_arg,
                        const int &sante_arg,
@@ -73,6 +73,7 @@ int Personnage::setDefense(int defenseArg) {
 }
 
 void Personnage::pushSac(Objet * x) {
+    std::cout << x->getNom();
     sac.push_back(x);
 }
 
@@ -216,26 +217,43 @@ bool Personnage::updateStatut(){
 }*/
 
 void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
-    int i = 0;
+    size_t i = 0;
+    std::cout << "Objet disponible:" << std::endl;
     std::string choix = "";
-    for (auto & objet: sac) {
-        std::cout << i << ":";
-        objet->getNom();
-        std::cout << " ";
-        objet->getDescription();
-        std::cout << std::endl;
+    while(i < sac.size()){
+        std::cout << i << ":"<< sac[i]->getNom()
+        << " " << sac[i]->getDescription() << std::endl;
         i++;
+    }
+    if (i == 0){
+        std::cout << "Aucun Objet disponible" << std::endl;
+        player->interagir(cible);
+        return;
     }
     std::cin >> choix;
     i = 0;
-    for (auto & objet: sac) {
+    while(i < sac.size()){
         if(std::to_string(i) == choix ){
-            if(objet->getObjetType() == OT_Consommable) {
-                objet->appliquerEffet(cible);
+            if(sac[i]->getObjetType() == OT_Consommable) {
+                std::cout << "Choisir cible: 1:Joueur 2:Ennemi" << std::endl;
+                std::cin >> choix;
+                if(choix == "1"){
+                    sac[i]->appliquerEffet(this);
+                }
+                else if(choix == "2"){
+                    sac[i]->appliquerEffet(cible);
+                }
+                else{
+                    std::cout << "Erreur ce choix n'est pas possible" << std::endl;
+                    player->interagir(cible);
+                    return;
+                }
+                sac.erase(sac.begin() + i);
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consummable" << std::endl;
-               // player->interagir(cible);
+                player->interagir(cible);
+                return;
             }
         }
         i++;

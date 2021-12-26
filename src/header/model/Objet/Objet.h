@@ -7,9 +7,11 @@
 
 #include <iostream>
 
-class Joueur;
+
 
 class Personnage;
+
+
 
 enum ObjetType {
     OT_Equipement,

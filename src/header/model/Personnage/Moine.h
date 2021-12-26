@@ -7,6 +7,7 @@
 
 #include "Personnage.h"
 #include "../Objet/Objet.h"
+#include "../Joueur/Joueur.h"
 
 class IMoine{
 
@@ -19,6 +20,8 @@ class Moine : public IMoine, public Personnage {
 
     public:
         void action(std::string nom, Personnage * ennemie) override;
+        void actionJoueur(const Joueur *,Personnage *) override;
+        void actionIa(Personnage *) override;
         void print() override;
         friend class MoineFactory;
 };

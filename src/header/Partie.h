@@ -18,6 +18,7 @@ class Partie {
         const std::vector<Personnage*> getPersoEnJeu() const;
         const Joueur* getJoueur() const;
         void startToPlay();
+        void deathBattle(Personnage *a,  Personnage *b) const;
         Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg);
 };
 

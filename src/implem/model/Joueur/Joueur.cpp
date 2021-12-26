@@ -7,6 +7,9 @@
 
 Joueur::Joueur(Personnage * personnageJoueurArg) : personnageJoueur(personnageJoueurArg) {}
 
+const Personnage* Joueur::getPerso() const {
+    return personnageJoueur;
+}
 
 
 

@@ -10,10 +10,12 @@ void Action::utilisation(){
     if (type == Offensive) {
         std::cout << "L'action " << nom << " a été utiliser sur " << receveur->getNom() << std::endl;
         receveur->setSante(receveur->getSante() - dommage);
-        std::cout << receveur->getNom() << " recoit " << dommage << " de dommage" << std::endl;
+        std::cout << receveur->getNom() << " recoit " << dommage << " de dommage" << std::endl << std::endl;
     }
-    /*if(effet != nullptr){
-        receveur->pushStatut(effet);
-        //std::cout << receveur->getNom() << " a été afflicté avec " << effet. << " de dommage" <<std::endl;
-    }*/
+    if (type == Defensive) {
+        std::cout << "L'action " << nom << " a été utiliser sur " << lanceur->getNom() << std::endl;
+        lanceur->setSante(lanceur->getSante() + dommage);
+        std::cout << receveur->getNom() << " recoit " << dommage << " de soin" << std::endl << std::endl;
+    }
+
 }

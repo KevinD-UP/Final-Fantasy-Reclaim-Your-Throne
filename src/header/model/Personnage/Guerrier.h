@@ -7,6 +7,7 @@
 
 #include "Personnage.h"
 #include "../Objet/Objet.h"
+#include "../Joueur/Joueur.h"
 #include <iostream>
 using namespace std;
 
@@ -21,6 +22,8 @@ class Guerrier : public IGuerrier, public Personnage{
 
     public:
         void action(std::string nom, Personnage * ennemie) override;
+        void actionJoueur(const Joueur *,Personnage *) override;
+        void actionIa(Personnage *) override;
         void print() override;
         friend class GuerrierFactory;
         friend std::ostream& operator<<(std::ostream& out, Guerrier *guerrierArg);

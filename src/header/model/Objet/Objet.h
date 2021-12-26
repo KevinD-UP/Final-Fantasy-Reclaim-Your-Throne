@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+class Joueur;
+
 class Personnage;
 
 enum ObjetType {

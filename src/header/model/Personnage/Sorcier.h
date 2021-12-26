@@ -7,7 +7,7 @@
 
 #include "Personnage.h"
 #include "../Objet/Objet.h"
-
+#include "../Joueur/Joueur.h"
 class ISorcier {
 
 };
@@ -19,7 +19,9 @@ class Sorcier : public ISorcier, public Personnage {
         Sorcier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
-        void action(std::string,Personnage*) override;
+        void action(std::string nom, Personnage * ennemie) override;
+        void actionJoueur(const Joueur *,Personnage *) override;
+        void actionIa(Personnage *) override;
         void print() override;
         friend class SorcierFactory;
 };

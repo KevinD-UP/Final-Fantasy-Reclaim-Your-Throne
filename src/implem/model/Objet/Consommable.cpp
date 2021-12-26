@@ -12,6 +12,11 @@ void Consommable::appliquerEffet(Personnage * cible) {
     this->appliquerConsommable(cible);
 }
 
+ConsommableType Consommable::getTypeConsommable() const {
+    return typeConsommable;
+}
+
+
 
 PotionSoin::PotionSoin(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, int pouvoirDeSoin_arg)
 : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg), pouvoirDeSoin(pouvoirDeSoin_arg)
@@ -37,15 +42,15 @@ void PotionSoin::appliquerConsommable(Personnage *cible) {
 }
 
 void PotionBrulure::appliquerConsommable(Personnage *cible) {
-
+    cible->pushStatut(Bruler,3);
 }
 
 
 void PotionPoison::appliquerConsommable(Personnage *cible) {
-
+    cible->pushStatut(Empoisonner,3);
 }
 
 
 void PotionSomnolence::appliquerConsommable(Personnage *cible) {
-
+    cible->pushStatut(Etourdit,2);
 }

@@ -54,12 +54,15 @@ int main(){
 
     std::cout << "Création des personnages non joueur..." << std::endl;
     Personnage* sorcier = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Test2");
+
+    Personnage* sorcier2 = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Ennemie");
+
     Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");
     Personnage* amazone = PersonnageFactory::initPersonnage(TYPE_Amazone,"Test4");
 
     Partie partie = Partie({personnageJoueur, sorcier, moine, amazone}, joueur);
     partie.startToPlay();
-
+    partie.deathBattle(personnageJoueur,sorcier2);
     /*Joueur *A = new Joueur (sorcier);
     A->interagir<Personnage>(Examine,guerrier);
     A->interagir<Personnage>(Attaque,guerrier);*/

@@ -3,6 +3,14 @@
 //
 
 #include "../../../header/model/Personnage/PersonnageFactory.h"
+#include "../../../header/model/Objet/ConsommableFactory.h"
+#include "../../../header/model/Objet/Equipement.h"
+
+ConsommableType TYPE_PotionSoin = CT_POTIONSOIN;
+ConsommableType TYPE_PotionBrulure = CT_POTIONBRULURE;
+ConsommableType TYPE_PotionPoison = CT_POTIONPOISON;
+ConsommableType TYPE_PotionSomnol = CT_POTIONSOMNOLENCE;
+
 
 Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, const std::string& nom){
     if(personnagetype == PT_Amazone) {
@@ -19,15 +27,19 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
 }
 
 Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
+    Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
+    Equipement* Epee = new Equipement("Epee",OT_Equipement,"Attaque:10 Deffense:5",PT_Guerrier,false,10,5,0);
+    Equipement* Armure = new Equipement("Armure",OT_Equipement,"Deffense:5 Sante 20",PT_Guerrier,false,0,5,20);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
-    std::vector<Objet *> sac = {};
+    std::vector<Objet *> sac = {Potion,Epee,Armure};
     return new Guerrier(nom, sante, attaque, defense, PT_Guerrier ,sac);
 }
 
 
 Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
+
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -36,17 +48,22 @@ Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
 }
 
 Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
+    Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
+    Equipement* Toge = new Equipement("Toge",OT_Equipement,"Deffense:10 Sante 30",PT_Moine,false,0,10,30);
+    Equipement* Masse = new Equipement("Masse",OT_Equipement,"Deffense:10 Sante 30",PT_Moine,false,5,5,10);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
-    std::vector<Objet *> sac = {};
+    std::vector<Objet *> sac = {Potion,Toge,Masse};
     return new Moine(nom, sante, attaque, defense, PT_Moine, sac);
 }
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
+    Equipement* Epee = new Equipement("Epee",OT_Equipement,"Attaque:10 Deffense:5",PT_Guerrier,false,10,5,0);
+
     int sante = 50;
     int attaque = 10;
     int defense = 10;
-    std::vector<Objet *> sac = {};
+    std::vector<Objet *> sac = {Epee};
     return new Sorcier(nom, sante, attaque, defense, PT_Sorcier, sac);
 }

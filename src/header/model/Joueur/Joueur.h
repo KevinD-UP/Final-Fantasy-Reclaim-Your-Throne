@@ -12,29 +12,37 @@ class IJoueur{
 
 };
 
-enum Interaction{Examine, Objet, Attaque};
+//enum Interaction{Examine, Objet, Attaque};
 
 class Joueur : public IJoueur {
     private:
-        Personnage* personnageJoueur;
+
         //Piece* pieceCourante;
 
     public:
+        Personnage* personnageJoueur;
         Joueur(Personnage* personnageJoueurArg);
-        template<class T> void interagir (Interaction actionType, T *cible){
-            if(actionType == Examine){
-                std::cout << "CHECKING" << std::endl;
-                std::cout << cible << std::endl;
-            } else if(actionType == Objet){
-
-            } else if(actionType == Attaque){
-                std::string attaque;
-                std::cout << "Attaqué avec ";
-                std::cin >> attaque;
+        template<class T> void interagir (T *cible) const{
+            std::cout << "1 - Examiner "
+            << "2 - Attaque "
+            << "3 - Objet " << std::endl;
+            std::string action;
+            std::cin >> action;
+            //T *cible;
+            if(action == "1") {
                 std::cout << std::endl;
-                personnageJoueur->action(attaque,cible);
+                std::cout << personnageJoueur << std::endl;
+                std::cout << cible << std::endl;
+                this->interagir(cible);
+            }
+            else if(action == "2"){
+                personnageJoueur->actionJoueur(this,cible);
+            }
+            else if(action == "3"){
+                personnageJoueur->actionObjet(this,cible);
             }
         }
+        const Personnage* getPerso() const;
         //Piece setPiece(Piece*);
 
 };

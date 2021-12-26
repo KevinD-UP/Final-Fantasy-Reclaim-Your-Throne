@@ -9,33 +9,65 @@ Equipement::Equipement
      ObjetType objetType_arg,
      std::string description_arg,
      PersonnageType personnageType_arg,
-     EquipementType equipementType_arg,
-     bool estEquipe_arg, int buffDeClasse_arg, int buffAutre_arg)
+     //EquipementType equipementType_arg,
+     bool estEquipe_arg, int buffAttaque_arg, int buffDefense_arg, int buffSante_arg)
     : Objet(nom_arg, objetType_arg, description_arg),
     bonusClass(personnageType_arg),
-    typeEquipement(equipementType_arg),
+    //typeEquipement(equipementType_arg),
     estEquipe(estEquipe_arg),
-    buffDeClasse(buffDeClasse_arg),
-    buffAutre(buffAutre_arg)
+    buffAttaque(buffAttaque_arg),
+    buffDefense(buffDefense_arg),
+    buffSante(buffSante_arg)
+    //buffAutre(buffAutre_arg)
 {}
 
 void Equipement::appliquerEffet(Personnage *cible) {
     if(!estEquipe) {
-        if(typeEquipement == ET_ARME) {
-            if (this->bonusClass == cible->getPersonnageType()) {
-                cible->setAttaque(cible->getAttaque() + buffDeClasse);
-            } else {
-                cible->setAttaque(cible->getAttaque() + buffAutre);
-            }
-        }
-        if(typeEquipement == ET_PROTECTION) {
-            if (this->bonusClass == cible->getPersonnageType()) {
-                cible->setDefense(cible->getDefense() + buffDeClasse);
-            } else {
-                cible->setDefense(cible->getDefense() + buffAutre);
-            }
+        if (this->bonusClass == cible->getPersonnageType()) {
+            cible->setMaxAttaque(cible->getAttaqueMax() + buffAttaque);
+            cible->setAttaque(cible->getAttaqueMax());
+
+            cible->setMaxDefense(cible->getDefenseMax() + buffDefense);
+            cible->setDefense(cible->getDefenseMax());
+
+            cible->setMaxSante(cible->getSanteMax() + buffSante);
+            cible->setSante(cible->getSanteMax());
+        } else {
+            cible->setMaxAttaque(cible->getAttaqueMax() + buffAttaque/2);
+            cible->setAttaque(cible->getAttaqueMax());
+
+            cible->setMaxDefense(cible->getDefenseMax() + buffDefense/2);
+            cible->setDefense(cible->getDefenseMax());
+
+            cible->setMaxSante(cible->getSanteMax() + buffSante/2);
+            cible->setSante(cible->getSanteMax());
         }
         estEquipe = true;
+    }
+}
+
+void Equipement::enleverEffet(Personnage *cible){
+    if(estEquipe) {
+        if (this->bonusClass == cible->getPersonnageType()) {
+            cible->setMaxAttaque(cible->getAttaqueMax() - buffAttaque);
+            cible->setAttaque(cible->getAttaqueMax());
+
+            cible->setMaxDefense(cible->getDefenseMax() - buffDefense);
+            cible->setDefense(cible->getDefenseMax());
+
+            cible->setMaxSante(cible->getSanteMax() - buffSante);
+            cible->setSante(cible->getSanteMax());
+        } else {
+            cible->setMaxAttaque(cible->getAttaqueMax() - buffAttaque/2);
+            cible->setAttaque(cible->getAttaqueMax());
+
+            cible->setMaxDefense(cible->getDefenseMax() - buffDefense/2);
+            cible->setDefense(cible->getDefenseMax());
+
+            cible->setMaxSante(cible->getSanteMax() - buffSante/2);
+            cible->setSante(cible->getSanteMax());
+        }
+        estEquipe = false;
     }
 }
 

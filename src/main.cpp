@@ -4,15 +4,19 @@
 
 #include "header/model/Personnage/Personnage.h"
 #include "header/model/Personnage/PersonnageFactory.h"
+//#include "header/model/Objet/ConsommableFactory.h"
 #include "header/model/Joueur/Joueur.h"
 #include "header/Partie.h"
-#include "header/model/Action/Action.h"
+
 
 int main(){
     PersonnageType TYPE_Guerrier = PT_Guerrier;
     PersonnageType TYPE_Amazone = PT_Amazone;
     PersonnageType TYPE_Moine = PT_Moine;
     PersonnageType TYPE_Sorcier = PT_Sorcier;
+
+
+
 
     std::string nomPerso;
     int choixPerso;
@@ -53,13 +57,13 @@ int main(){
     }
 
     std::cout << "Création des personnages non joueur..." << std::endl;
-    Personnage* sorcier = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Test2");
+    Personnage* sorcier = PersonnageFactory::initPersonnage(TYPE_Sorcier,"Ennemie");
     Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");
     Personnage* amazone = PersonnageFactory::initPersonnage(TYPE_Amazone,"Test4");
 
     Partie partie = Partie({personnageJoueur, sorcier, moine, amazone}, joueur);
     partie.startToPlay();
-
+    partie.deathBattle(personnageJoueur,sorcier);
     /*Joueur *A = new Joueur (sorcier);
     A->interagir<Personnage>(Examine,guerrier);
     A->interagir<Personnage>(Attaque,guerrier);*/

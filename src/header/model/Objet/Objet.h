@@ -7,7 +7,11 @@
 
 #include <iostream>
 
+
+
 class Personnage;
+
+
 
 enum ObjetType {
     OT_Equipement,
@@ -27,7 +31,7 @@ public:
     ObjetType getObjetType() const;
     std::string getDescription() const;
     virtual void appliquerEffet(Personnage *) = 0;
-
+    virtual void enleverEffet(Personnage *) = 0;
     friend class Consommable;
     friend class Equipement;
 };

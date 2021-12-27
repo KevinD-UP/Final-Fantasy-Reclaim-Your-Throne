@@ -67,7 +67,7 @@ void Sorcier::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
+void Sorcier::actionJoueur(Joueur * player,Personnage * cible) {
     std::string sort;
     std::cout << "0 - Boule de feu: Puissance 15 " << std::endl;
     std::cout << "1 - Eclair: Puissance 5. Ignore l'armure ennemie" << std::endl;
@@ -75,7 +75,7 @@ void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
-        player->interagir(cible);
+        player->interactionEnCombat(cible);
     }
     else if(sort == "0" || sort == "1" || sort == "2" ) {
         action(sort, cible);

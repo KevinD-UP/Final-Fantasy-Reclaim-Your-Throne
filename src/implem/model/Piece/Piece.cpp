@@ -4,8 +4,6 @@
 
 #include "../../../header/model/Piece/Piece.h"
 
-#include <utility>
-
 Piece::Piece(std::vector<Objet*> vecO, std::vector<Piece*> vecPie) : vecObjet(std::move(vecO)), vecPiece(std::move(vecPie)){}
 
 void Piece::pushPerso(Personnage* p) {
@@ -30,4 +28,8 @@ std::vector<Objet*> Piece::getVecObjet() const{
 
 std::vector<Piece*> Piece::getVecPiece() const {
     return vecPiece;
+}
+
+bool Piece::combatPossible() const {
+    return vecPerso.size() > 1;
 }

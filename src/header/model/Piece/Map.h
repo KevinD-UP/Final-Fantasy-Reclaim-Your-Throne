@@ -15,7 +15,6 @@ private:
 public:
     Map();
     std::vector<std::vector<Piece*>> getMap() const;
-    static std::vector<std::vector<Piece*>>* initMap();
 };
 
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_MAP_H

@@ -8,15 +8,11 @@
 #include "header/model/Joueur/Joueur.h"
 #include "header/Partie.h"
 
-
 int main(){
     PersonnageType TYPE_Guerrier = PT_Guerrier;
     PersonnageType TYPE_Amazone = PT_Amazone;
     PersonnageType TYPE_Moine = PT_Moine;
     PersonnageType TYPE_Sorcier = PT_Sorcier;
-
-
-
 
     std::string nomPerso;
     int choixPerso;
@@ -63,8 +59,9 @@ int main(){
 
     Partie partie = Partie({personnageJoueur, sorcier, moine, amazone}, joueur);
     partie.startToPlay();
-    partie.deathBattle(personnageJoueur,sorcier);
+    //partie.deathBattle(personnageJoueur,sorcier);
     /*Joueur *A = new Joueur (sorcier);
     A->interagir<Personnage>(Examine,guerrier);
     A->interagir<Personnage>(Attaque,guerrier);*/
+    std::cout << "Fin de la partie" << std::endl;
 }

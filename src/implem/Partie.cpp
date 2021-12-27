@@ -6,8 +6,23 @@
 
 void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
-    /*for (auto & personnage: persoEnJeu) {
-        personnage->print();
+    routine();
+}
+
+void Partie::routine() {
+    /*for(auto & personnage: persoEnJeu){
+        if(personnage == joueur->getPerso()){
+            //TODO: INTERACTION JOUEUR
+        } else {
+            //TODO: DEPLACEMENT ALEATOIRE
+        }
+
+        if(pieceArrive.combatPossible()) { //TODO:VERIFICATION PRESENCE
+            deathBattle(personnage, );
+            if(finDePartie()){
+                return;
+            }
+        }
     }*/
 }
 
@@ -15,8 +30,12 @@ const std::vector<Personnage *> Partie::getPersoEnJeu() const {
     return persoEnJeu;
 }
 
-const Joueur *Partie::getJoueur() const {
+const Joueur* Partie::getJoueur() const {
     return joueur;
+}
+
+const Map* Partie::getChateau() const {
+    return chateau;
 }
 
 Partie::Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg) : persoEnJeu(persoEnJeuArg), joueur(joueurArg)
@@ -24,7 +43,7 @@ Partie::Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueu
 
 void Partie::deathBattle(Personnage *a, Personnage *b) const{
     while(!a->estMort() || !b->estMort()){
-        if(a == getJoueur()->personnageJoueur) {
+        if(a == joueur->getPerso()) {
             auto etat = a->updateStatut();
             if (a->estMort()) {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
@@ -32,8 +51,8 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
                 b->reset();
                 return;
             }
-            if (etat == false) {
-                Partie::getJoueur()->interagir(b);
+            if (!etat) {
+                Partie::joueur->interactionEnCombat(b);
             }
 
             etat = b->updateStatut();
@@ -43,7 +62,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
                 a->reset();
                 return;
             }
-            if (etat == false) {
+            if (!etat) {
                 b->actionIa(a);
             }
 
@@ -62,5 +81,20 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
             }
             b->actionIa(a);
         }
+    }
+}
+
+bool Partie::finDePartie() const {
+    if(joueur->getPerso()->estMort()){
+        std::cout << "GAME OVER, VOUS N'AVEZ PAS SU RECONQUERIR VOTRE TRÔNE" << std::endl;
+        return true;
+    } else {
+        for(long unsigned int i = 1; i < persoEnJeu.size(); i++){
+            if(!persoEnJeu[i]->estMort()){
+                return false;
+            }
+        }
+        std::cout << "FÉLICITATION, VOUS AVEZ SU RECONQUERIR VOTRE TRÔNE, ET RAMENER LA PAIX DANS VOTRE ROYAUME" << std::endl;
+        return true;
     }
 }

@@ -3,11 +3,7 @@
 //
 
 #include "../../../header/model/Piece/Map.h"
-#include "../../../header/model/Piece/Piece.h"
 
-std::vector<std::vector<Piece*>>* Map::initMap() {
-    return {};
-}
 
 Map::Map() {}
 

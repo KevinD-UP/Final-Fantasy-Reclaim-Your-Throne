@@ -68,7 +68,7 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Guerrier::actionJoueur(const Joueur * player,Personnage * cible) {
+void Guerrier::actionJoueur(Joueur * player,Personnage * cible) {
     std::string sort;
     std::cout << "0 - Lacérage: Puissance 15 " << std::endl;
     std::cout << "1 - Berserk: Puissance 10. Inflige 50% des PV manquant du personnage" << std::endl;
@@ -76,7 +76,7 @@ void Guerrier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
-        player->interagir(cible);
+        player->interactionEnCombat(cible);
     }
     else if(sort == "0" || sort == "1" || sort == "2" || sort == "4") {
         action(sort, cible);

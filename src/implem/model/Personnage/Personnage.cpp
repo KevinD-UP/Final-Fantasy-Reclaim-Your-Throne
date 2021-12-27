@@ -3,7 +3,6 @@
 //
 
 #include "../../../header/model/Personnage/Personnage.h"
-#include "../../../header/model/Joueur/Joueur.h"
 
 Personnage::Personnage(const std::string &nom_arg,
                        const int &sante_arg,
@@ -236,11 +235,8 @@ bool Personnage::updateStatut(){
     std::cout << std::endl;
     return etourdit;
 }
-/*void Personnage::pushStatut(std::pair<Personnage::Statut, int> x) {
-    statut.push_back(x);
-}*/
 
-void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
+void Personnage::actionObjet(Joueur * player, Personnage *cible) {
     size_t i = 0;
     std::cout << "Objet disponible:" << std::endl;
     std::string choix = "";
@@ -251,7 +247,7 @@ void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
     }
     if (i == 0){
         std::cout << "Aucun Objet disponible" << std::endl;
-        player->interagir(cible);
+        player->interactionEnCombat(cible);
         return;
     }
     std::cin >> choix;
@@ -259,7 +255,7 @@ void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
     while(i < sac.size()){
         if(std::to_string(i) == choix ){
             if(sac[i]->getObjetType() == OT_Consommable) {
-                std::cout << "Choisir cible: 1:Joueur 2:Ennemi" << std::endl;
+                std::cout << "Choisir cible: 1:Joueur 2:Ennemie" << std::endl;
                 std::cin >> choix;
                 if(choix == "1"){
                     sac[i]->appliquerEffet(this);
@@ -269,14 +265,14 @@ void Personnage::actionObjet(const Joueur * player,Personnage *cible) {
                 }
                 else{
                     std::cout << "Erreur ce choix n'est pas possible" << std::endl;
-                    player->interagir(cible);
+                    player->interactionEnCombat(cible);
                     return;
                 }
                 sac.erase(sac.begin() + i);
             }
             else{
-                std::cout << "Erreur cette objet n'est pas un consummable" << std::endl;
-                player->interagir(cible);
+                std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;
+                player->interactionEnCombat(cible);
                 return;
             }
         }

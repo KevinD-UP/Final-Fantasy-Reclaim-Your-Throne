@@ -236,7 +236,7 @@ bool Personnage::updateStatut(){
     return etourdit;
 }
 
-void Personnage::actionObjet(Joueur * player, Personnage *cible) {
+void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
     size_t i = 0;
     std::cout << "Objet disponible:" << std::endl;
     std::string choix = "";

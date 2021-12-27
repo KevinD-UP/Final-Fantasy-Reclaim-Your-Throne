@@ -65,7 +65,7 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Amazone::actionJoueur(Joueur * player,Personnage * cible) {
+void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
     std::cout << "0 - Attaque longue: Puissance 10 " << std::endl;
     std::cout << "1 - Execution: Puissance 5. Inflige 50% des PV manquant de la cible" << std::endl;

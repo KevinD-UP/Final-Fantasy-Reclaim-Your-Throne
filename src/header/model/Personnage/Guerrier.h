@@ -22,7 +22,7 @@ class Guerrier : public IGuerrier, public Personnage{
 
     public:
         void action(std::string nom, Personnage * ennemie) override;
-        void actionJoueur(Joueur *,Personnage *) override;
+        void actionJoueur(const Joueur *,Personnage *) override;
         void actionIa(Personnage *) override;
         void print() override;
         friend class GuerrierFactory;

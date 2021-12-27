@@ -89,8 +89,8 @@ class Personnage {
         void desequipe();
 
         virtual void actionIa(Personnage *) = 0;
-        virtual void actionJoueur(Joueur *, Personnage *) = 0;
-        void actionObjet(Joueur *, Personnage *);
+        virtual void actionJoueur(const Joueur *, Personnage *) = 0;
+        void actionObjet(const Joueur *, Personnage *);
         virtual void action(std::string, Personnage *) = 0;
         friend std::ostream& operator<<(std::ostream& out, Personnage *personnageArg);
 

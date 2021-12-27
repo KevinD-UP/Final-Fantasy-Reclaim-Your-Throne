@@ -13,7 +13,7 @@ class Joueur {
 
     public:
         Joueur(Personnage* personnageJoueurArg);
-        template<typename T> const void interactionEnCombat (T *cible) const;
+        const void interactionEnCombat (Personnage *cible) const;
         void interactionHorsCombat() const;
         Personnage* getPerso() const;
 };

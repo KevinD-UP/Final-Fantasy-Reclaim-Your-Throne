@@ -52,7 +52,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
                 return;
             }
             if (!etat) {
-                Partie::joueur->interactionEnCombat(b);
+                joueur->interactionEnCombat(b);
             }
 
             etat = b->updateStatut();

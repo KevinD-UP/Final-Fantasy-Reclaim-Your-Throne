@@ -11,8 +11,7 @@ Personnage* Joueur::getPerso() const {
     return personnageJoueur;
 }
 
-template<typename T>
-void const Joueur::interactionEnCombat(T *cible) const {
+void const Joueur::interactionEnCombat(Personnage *cible) const {
     std::cout << "1 - Examiner "
               << "2 - Attaque "
               << "3 - Objet " << std::endl;

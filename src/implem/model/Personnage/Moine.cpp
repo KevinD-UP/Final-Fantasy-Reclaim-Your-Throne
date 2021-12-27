@@ -68,7 +68,7 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Moine::actionJoueur(Joueur * player, Personnage * cible) {
+void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
     std::cout << "0 - Frappe: Puissance 15 " << std::endl;
     std::cout << "1 - Soin: Puissance 5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour" << std::endl;

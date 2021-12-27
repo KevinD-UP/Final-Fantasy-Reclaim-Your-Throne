@@ -67,7 +67,7 @@ void Sorcier::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Sorcier::actionJoueur(Joueur * player,Personnage * cible) {
+void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
     std::cout << "0 - Boule de feu: Puissance 15 " << std::endl;
     std::cout << "1 - Eclair: Puissance 5. Ignore l'armure ennemie" << std::endl;

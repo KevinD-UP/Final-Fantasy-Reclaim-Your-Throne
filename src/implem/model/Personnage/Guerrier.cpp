@@ -68,7 +68,7 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
     x->utilisation();
 }
 
-void Guerrier::actionJoueur(Joueur * player,Personnage * cible) {
+void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
     std::cout << "0 - Lacérage: Puissance 15 " << std::endl;
     std::cout << "1 - Berserk: Puissance 10. Inflige 50% des PV manquant du personnage" << std::endl;

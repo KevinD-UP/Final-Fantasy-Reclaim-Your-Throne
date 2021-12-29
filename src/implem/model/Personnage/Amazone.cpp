@@ -27,7 +27,7 @@ void Amazone::actionIa(Personnage * cible){
 
 void Amazone::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
-    int dommage = 0;
+    int dommage;
     std::string nomSort;
     Type type;
     if(nom == "0"){
@@ -60,7 +60,6 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
         return;
     }
-    //std::pair<Statut,int> effet = std::pair<Bruler,2>;
     auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
 }

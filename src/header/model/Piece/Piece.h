@@ -15,16 +15,17 @@ class Piece {
 private:
     std::vector<Personnage*> vecPerso;
     std::vector<Objet*> vecObjet;
-    std::vector<Piece*> vecPiece;
+    std::vector<Piece*> vecPiecesAdjacentes;
 
 public:
     Piece(std::vector<Objet*>,std::vector<Piece*>);
     void pushPerso(Personnage *);
+    void removePerso();
     void pushObjet(Objet*);
-    void setPiece(std::vector<Piece*>);
+    void setPiecesAdjacentes(std::vector<Piece*>);
     std::vector<Personnage*> getVecPerso() const;
     std::vector<Objet*> getVecObjet() const;
-    std::vector<Piece*> getVecPiece() const;
+    std::vector<Piece*> getVecPieceAdjacentes() const;
     bool combatPossible() const;
 
 };

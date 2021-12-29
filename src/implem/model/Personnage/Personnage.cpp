@@ -4,8 +4,6 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
-#include <utility>
-
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -309,6 +307,12 @@ void Personnage::desequipe(){
         }
         i++;
     }
+}
+
+Piece* Personnage::deplacement(int arrive) {
+    this->pieceCourante->removePerso();
+    this->pieceCourante->getVecPieceAdjacentes()[arrive]->pushPerso(this);
+    return this->setPiece(pieceCourante->getVecPieceAdjacentes()[arrive]);
 }
 
 std::ostream& operator<<(std::ostream& out, Personnage *PersonageArg){

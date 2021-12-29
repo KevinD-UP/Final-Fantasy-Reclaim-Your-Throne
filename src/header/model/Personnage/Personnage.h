@@ -84,6 +84,9 @@ class Personnage {
         void equipeAll();
         void desequipe();
 
+        //Déplacement
+        Piece* deplacement(int);
+
         virtual void actionIa(Personnage *) = 0;
         virtual void actionJoueur(const Joueur *, Personnage *) = 0;
         void actionObjet(const Joueur *, Personnage *);

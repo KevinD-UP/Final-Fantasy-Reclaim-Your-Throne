@@ -4,7 +4,7 @@
 
 #include "../header/Partie.h"
 
-#include <utility>
+#include <random>
 
 void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
@@ -12,20 +12,23 @@ void Partie::startToPlay() {
 }
 
 void Partie::routine() {
-    /*for(auto & personnage: persoEnJeu){
+    for(auto & personnage: persoEnJeu){
+        Piece * pieceArrive;
         if(personnage == joueur->getPerso()){
-            //TODO: INTERACTION JOUEUR
+            pieceArrive = joueur->interactionHorsCombat();
         } else {
-            //TODO: DEPLACEMENT ALEATOIRE
+            std::default_random_engine generator;
+            std::uniform_int_distribution<int> distribution(0,3);
+            int deplacementAleatoire = distribution(generator);
+            pieceArrive = personnage->deplacement(deplacementAleatoire);
         }
-
-        if(pieceArrive.combatPossible()) { //TODO:VERIFICATION PRESENCE
-            deathBattle(personnage, );
+        if(pieceArrive->combatPossible()) {
+            deathBattle(personnage, pieceArrive->getVecPerso()[0]);
             if(finDePartie()){
                 return;
             }
         }
-    }*/
+    }
 }
 
 std::vector<Personnage *> Partie::getPersoEnJeu() const {

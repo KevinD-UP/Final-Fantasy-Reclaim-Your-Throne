@@ -52,7 +52,7 @@ Piece.o : implem/model/Piece/Piece.cpp header/model/Piece/Piece.h
 	$(CPP) $(CFLAGS) -c $<
 
 clean :
-	rm *.o main
+	rm *.o final_fantasy
 
 test: all
 	./final_fantasy

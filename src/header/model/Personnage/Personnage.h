@@ -10,10 +10,6 @@
 #include <vector>
 #include <iostream>
 #include "../Objet/Objet.h"
-#include "../Objet/Consommable.h"
-#include "../Piece/Piece.h"
-#include "../Joueur/Joueur.h"
-
 class Joueur;
 class Piece;
 
@@ -104,5 +100,6 @@ class Personnage {
 
 };
 
-
+#include "../Joueur/Joueur.h"
+#include "../Piece/Piece.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_PERSONNAGE_H

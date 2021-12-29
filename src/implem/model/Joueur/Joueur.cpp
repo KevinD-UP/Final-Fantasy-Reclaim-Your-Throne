@@ -31,6 +31,10 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
     }
 }
 
+void Joueur::interactionHorsCombat() const {
+
+}
+
 
 
 

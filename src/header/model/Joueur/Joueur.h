@@ -8,17 +8,18 @@
 
 
 #include <iostream>
-#include "../Personnage/Personnage.h"
+class Personnage;
 
 class Joueur {
     private:
         Personnage* personnageJoueur;
 
     public:
-        Joueur(Personnage* personnageJoueurArg);
+        explicit Joueur(Personnage* personnageJoueurArg);
         void interactionEnCombat (Personnage *cible) const;
         void interactionHorsCombat() const;
         Personnage* getPerso() const;
 };
 
+#include "../Personnage/Personnage.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_JOUEUR_H

@@ -5,13 +5,12 @@
 #ifndef FINAL_FANTASY___RECLAIM_YOUR_THRONE_PIECE_H
 #define FINAL_FANTASY___RECLAIM_YOUR_THRONE_PIECE_H
 
-#include "../Personnage/Personnage.h"
-#include "../Objet/Objet.h"
 
+#include "../Objet/Objet.h"
+#include <vector>
 class Personnage;
 
 class Piece {
-
 
 private:
     std::vector<Personnage*> vecPerso;
@@ -29,4 +28,6 @@ public:
     bool combatPossible() const;
 
 };
+
+#include "../Personnage/Personnage.h"
 #endif //FINAL_FANTASY___RECLAIM_YOUR_THRONE_PIECE_H

@@ -27,7 +27,7 @@ void Moine::actionIa(Personnage * cible){
 void Moine::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string nomSort = "";
+    std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;

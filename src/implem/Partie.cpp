@@ -4,6 +4,8 @@
 
 #include "../header/Partie.h"
 
+#include <utility>
+
 void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
     routine();
@@ -26,7 +28,7 @@ void Partie::routine() {
     }*/
 }
 
-const std::vector<Personnage *> Partie::getPersoEnJeu() const {
+std::vector<Personnage *> Partie::getPersoEnJeu() const {
     return persoEnJeu;
 }
 
@@ -38,7 +40,7 @@ const Map* Partie::getChateau() const {
     return chateau;
 }
 
-Partie::Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg) : persoEnJeu(persoEnJeuArg), joueur(joueurArg)
+Partie::Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg) : persoEnJeu(std::move(persoEnJeuArg)), joueur(joueurArg)
 {}
 
 void Partie::deathBattle(Personnage *a, Personnage *b) const{

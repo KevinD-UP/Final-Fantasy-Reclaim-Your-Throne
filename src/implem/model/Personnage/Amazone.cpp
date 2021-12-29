@@ -5,7 +5,7 @@
 #include "../../../header/model/Personnage/Amazone.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Amazone::Amazone(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac) :
+Amazone::Amazone(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac) :
     Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}
 
@@ -28,7 +28,7 @@ void Amazone::actionIa(Personnage * cible){
 void Amazone::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string nomSort = "";
+    std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;
@@ -52,7 +52,7 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
         return;
     }
-    Action *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
 }
 

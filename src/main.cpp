@@ -15,9 +15,9 @@ int main(){
     PersonnageType TYPE_Sorcier = PT_Sorcier;
 
     std::string nomPerso;
-    int choixPerso;
-    Joueur * joueur;
-    Personnage * personnageJoueur;
+    int choixPerso{0};
+    Joueur *joueur = nullptr;
+    Personnage *personnageJoueur = nullptr;
 
     std::cout << "Bienvenue sur FINAL FANTASY RECLAIM YOUR THRONE" << std::endl;
     std::cout << "Veuillez écrire le nom de votre personnage : " << std::endl;

@@ -5,7 +5,7 @@
 #include "../../../header/model/Personnage/Moine.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Moine::Moine(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+Moine::Moine(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
     Personnage(nom, sante, attaque, defense, typePersonnage ,sac)
 {}
 
@@ -27,7 +27,7 @@ void Moine::actionIa(Personnage * cible){
 void Moine::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string nomSort = "";
+    std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;
@@ -57,7 +57,7 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
         return;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    Action *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
 }
 

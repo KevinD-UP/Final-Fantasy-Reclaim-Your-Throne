@@ -28,8 +28,8 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
 
 Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
-    Equipement* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0);
-    Equipement* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20);
+    auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0);
+    auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -40,8 +40,8 @@ Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
 
 Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
-    Equipement* Lance = new Equipement("Lance",OT_Equipement,"Attaque:10 Defense:5",PT_Amazone,false,10,5,0);
-    Equipement* Arc = new Equipement("Arc",OT_Equipement,"Attaque:10 Sante:10",PT_Amazone,false,10,0,10);
+    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque:10 Defense:5",PT_Amazone,false,10,5,0);
+    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque:10 Sante:10",PT_Amazone,false,10,0,10);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -51,8 +51,8 @@ Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
 
 Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
-    Equipement* Toge = new Equipement("Toge",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,0,10,30);
-    Equipement* Masse = new Equipement("Masse",OT_Equipement,"Attaque:5 Defense:5 Sante:15",PT_Moine,false,5,5,15);
+    auto* Toge = new Equipement("Toge",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,0,10,30);
+    auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque:5 Defense:5 Sante:15",PT_Moine,false,5,5,15);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -62,8 +62,8 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
-    Equipement* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque:15 Sante:5",PT_Sorcier,false,15,0,5);
-    Equipement* Robe = new Equipement("Robe",OT_Equipement,"Defense:10 Sante:15",PT_Sorcier,false,0,10,15);
+    auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque:15 Sante:5",PT_Sorcier,false,15,0,5);
+    auto* Robe = new Equipement("Robe",OT_Equipement,"Defense:10 Sante:15",PT_Sorcier,false,0,10,15);
     int sante = 50;
     int attaque = 10;
     int defense = 10;

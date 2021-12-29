@@ -4,36 +4,36 @@
 
 #include "../../../header/model/Objet/Consommable.h"
 
+#include <utility>
+
 Consommable::Consommable( std::string nom_arg,  ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-: Objet(nom_arg, objetType_arg, description_arg), typeConsommable(consommableType_arg)
+: Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)), typeConsommable(consommableType_arg)
 {}
 
 void Consommable::appliquerEffet(Personnage * cible) {
     this->appliquerConsommable(cible);
 }
 
-void Consommable::enleverEffet(Personnage * cible) {
-    return;
-}
+void Consommable::enleverEffet(Personnage * cible) {}
 
-ConsommableType Consommable::getTypeConsommable() const {
+__attribute__((unused)) ConsommableType Consommable::getTypeConsommable() const {
     return typeConsommable;
 }
 
-PotionSoin::PotionSoin(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, int pouvoirDeSoin_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionSoin::PotionSoin(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, int pouvoirDeSoin_arg)
+: Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
 {}
 
-PotionBrulure::PotionBrulure(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionBrulure::PotionBrulure(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
 {}
 
-PotionPoison::PotionPoison(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionPoison::PotionPoison(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
 {}
 
-PotionSomnolence::PotionSomnolence(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionSomnolence::PotionSomnolence(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
 {}
 
 PotionBerserk::PotionBerserk(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)

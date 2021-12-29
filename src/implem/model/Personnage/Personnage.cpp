@@ -4,13 +4,15 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
-Personnage::Personnage(const std::string &nom_arg,
+#include <utility>
+
+Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
                        const PersonnageType &personnageType_arg,
                        std::vector<Objet*> &sac_arg) :
-                       nom(nom_arg),
+                       nom(std::move(nom_arg)),
                        indice_de_sante_max(sante_arg),
                        attaque_max(attaque_arg),
                        defense_max(defense_arg),
@@ -291,7 +293,7 @@ void Personnage::equipeAll() {
 
 void Personnage::desequipe(){
     size_t i = 0;
-    std::string choix = "";
+    std::string choix;
     while(i < sac.size()){
         std::cout << i << ":"<< sac[i]->getNom()
                   << " " << sac[i]->getDescription() << std::endl;

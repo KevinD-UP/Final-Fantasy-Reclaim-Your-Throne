@@ -1,12 +1,12 @@
 CPP=g++
 CFLAGS= -Wall
 
-all : main
+all : final_fantasy
 
-main: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o
+final_fantasy: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
-main.o : main.cpp header/model/Personnage/PersonnageFactory.h header/model/Personnage/Personnage.h header/model/Action/Action.h header/model/Joueur/Joueur.h header/Partie.h
+main.o : main.cpp
 	$(CPP) $(CFLAGS) -c $<
 
 Guerrier.o : implem/model/Personnage/Guerrier.cpp header/model/Personnage/Guerrier.h
@@ -55,4 +55,4 @@ clean :
 	rm *.o main
 
 test: all
-	./main
+	./final_fantasy

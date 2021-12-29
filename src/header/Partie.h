@@ -14,17 +14,17 @@ class Partie {
     private:
         const std::vector<Personnage*> persoEnJeu;
         const Joueur* joueur;
-        const Map* chateau;
+        const Map* chateau{};
 
     public:
-        const std::vector<Personnage*> getPersoEnJeu() const;
+        std::vector<Personnage*> getPersoEnJeu() const;
         const Joueur* getJoueur() const;
         const Map* getChateau() const;
         void startToPlay();
         void deathBattle(Personnage *a,  Personnage *b) const;
         bool finDePartie() const;
         void routine();
-        Partie(const std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg);
+        Partie(std::vector<Personnage*>  persoEnJeuArg, const Joueur* joueurArg);
 };
 
 

@@ -11,7 +11,7 @@ Personnage* Joueur::getPerso() const {
     return personnageJoueur;
 }
 
-void const Joueur::interactionEnCombat(Personnage *cible) const {
+void Joueur::interactionEnCombat(Personnage *cible) const {
     std::cout << "1 - Examiner "
               << "2 - Attaque "
               << "3 - Objet " << std::endl;
@@ -29,6 +29,10 @@ void const Joueur::interactionEnCombat(Personnage *cible) const {
     else if(action == "3"){
         personnageJoueur->actionObjet(this, cible);
     }
+}
+
+void Joueur::interactionHorsCombat() const {
+
 }
 
 

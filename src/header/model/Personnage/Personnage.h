@@ -10,10 +10,6 @@
 #include <vector>
 #include <iostream>
 #include "../Objet/Objet.h"
-#include "../Objet/Consommable.h"
-#include "../Piece/Piece.h"
-#include "../Joueur/Joueur.h"
-
 class Joueur;
 class Piece;
 
@@ -37,10 +33,10 @@ class Personnage {
         int defense_max;
         int defense = defense_max;
         PersonnageType typePersonnage;
-        Piece* pieceCourante;
+        Piece* pieceCourante{};
         std::vector<std::pair<Statut, int>> statut;
         std::vector<Objet*> sac;
-        Personnage(const std::string &nom_arg,
+        Personnage(std::string nom_arg,
                    const int &sante_arg,
                    const int &attaque_arg,
                    const int &defense_arg,
@@ -106,5 +102,6 @@ class Personnage {
 
 };
 
-
+#include "../Joueur/Joueur.h"
+#include "../Piece/Piece.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_PERSONNAGE_H

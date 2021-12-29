@@ -188,36 +188,36 @@ bool Personnage::updateStatut(){
         if(statut[i].first == Bruler){
             setSante(getSante() - (getSanteMax()/10));
             statut[i].second -=1;
-            std::cout << "Bruler ";
+          //  std::cout << "Bruler ";
         }
         if(statut[i].first == Empoisonner){
             setSante(getSante() - (getSanteMax()/10));
             statut[i].second -=1;
-            std::cout << "Empoisonner ";
+           // std::cout << "Empoisonner ";
         }
         if(statut[i].first == Etourdit){
             statut[i].second -=1;
-            std::cout << "Etourdit ";
+           // std::cout << "Etourdit ";
             etourdit = true;
         }
         if(statut[i].first == Affaiblie){
             statut[i].second -=1;
-            std::cout << "Affaiblie ";
+          //  std::cout << "Affaiblie ";
             setAttaque(attaque_max*4/5);
         }
         if(statut[i].first == Berserk){
             statut[i].second -=1;
-            std::cout << "Berserk ";
+          //  std::cout << "Berserk ";
             setAttaque(attaque_max + ((getSanteMax() - getSante()) /2));
         }
         if(statut[i].first == Proteger){
             statut[i].second -=1;
-            std::cout << "Proteger ";
+          //  std::cout << "Proteger ";
             setDefense(getDefenseMax()*7/4);
         }
         if(statut[i].first == Ecorcher){
             statut[i].second -=1;
-            std::cout << "Ecorcher ";
+           // std::cout << "Ecorcher ";
             setDefense(getDefenseMax()*1/2);
         }
         if(statut[i].second == 0){
@@ -306,6 +306,42 @@ void Personnage::desequipe(){
             sac.erase(sac.begin() + i);
         }
         i++;
+    }
+}
+
+void Personnage::buff(Statut effet, int tour) {
+    if(effetPresent(Ecorcher) && effet == Proteger){
+        enleverEffet(Ecorcher);
+    }
+    else if(effetPresent(Proteger) && effet == Proteger) {
+        resetEffet(Proteger);
+    }
+    else if(effetPresent(Affaiblie) && effet == Berserk){
+        enleverEffet(Affaiblie);
+    }
+    else if(effetPresent(Berserk) && effet == Berserk) {
+        resetEffet(Berserk);
+    }
+    else{
+        pushStatut(effet, tour);
+    }
+}
+
+void Personnage::debuff(Statut effet, int tour, Personnage * ennemie) {
+    if(ennemie->effetPresent(Proteger) && effet == Ecorcher){
+        ennemie->enleverEffet(Proteger);
+    }
+    else if(ennemie->effetPresent(Ecorcher) && effet == Ecorcher) {
+        ennemie->resetEffet(Ecorcher);
+    }
+    else if(ennemie->effetPresent(Berserk) && effet == Affaiblie){
+        ennemie->enleverEffet(Berserk);
+    }
+    else if(ennemie->effetPresent(Affaiblie) && effet == Affaiblie) {
+        ennemie->resetEffet(Affaiblie);
+    }
+    else{
+        ennemie->pushStatut(effet, tour);
     }
 }
 

@@ -10,8 +10,8 @@ Moine::Moine(std::string nom, int sante, int attaque, int defense, PersonnageTyp
 {}
 
 void Moine::print() {
-    std::cout << "Je suis " << nom <<std::endl;
-    std::cout << "J'ai " << getSante() << "HP "
+    std::cout << nom <<std::endl;
+    std::cout << getSante() << "HP "
       << getAttaque() << ":Attaque "
       << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -32,26 +32,19 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
     if(nom == "0"){
         type = Offensive;
         dommage = attaque + 15 - ennemie->getDefense();
+        srand((int) time(0));
         int v1 = rand() % 4;
         std::string v2 = std::to_string(v1);
         if(v2 == "0"){
-            pushStatut(Etourdit,1);
+            ennemie->pushStatut(Etourdit,1);
         }
         //inflige statut
         nomSort = "Frappe";
     }
     else if(nom == "1"){
         type = Defensive;
-        dommage = 5 + ((getSanteMax()-getSante())*1/4);
-        if(effetPresent(Ecorcher)){
-            enleverEffet(Ecorcher);
-        }
-        else if(effetPresent(Proteger)) {
-            resetEffet(Proteger);
-        }
-        else{
-            pushStatut(Proteger, 1);
-        }
+        dommage = 10 + ((getSanteMax()-getSante())*1/4);
+        buff(Proteger,1);
         nomSort = "Soin";
     }
     else if(nom == "2"){
@@ -70,9 +63,9 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
 
 void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Frappe: Puissance 15 " << std::endl;
-    std::cout << "1 - Soin: Puissance 5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour" << std::endl;
-    std::cout << "2 - Chatiment: Puissance x. Inflige 25% des PV courant" << std::endl;
+    std::cout << "0 - Frappe: Puissance:15. 25% de chance d'étourdir votre ennemie" << std::endl;
+    std::cout << "1 - Soin: Puissance:5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour" << std::endl;
+    std::cout << "2 - Chatiment: Puissance:x. Inflige 25% des PV courant" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

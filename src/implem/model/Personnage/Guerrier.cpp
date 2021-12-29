@@ -10,8 +10,8 @@ Guerrier::Guerrier(std::string nom, int sante, int attaque, int defense, Personn
 {}
 
 void Guerrier::print() {
-    std::cout << "Je suis " << nom <<std::endl;
-    std::cout << "J'ai " << getSante() << "HP "
+    std::cout << nom <<std::endl;
+    std::cout << getSante() << "HP "
       << getAttaque() << ":Attaque "
       << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -37,15 +37,7 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
     }
     else if(nom == "1"){
         type = Offensive;
-        if(effetPresent(Affaiblie)){
-            enleverEffet(Affaiblie);
-        }
-        else if(effetPresent(Berserk)) {
-            resetEffet(Berserk);
-        }
-        else{
-            pushStatut(Berserk, 2);
-        }
+        buff(Berserk,2);
         dommage = attaque + 5  - ennemie->getDefense();
         nomSort = "Berserk";
     }
@@ -70,9 +62,9 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
 
 void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Lacérage: Puissance 15 " << std::endl;
-    std::cout << "1 - Berserk: Puissance 10. Inflige 50% des PV manquant du personnage" << std::endl;
-    std::cout << "2 - Armure pointu: Puissance 5. Inflige 125% de l'armure" << std::endl;
+    std::cout << "0 - Lacérage: Puissance:20. " << std::endl;
+    std::cout << "1 - Berserk: Puissance:5. Le personnage devient Berserk: augmente l'attaque selon la vie perdu" << std::endl;
+    std::cout << "2 - Armure pointu: Puissance:5. Inflige 125% de l'armure du personnage" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

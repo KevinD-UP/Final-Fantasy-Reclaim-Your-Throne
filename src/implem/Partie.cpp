@@ -68,13 +68,13 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
 
         }
         else{
-            a->checkStatut();
+            a->updateStatut();
             if (a->estMort()){
                 b->setSante(b->getSanteMax());
                 return;
             }
             a->actionIa(b);
-            b->checkStatut();
+            b->updateStatut();
             if(b->estMort()){
                 a->setSante(a->getSanteMax());
                 return;

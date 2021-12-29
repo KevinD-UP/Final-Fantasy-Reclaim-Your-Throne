@@ -12,7 +12,11 @@ enum ConsommableType {
     CT_POTIONSOIN,
     CT_POTIONBRULURE,
     CT_POTIONPOISON,
-    CT_POTIONSOMNOLENCE
+    CT_POTIONSOMNOLENCE,
+    CT_POTIONBERSERK,
+    CT_POTIONECORCHER,
+    CT_POTIONAFFAIBLIE,
+    CT_POTIONPROTEGER
 };
 
 class Consommable : public Objet {
@@ -30,13 +34,17 @@ public:
     friend class PotionBrulure;
     friend class PotionPoison;
     friend class PotionSomnolence;
+    friend class PotionBerserk;
+    friend class PotionAffaiblie;
+    friend class PotionEcorcher;
+    friend class PotionProteger;
+    friend class PotionChallenge;
 };
 
 class PotionSoin : public Consommable {
 
 private:
     PotionSoin(const std::string, const ObjetType, std::string, ConsommableType, int);
-    const int pouvoirDeSoin = 10;
 
 public:
     void appliquerConsommable(Personnage *) override;
@@ -67,6 +75,46 @@ private:
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionSomnolenceFactory;
+};
+
+class PotionBerserk : public Consommable{
+private:
+    PotionBerserk(const std::string, const ObjetType, std::string, ConsommableType);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionBerserkFactory;
+};
+
+class PotionAffaiblie: public Consommable{
+private:
+    PotionAffaiblie(const std::string, const ObjetType, std::string, ConsommableType);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionAffaiblieFactory;
+};
+
+class PotionEcorcher : public Consommable{
+private:
+    PotionEcorcher(const std::string, const ObjetType, std::string, ConsommableType);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionEcorcherFactory;
+};
+
+class PotionProteger : public Consommable{
+private:
+    PotionProteger(const std::string, const ObjetType, std::string, ConsommableType);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionProtegerFactory;
+};
+
+class PotionChallenge : public Consommable{
+private:
+    PotionChallenge(const std::string, const ObjetType, std::string, ConsommableType);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionProtegerFactory;
 };
 
 

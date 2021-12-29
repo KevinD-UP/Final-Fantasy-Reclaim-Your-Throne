@@ -36,23 +36,23 @@ PotionSomnolence::PotionSomnolence(const std::string& nom_arg, const ObjetType o
         : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
 {}
 
-PotionBerserk::PotionBerserk(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+PotionBerserk::PotionBerserk(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
         : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
 {}
 
-PotionAffaiblie::PotionAffaiblie(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+PotionAffaiblie::PotionAffaiblie(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
         : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
 {}
 
-PotionEcorcher::PotionEcorcher(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+PotionEcorcher::PotionEcorcher(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
         : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
 {}
 
-PotionProteger::PotionProteger(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+PotionProteger::PotionProteger(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
         : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
 {}
 
-PotionChallenge::PotionChallenge(const std::string nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
+PotionChallenge::PotionChallenge(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
         : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
 {}
 

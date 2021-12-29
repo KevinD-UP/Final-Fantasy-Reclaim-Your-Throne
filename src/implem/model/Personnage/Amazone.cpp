@@ -10,8 +10,8 @@ Amazone::Amazone(const std::string& nom, int sante, int attaque, int defense, Pe
 {}
 
 void Amazone::print() {
-    std::cout << "Je suis " << nom <<std::endl;
-    std::cout << "J'ai " << getSante() << "HP "
+    std::cout << nom <<std::endl;
+    std::cout << getSante() << "HP "
       << getAttaque() << ":Attaque "
       << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -34,15 +34,7 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
         type = Offensive;
         ennemie->pushStatut(Ecorcher,2);
         dommage = attaque + 10 - ennemie->getDefense();
-        if(ennemie->effetPresent(Proteger)){
-            ennemie->enleverEffet(Proteger);
-        }
-        else if(ennemie->effetPresent(Ecorcher)) {
-            ennemie->resetEffet(Ecorcher);
-        }
-        else{
-            ennemie->pushStatut(Ecorcher, 2);
-        }
+        debuff(Ecorcher,2,ennemie);
         //inflige statut
         nomSort = "Ecorcher";
     }
@@ -66,9 +58,9 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
 
 void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Attaque longue: Puissance 10 " << std::endl;
-    std::cout << "1 - Execution: Puissance 5. Inflige 50% des PV manquant de la cible" << std::endl;
-    std::cout << "2 - Double attaque: Puissance 5. Attaque 2 fois" << std::endl;
+    std::cout << "0 - Ecorcher: Puissance:10. Reduit l'armure de l'ennemie" << std::endl;
+    std::cout << "1 - Execution: Puissance:5. Inflige 50% des PV manquant de la cible" << std::endl;
+    std::cout << "2 - Double attaque: Puissance:5. Attaque 2 fois" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

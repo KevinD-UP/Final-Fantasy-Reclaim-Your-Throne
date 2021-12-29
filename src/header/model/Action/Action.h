@@ -13,7 +13,6 @@ class Action{
         Personnage * receveur;
         std::string nom;
         int dommage;
-        //std::pair<Personnage::Statut,int> effet;
     public:
         Action(Personnage*,Personnage*, std::string, int, Type);
         void utilisation();

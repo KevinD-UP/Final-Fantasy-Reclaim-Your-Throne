@@ -11,8 +11,8 @@ Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, Personnag
 {}
 
 void Sorcier::print() {
-    std::cout << "Je suis " << nom <<std::endl;
-    std::cout << "J'ai " << getSante() << "HP "
+    std::cout << nom <<std::endl;
+    std::cout << getSante() << "HP "
     << getAttaque() << ":Attaque "
     << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -47,22 +47,13 @@ void Sorcier::action(std::string nom, Personnage * ennemie)  {
         type = Offensive;
         dommage = attaque + 10 - ennemie->getDefense();
         setSante(getSante() + dommage/2);
-        if(ennemie->effetPresent(Berserk)){
-            ennemie->enleverEffet(Berserk);
-        }
-        else if(ennemie->effetPresent(Affaiblie)) {
-            ennemie->resetEffet(Affaiblie);
-        }
-        else{
-            ennemie->pushStatut(Affaiblie, 2);
-        }
+        debuff(Affaiblie,2,ennemie);
         nomSort = "Drain";
     }
     else{
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
         return;
     }
-    std::cout<< "TEST " << nom <<std::endl;
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
     auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
@@ -70,9 +61,9 @@ void Sorcier::action(std::string nom, Personnage * ennemie)  {
 
 void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Boule de feu: Puissance 15 " << std::endl;
-    std::cout << "1 - Eclair: Puissance 5. Ignore l'armure ennemie" << std::endl;
-    std::cout << "2 - Drain: Puissance 5. Regenere 25% des dommages infligés et applique Affaibli" << std::endl;
+    std::cout << "0 - Boule de feu: Puissance:15. " << std::endl;
+    std::cout << "1 - Eclair: Puissance:5. Ignore l'armure ennemie" << std::endl;
+    std::cout << "2 - Drain: Puissance:5. Regenere 25% des dommages infligés et applique Affaiblie" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

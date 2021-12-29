@@ -36,4 +36,34 @@ class PotionSomnolenceFactory : public ConsommableFactory {
 public:
     Consommable* FactoryMethod() const override;
 };
+
+class PotionBerserkFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
+
+class PotionAffaiblieFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
+
+class PotionEcorcherFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
+
+class PotionProtegerFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
+
+class PotionChallengeFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_CONSOMMABLEFACTORY_H

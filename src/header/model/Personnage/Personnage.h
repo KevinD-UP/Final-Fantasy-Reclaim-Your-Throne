@@ -73,6 +73,8 @@ class Personnage {
         Piece* setPiece(Piece*);
 
         //Statut changement
+        void buff(Statut,int);
+        void debuff(Statut,int,Personnage*);
         void checkStatut();
         bool updateStatut();
         bool effetPresent(Statut);

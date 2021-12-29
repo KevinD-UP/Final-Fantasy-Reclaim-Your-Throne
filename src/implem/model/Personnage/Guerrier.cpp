@@ -5,7 +5,7 @@
 #include "../../../header/model/Personnage/Guerrier.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Guerrier::Guerrier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+Guerrier::Guerrier(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
     Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}
 
@@ -27,7 +27,7 @@ void Guerrier::actionIa(Personnage * cible){
 void Guerrier::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string nomSort = "";
+    std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;
@@ -64,7 +64,7 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
         return;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    Action *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
 }
 

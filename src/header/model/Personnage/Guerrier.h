@@ -18,7 +18,7 @@ class Guerrier : public IGuerrier, public Personnage{
 
 
     private:
-        Guerrier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+        Guerrier(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
         void action(std::string nom, Personnage * ennemie) override;

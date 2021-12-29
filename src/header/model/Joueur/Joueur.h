@@ -5,6 +5,9 @@
 #ifndef FINAL_FANTASY_RECLAIM_YOUR_THRONE_JOUEUR_H
 #define FINAL_FANTASY_RECLAIM_YOUR_THRONE_JOUEUR_H
 
+
+
+#include <iostream>
 #include "../Personnage/Personnage.h"
 
 class Joueur {
@@ -13,7 +16,7 @@ class Joueur {
 
     public:
         Joueur(Personnage* personnageJoueurArg);
-        const void interactionEnCombat (Personnage *cible) const;
+        void interactionEnCombat (Personnage *cible) const;
         void interactionHorsCombat() const;
         Personnage* getPerso() const;
 };

@@ -5,8 +5,9 @@
 #include "../../../header/model/Personnage/Sorcier.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
+#include <utility>
 Sorcier::Sorcier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(nom, sante, attaque, defense, typePersonnage, sac)
+    Personnage(std::move(nom), sante, attaque, defense, typePersonnage, sac)
 {}
 
 void Sorcier::print() {
@@ -28,7 +29,7 @@ void Sorcier::actionIa(Personnage * cible){
 void Sorcier::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
-    std::string nomSort = "";
+    std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;
@@ -63,7 +64,7 @@ void Sorcier::action(std::string nom, Personnage * ennemie)  {
     }
     std::cout<< "TEST " << nom <<std::endl;
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    Action *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type);
     x->utilisation();
 }
 

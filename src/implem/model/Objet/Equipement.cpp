@@ -4,6 +4,8 @@
 
 #include "../../../header/model/Objet/Equipement.h"
 
+#include <utility>
+
 Equipement::Equipement
     (std::string nom_arg,
      ObjetType objetType_arg,
@@ -11,7 +13,7 @@ Equipement::Equipement
      PersonnageType personnageType_arg,
      //EquipementType equipementType_arg,
      bool estEquipe_arg, int buffAttaque_arg, int buffDefense_arg, int buffSante_arg)
-    : Objet(nom_arg, objetType_arg, description_arg),
+    : Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)),
     bonusClass(personnageType_arg),
     //typeEquipement(equipementType_arg),
     estEquipe(estEquipe_arg),

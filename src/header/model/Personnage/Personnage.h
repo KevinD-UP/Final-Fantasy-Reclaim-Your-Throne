@@ -37,10 +37,10 @@ class Personnage {
         int defense_max;
         int defense = defense_max;
         PersonnageType typePersonnage;
-        Piece* pieceCourante;
+        Piece* pieceCourante{};
         std::vector<std::pair<Statut, int>> statut;
         std::vector<Objet*> sac;
-        Personnage(const std::string &nom_arg,
+        Personnage(std::string nom_arg,
                    const int &sante_arg,
                    const int &attaque_arg,
                    const int &defense_arg,

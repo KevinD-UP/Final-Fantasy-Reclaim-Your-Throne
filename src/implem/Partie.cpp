@@ -40,7 +40,7 @@ void Partie::routine() {
             pieceArrive = personnage->deplacementIA();
         }
         if(pieceArrive->combatPossible()) {
-            std::cout << "Combat entre : " << personnage->getNom() << "et" << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
+            //std::cout << "Combat entre : " << personnage->getNom() << "et" << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
             Personnage * persoMort = deathBattle(personnage, pieceArrive->getVecPerso()[0]);
             //TODO: remove from la piece arrive
             //TODO: remove from la partie
@@ -68,19 +68,10 @@ Partie::Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg, 
 {}
 
 Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
+    std::cout << "Combat contre " << a->getNom() << " et " << b->getNom() << std::endl;
     while(!a->estMort() || !b->estMort()){
         if(a == joueur->getPerso()) {
             auto etat = a->updateStatut();
-            if (a->estMort()) {
-                std::cout << "Victoire de " << b->getNom() << std::endl;
-                std::cout << a << std::endl;
-                b->reset();
-                return a;
-            }
-            if (!etat) {
-                joueur->interactionEnCombat(b);
-            }
-
             etat = b->updateStatut();
             if (b->estMort()) {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
@@ -91,21 +82,63 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             if (!etat) {
                 b->actionIa(a);
             }
-
-        }
-        else{
-            a->updateStatut();
-            if (a->estMort()){
-                b->setSante(b->getSanteMax());
+            if (a->estMort()) {
+                std::cout << "Victoire de " << b->getNom() << std::endl;
+                std::cout << a << std::endl;
+                b->reset();
                 return a;
             }
-            a->actionIa(b);
-            b->updateStatut();
-            if(b->estMort()){
-                a->setSante(a->getSanteMax());
+            if (!etat) {
+                joueur->interactionEnCombat(b);
+            }
+
+        }
+        else if(b == joueur->getPerso()) {
+            auto etat = b->updateStatut();
+            if (b->estMort()) {
+                std::cout << "Victoire de " << b->getNom() << std::endl;
+                std::cout << a << std::endl;
+                b->reset();
+                return a;
+            }
+            if (!etat) {
+                b->actionIa(a);
+            }
+            etat = a->updateStatut();
+            if (a->estMort()) {
+                std::cout << "Victoire de " << a->getNom() << std::endl;
+                std::cout << a << std::endl;
+                a->reset();
                 return b;
             }
-            b->actionIa(a);
+            if (!etat) {
+                joueur->interactionEnCombat(a);
+            }
+
+
+        }
+        else {
+            auto etat = a->updateStatut();
+            etat = b->updateStatut();
+            b->updateStatut();
+            if (b->estMort()) {
+                a->setSante(a->getSanteMax());
+                std::cout << "Victoire de " << a->getNom() << std::endl;
+                return b;
+            }
+            if (!etat) {
+                b->actionIa(a);
+            }
+            etat = a->updateStatut();
+            if (a->estMort()) {
+                b->setSante(b->getSanteMax());
+                std::cout << "Victoire de " << b->getNom() << std::endl;
+                return a;
+            }
+            if (!etat) {
+                a->actionIa(b);
+            }
+
         }
     }
     return nullptr;

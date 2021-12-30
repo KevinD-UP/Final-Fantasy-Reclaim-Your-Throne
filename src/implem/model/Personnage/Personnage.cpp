@@ -317,9 +317,14 @@ Piece* Personnage::deplacement(int arrive) {
 
 Piece* Personnage::deplacementIA(){
     try {
-        std::default_random_engine generator;
-        std::uniform_int_distribution<int> distribution(0, 3);
-        int deplacementAleatoire = distribution(generator);
+        //the random device that will seed the generator
+        std::random_device seeder;
+        //then make a mersenne twister engine
+        std::mt19937 engine(seeder());
+        //then the easy part... the distribution
+        std::uniform_int_distribution<int> dist(0, 3);
+        //then just generate the integer like this:
+        int deplacementAleatoire = dist(engine);
         return this->deplacement(deplacementAleatoire);
     } catch(const std::exception& e) {
         return this->deplacementIA();

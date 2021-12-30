@@ -99,6 +99,8 @@ class Personnage {
 
         bool estMort();
 
+        static int random;
+
         friend class Amazone;
         friend class Moine;
         friend class Guerrier;

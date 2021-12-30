@@ -22,6 +22,7 @@ public:
     void pushPerso(Personnage *);
     void removePerso();
     void pushObjet(Objet*);
+    void pushPiece(Piece*);
     void setPiecesAdjacentes(std::vector<Piece*>);
     void fill(int);
     std::vector<Personnage*> getVecPerso() const;

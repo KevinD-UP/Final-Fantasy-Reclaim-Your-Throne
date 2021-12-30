@@ -11,24 +11,50 @@ Map::Map() {
     std::vector <Piece *> C = {new Piece(),new Piece(),new Piece(),new Piece()};
     std::vector <Piece *> D = {new Piece(),new Piece(),new Piece(),new Piece()};
 
-    getMap() = {A,B,C,D};
-    size_t i = 0;
-    size_t j = 0;
+    map = {A,B,C,D};
+    int i = 0;
     while(i < 4){
+        int j = 0;
         while(j < 4){
             if((i - 1) < 0){
-                getMap().at(i).at(j)->getVecPiece().push_back(getMap().at())
-            }
-            else if((i+1) < 4){
+                map[i][j]->pushPiece(nullptr);
+                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
 
+            }else{
+                //std::cout<<"2"<<std::endl;
+                map[i][j]->pushPiece(map[i-1][j]);
+                //map[i][j]->getVecPieceAdjacentes().push_back(map[i-1][j]);
             }
-            else if((j - 1) < 0){
-
+            if((j - 1) < 0){
+                map[i][j]->pushPiece(nullptr);
+                //std::cout<<"3"<<std::endl;
+                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
+            }else{
+                map[i][j]->pushPiece(map[i][j-1]);
+                //std::cout<<"4"<<std::endl;
+                //map[i][j]->getVecPieceAdjacentes().push_back(map[i][j-1]);
             }
-            else if((j+1) < 4){
-
+            if((i+1) >= 4){
+                map[i][j]->pushPiece(nullptr);
+            //    std::cout<<"5"<<std::endl;
+                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
+            }else{
+                map[i][j]->pushPiece(map[i+1][j]);
+                //map[i][j]->getVecPieceAdjacentes().push_back(map[i+1][j]);
             }
+            if((j+1) >= 4){
+                map[i][j]->pushPiece(nullptr);
+               // std::cout<<"6"<<std::endl;
+               // map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
+            }else{
+                map[i][j]->pushPiece(map[i][j+1]);
+                //map[i][j]->getVecPieceAdjacentes().push_back(map[i][j+1]);
+            }
+            //std::cout<< i+j;
+            map[i][j]->print();
+            j++;
         }
+        i++;
     }
 
 }

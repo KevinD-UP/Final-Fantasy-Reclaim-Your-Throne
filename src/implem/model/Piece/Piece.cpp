@@ -62,9 +62,14 @@ void Piece::fill(int i) {
 
 void Piece::print(){
     size_t i = 0;
-    while(i < vecObjet.size()){
+    /*while(i < vecObjet.size()){
         std::cout << i << ":"<< vecObjet[i]->getNom()
                   << " " << vecObjet[i]->getDescription() << std::endl;
+        i++;
+    }*/
+    std::cout << "sa print";
+    while(i < vecPiecesAdjacentes.size()){
+        std::cout << i  << std::endl;
         i++;
     }
 }
@@ -73,8 +78,13 @@ void Piece::pushPerso(Personnage* p) {
     vecPerso.push_back(p);
 }
 
+void Piece::pushPiece(Piece * p){
+    vecPiecesAdjacentes.push_back(p);
+}
+
 void Piece::removePerso() {
     vecPerso.erase(vecPerso.begin());
+
 }
 
 void Piece::pushObjet(Objet *o) {

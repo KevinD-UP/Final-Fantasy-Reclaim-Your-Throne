@@ -4,6 +4,8 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
+int Personnage::random = 0;
+
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -317,10 +319,18 @@ Piece* Personnage::deplacement(int arrive) {
 
 Piece* Personnage::deplacementIA(){
     try {
-        std::default_random_engine generator;
-        std::uniform_int_distribution<int> distribution(0, 3);
-        int deplacementAleatoire = distribution(generator);
-        return this->deplacement(deplacementAleatoire);
+        random ++;
+        srand((int) time(0) + random);
+        //std::default_random_engine generator;
+        //std::uniform_int_distribution<int> distribution(0, 3);
+        int deplacementAleatoire = rand() % 3;
+        //int deplacementAleatoire = distribution(generator);
+        if(pieceCourante->getVecPieceAdjacentes()[deplacementAleatoire] != nullptr) {
+            return this->deplacement(deplacementAleatoire);
+        }
+        else{
+            return this->deplacementIA();
+        }
     } catch(const std::exception& e) {
         return this->deplacementIA();
     }

@@ -60,49 +60,18 @@ int main(){
     Personnage* moine = PersonnageFactory::initPersonnage(TYPE_Moine,"Test3");
     Personnage* amazone = PersonnageFactory::initPersonnage(TYPE_Amazone,"Test4");
 
-    Partie partie = Partie({personnageJoueur, sorcier, moine, amazone}, joueur);
+    Map* carte = new Map();
+
+    Partie partie = Partie({personnageJoueur, sorcier, moine, amazone}, joueur , carte);
     partie.startToPlay();
     //partie.deathBattle(personnageJoueur,sorcier);
-    Piece *test = new Piece();
+    /*Piece *test = new Piece();
     Piece *test2 = new Piece();
-    /*Piece *test3 = new Piece();
-    Piece *test4 = new Piece();
-    Piece *test5= new Piece();
-    Piece *test6 = new Piece();
-    Piece *test7= new Piece();
-    Piece *test8 = new Piece();
 
-    Piece *test9 = new Piece();
-    Piece *test10 = new Piece();
-    Piece *test11 = new Piece();
-    Piece *test12 = new Piece();
-    Piece *test13= new Piece();
-    Piece *test14 = new Piece();
-    Piece *test15= new Piece();
-    Piece *test16= new Piece();
-
-
-*/    //test->pushPerso(personnageJoueur);
     std::cout<<"Piece 0"<<std::endl;
     test->print();
     std::cout<<"Piece 1"<<std::endl;
-    test2->print();
-    /*test3->print();
-    test4->print();
-    test5->print();
-    test6->print();
-    test7->print();
-    test8->print();
-
-    test9->print();
-    test10->print();
-    test11->print();
-    test12->print();
-    test13->print();
-    test14->print();
-    test15->print();
-    test16->print();
-*/
+    test2->print();*/
 
    // std::cout << "Fin de la partie" << std::endl;
 }

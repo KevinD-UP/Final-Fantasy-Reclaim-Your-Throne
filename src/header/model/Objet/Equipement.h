@@ -8,14 +8,6 @@
 #include "Objet.h"
 #include "../Personnage/Personnage.h"
 
-/*enum EquipementType {
-    ET_EPEE,
-    ET_LANCE,
-    ET_BATON,
-    ET_BAGUETTE
-    ET_ARME,
-    ET_PROTECTION
-};*/
 
 class Equipement : public Objet {
 

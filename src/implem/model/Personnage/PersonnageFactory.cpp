@@ -29,7 +29,7 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
 Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
     auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0);
-    auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:5 Sante 20", PT_Guerrier, false, 0, 5, 20);
+    auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -39,18 +39,20 @@ Personnage *GuerrierFactory::FactoryMethod(const std::string &nom) const {
 
 
 Personnage *AmazoneFactory::FactoryMethod(const std::string &nom) const {
-
+    Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
+    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque:10 Defense:5",PT_Amazone,false,10,5,0);
+    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque:10 Sante:10",PT_Amazone,false,10,0,10);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
-    std::vector<Objet *> sac = {};
+    std::vector<Objet *> sac = {Potion,Lance,Arc};
     return new Amazone(nom, sante, attaque, defense, PT_Amazone, sac);
 }
 
 Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
     Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
     auto* Toge = new Equipement("Toge",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,0,10,30);
-    auto* Masse = new Equipement("Masse",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,5,5,10);
+    auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque:5 Defense:5 Sante:15",PT_Moine,false,5,5,15);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
@@ -59,10 +61,12 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom) const {
 }
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
-    auto* Epee = new Equipement("Epee",OT_Equipement,"Attaque:10 Defense:5",PT_Guerrier,false,10,5,0);
+    Consommable* Potion = ConsommableFactory::initConsommable(TYPE_PotionSoin);
+    auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque:15 Sante:5",PT_Sorcier,false,15,0,5);
+    auto* Robe = new Equipement("Robe",OT_Equipement,"Defense:10 Sante:15",PT_Sorcier,false,0,10,15);
     int sante = 50;
     int attaque = 10;
     int defense = 10;
-    std::vector<Objet *> sac = {Epee};
+    std::vector<Objet *> sac = {Potion,Baguette,Robe};
     return new Sorcier(nom, sante, attaque, defense, PT_Sorcier, sac);
 }

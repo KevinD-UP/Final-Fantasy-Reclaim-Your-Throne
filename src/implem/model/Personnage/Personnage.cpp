@@ -315,6 +315,17 @@ Piece* Personnage::deplacement(int arrive) {
     return this->setPiece(pieceCourante->getVecPieceAdjacentes()[arrive]);
 }
 
+Piece* Personnage::deplacementIA(){
+    try {
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(0, 3);
+        int deplacementAleatoire = distribution(generator);
+        return this->deplacement(deplacementAleatoire);
+    } catch(const std::exception& e) {
+        return this->deplacementIA();
+    }
+}
+
 void Personnage::buff(Statut effet, int tour) {
     if(effetPresent(Ecorcher) && effet == Proteger){
         enleverEffet(Ecorcher);

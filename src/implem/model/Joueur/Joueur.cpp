@@ -56,9 +56,9 @@ Piece* Joueur::interactionHorsCombat() const {
             std::cout << "Choissisez un chemin valide" << std::endl;
             return this->interactionHorsCombat();
         }
-    } catch (Exception e){
+    } catch (const std::exception& e){
         std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl;
-        return this->interactionHorsCombat()
+        return this->interactionHorsCombat();
     }
 
 }

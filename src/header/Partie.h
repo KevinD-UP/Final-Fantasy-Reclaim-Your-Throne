@@ -12,7 +12,7 @@
 class Partie {
 
     private:
-        const std::vector<Personnage*> persoEnJeu;
+        std::vector<Personnage*> persoEnJeu;
         const Joueur* joueur;
         const Map* chateau{};
 
@@ -21,7 +21,7 @@ class Partie {
         const Joueur* getJoueur() const;
         const Map* getChateau() const;
         void startToPlay();
-        void deathBattle(Personnage *a,  Personnage *b) const;
+        Personnage * deathBattle(Personnage *a,  Personnage *b) const;
         bool finDePartie() const;
         void routine();
         Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg);

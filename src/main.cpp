@@ -19,6 +19,8 @@ int main(){
     Joueur *joueur;
     Personnage *personnageJoueur;
 
+    //TODO: INIT LES PERSO EN FONCTION DU JOUEUR
+
     std::cout << "Bienvenue sur FINAL FANTASY RECLAIM YOUR THRONE" << std::endl;
     std::cout << "Veuillez écrire le nom de votre personnage : " << std::endl;
     std::cin >> nomPerso;

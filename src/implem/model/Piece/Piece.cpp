@@ -27,7 +27,6 @@ Consommable* Potion_Affaiblie = ConsommableFactory::initConsommable(T_PotionAffa
 Consommable* Potion_Proteger = ConsommableFactory::initConsommable(T_PotionProteger);
 Consommable* Potion_Ecorcher = ConsommableFactory::initConsommable(T_PotionEcorcher);
 
-Piece::Piece(std::vector<Objet*> vecO, std::vector<Piece*> vecPie) : vecObjet(std::move(vecO)), vecPiecesAdjacentes(std::move(vecPie)){}
 auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0);
 auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20);
 

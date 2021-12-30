@@ -80,9 +80,9 @@ int main(){
 
 
 */    //test->pushPerso(personnageJoueur);
-    std::cout<<"0"<<std::endl;
+    std::cout<<"Piece 0"<<std::endl;
     test->print();
-    std::cout<<"1"<<std::endl;
+    std::cout<<"Piece 1"<<std::endl;
     test2->print();
     /*test3->print();
     test4->print();

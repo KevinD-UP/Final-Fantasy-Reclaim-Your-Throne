@@ -27,7 +27,7 @@ void Amazone::actionIa(Personnage * cible){
 
 void Amazone::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
-    int dommage = 0;
+    int dommage;
     std::string nomSort;
     Type type;
     if(nom == "0"){

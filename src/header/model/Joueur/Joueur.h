@@ -9,6 +9,7 @@
 
 #include <iostream>
 class Personnage;
+class Piece;
 
 class Joueur {
     private:
@@ -17,9 +18,10 @@ class Joueur {
     public:
         explicit Joueur(Personnage* personnageJoueurArg);
         void interactionEnCombat (Personnage *cible) const;
-        void interactionHorsCombat() const;
+        Piece * interactionHorsCombat() const;
         Personnage* getPerso() const;
 };
 
 #include "../Personnage/Personnage.h"
+#include "../Piece/Piece.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_JOUEUR_H

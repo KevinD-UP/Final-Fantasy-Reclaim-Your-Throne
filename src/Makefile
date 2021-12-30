@@ -55,7 +55,7 @@ Map.o : implem/model/Piece/Map.cpp header/model/Piece/Map.h
 	$(CPP) $(CFLAGS) -c $<
 
 clean :
-	rm *.o main
+	rm *.o final_fantasy
 
 test: all
 	./final_fantasy

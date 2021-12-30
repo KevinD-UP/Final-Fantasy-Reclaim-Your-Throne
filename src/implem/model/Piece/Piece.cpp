@@ -73,12 +73,16 @@ void Piece::pushPerso(Personnage* p) {
     vecPerso.push_back(p);
 }
 
+void Piece::removePerso() {
+    vecPerso.erase(vecPerso.begin());
+}
+
 void Piece::pushObjet(Objet *o) {
     vecObjet.push_back(o);
 }
 
-void Piece::setPiece(std::vector<Piece*> vec) {
-    vecPiece = std::move(vec);
+void Piece::setPiecesAdjacentes(std::vector<Piece*> vec) {
+    vecPiecesAdjacentes = std::move(vec);
 }
 
 std::vector<Personnage*> Piece::getVecPerso() const{
@@ -89,8 +93,8 @@ std::vector<Objet*> Piece::getVecObjet() const{
     return vecObjet;
 }
 
-std::vector<Piece*> Piece::getVecPiece() const {
-    return vecPiece;
+std::vector<Piece*> Piece::getVecPieceAdjacentes() const {
+    return vecPiecesAdjacentes;
 }
 
 bool Piece::combatPossible() const {

@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <iostream>
+#include <random>
 #include "../Objet/Objet.h"
 class Joueur;
 class Piece;
@@ -85,6 +86,10 @@ class Personnage {
         //Equipement check
         void equipeAll();
         void desequipe();
+
+        //Déplacement
+        Piece* deplacement(int);
+        Piece* deplacementIA();
 
         virtual void actionIa(Personnage *) = 0;
         virtual void actionJoueur(const Joueur *, Personnage *) = 0;

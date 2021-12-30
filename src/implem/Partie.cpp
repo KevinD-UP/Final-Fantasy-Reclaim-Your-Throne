@@ -4,28 +4,43 @@
 
 #include "../header/Partie.h"
 
-#include <utility>
-
 void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
+    /*int count = 0;
+    for(auto personnage: persoEnJeu){
+        if(count == 0)
+            personnage->setPiece(chateau->getMap()[0][0]);
+        else if (count == 1)
+            personnage->setPiece(chateau->getMap()[0][3]);
+        else if (count == 2)
+            personnage->setPiece(chateau->getMap()[3][0]);
+        else if (count == 3)
+            personnage->setPiece(chateau->getMap()[3][3]);
+        count++;
+    }*/
     routine();
 }
 
 void Partie::routine() {
-    /*for(auto & personnage: persoEnJeu){
+    for(auto personnage: persoEnJeu){
+        Piece * pieceArrive;
         if(personnage == joueur->getPerso()){
-            //TODO: INTERACTION JOUEUR
+            std::cout << "Tour du joueur: " << joueur->getPerso()->getNom() << std::endl;
+            pieceArrive = joueur->interactionHorsCombat();
         } else {
-            //TODO: DEPLACEMENT ALEATOIRE
+            std::cout << "Tour de l'IA: " << joueur->getPerso()->getNom() << std::endl;
+            pieceArrive = personnage->deplacementIA();
         }
-
-        if(pieceArrive.combatPossible()) { //TODO:VERIFICATION PRESENCE
-            deathBattle(personnage, );
+        if(pieceArrive->combatPossible()) {
+            std::cout << "Combat entre : " << personnage->getNom() << "et" << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
+            Personnage * persoMort = deathBattle(personnage, pieceArrive->getVecPerso()[0]);
+            //TODO: remove from la piece arrive
+            //TODO: remove from la partie
             if(finDePartie()){
                 return;
             }
         }
-    }*/
+    }
 }
 
 std::vector<Personnage *> Partie::getPersoEnJeu() const {
@@ -43,7 +58,7 @@ const Map* Partie::getChateau() const {
 Partie::Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg) : persoEnJeu(std::move(persoEnJeuArg)), joueur(joueurArg)
 {}
 
-void Partie::deathBattle(Personnage *a, Personnage *b) const{
+Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
     while(!a->estMort() || !b->estMort()){
         if(a == joueur->getPerso()) {
             auto etat = a->updateStatut();
@@ -51,7 +66,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 std::cout << a << std::endl;
                 b->reset();
-                return;
+                return a;
             }
             if (!etat) {
                 joueur->interactionEnCombat(b);
@@ -62,7 +77,7 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 std::cout << a << std::endl;
                 a->reset();
-                return;
+                return b;
             }
             if (!etat) {
                 b->actionIa(a);
@@ -73,17 +88,18 @@ void Partie::deathBattle(Personnage *a, Personnage *b) const{
             a->updateStatut();
             if (a->estMort()){
                 b->setSante(b->getSanteMax());
-                return;
+                return a;
             }
             a->actionIa(b);
             b->updateStatut();
             if(b->estMort()){
                 a->setSante(a->getSanteMax());
-                return;
+                return b;
             }
             b->actionIa(a);
         }
     }
+    return nullptr;
 }
 
 bool Partie::finDePartie() const {

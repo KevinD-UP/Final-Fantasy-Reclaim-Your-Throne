@@ -4,8 +4,6 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
-#include <utility>
-
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -308,6 +306,23 @@ void Personnage::desequipe(){
             sac.erase(sac.begin() + i);
         }
         i++;
+    }
+}
+
+Piece* Personnage::deplacement(int arrive) {
+    this->pieceCourante->removePerso();
+    this->pieceCourante->getVecPieceAdjacentes()[arrive]->pushPerso(this);
+    return this->setPiece(pieceCourante->getVecPieceAdjacentes()[arrive]);
+}
+
+Piece* Personnage::deplacementIA(){
+    try {
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(0, 3);
+        int deplacementAleatoire = distribution(generator);
+        return this->deplacement(deplacementAleatoire);
+    } catch(const std::exception& e) {
+        return this->deplacementIA();
     }
 }
 

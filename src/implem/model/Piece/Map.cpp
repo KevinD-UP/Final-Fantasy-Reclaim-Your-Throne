@@ -18,39 +18,24 @@ Map::Map() {
         while(j < 4){
             if((i - 1) < 0){
                 map[i][j]->pushPiece(nullptr);
-                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
-
             }else{
-                //std::cout<<"2"<<std::endl;
-                map[i][j]->pushPiece(map[i-1][j]);
-                //map[i][j]->getVecPieceAdjacentes().push_back(map[i-1][j]);
+              map[i][j]->pushPiece(map[i-1][j]);
             }
             if((j - 1) < 0){
                 map[i][j]->pushPiece(nullptr);
-                //std::cout<<"3"<<std::endl;
-                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
             }else{
                 map[i][j]->pushPiece(map[i][j-1]);
-                //std::cout<<"4"<<std::endl;
-                //map[i][j]->getVecPieceAdjacentes().push_back(map[i][j-1]);
             }
             if((i+1) >= 4){
                 map[i][j]->pushPiece(nullptr);
-            //    std::cout<<"5"<<std::endl;
-                //map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
             }else{
                 map[i][j]->pushPiece(map[i+1][j]);
-                //map[i][j]->getVecPieceAdjacentes().push_back(map[i+1][j]);
             }
             if((j+1) >= 4){
                 map[i][j]->pushPiece(nullptr);
-               // std::cout<<"6"<<std::endl;
-               // map[i][j]->getVecPieceAdjacentes().push_back(nullptr);
             }else{
                 map[i][j]->pushPiece(map[i][j+1]);
-                //map[i][j]->getVecPieceAdjacentes().push_back(map[i][j+1]);
             }
-            //std::cout<< i+j;
             map[i][j]->print();
             j++;
         }

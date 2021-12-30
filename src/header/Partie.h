@@ -24,7 +24,7 @@ class Partie {
         Personnage * deathBattle(Personnage *a,  Personnage *b) const;
         bool finDePartie() const;
         void routine();
-        Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg);
+        Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg,const Map* mapArg);
 };
 
 

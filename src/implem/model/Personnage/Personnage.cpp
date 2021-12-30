@@ -323,13 +323,9 @@ Piece* Personnage::deplacementIA(){
         std::mt19937 engine(seeder());
         std::uniform_int_distribution<int> dist(0, 3);
         int deplacementAleatoire = dist(engine);
-        //return this->deplacement(deplacementAleatoire);
         //random ++;
         //srand((int) time(0) + random);
-        //std::default_random_engine generator;
-        //std::uniform_int_distribution<int> distribution(0, 3);
         //int deplacementAleatoire = rand() % 3;
-        //int deplacementAleatoire = distribution(generator);
         if(pieceCourante->getVecPieceAdjacentes()[deplacementAleatoire] != nullptr) {
             return this->deplacement(deplacementAleatoire);
         }

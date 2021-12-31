@@ -40,10 +40,13 @@ void Partie::routine() {
             pieceArrive = personnage->deplacementIA();
         }
         if(pieceArrive->combatPossible()) {
-            //std::cout << "Combat entre : " << personnage->getNom() << "et" << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
+            if(personnage == joueur->getPerso()) {
+                std::cout << "Combat entre : " << personnage->getNom() << "et"
+                          << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
+            }
             Personnage * persoMort = deathBattle(personnage, pieceArrive->getVecPerso()[0]);
             //TODO: remove from la piece arrive
-            //TODO: remove from la partie
+            retraitPersonnageMort(persoMort);
             if(finDePartie()){
                 return;
             }
@@ -114,8 +117,6 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             if (!etat) {
                 joueur->interactionEnCombat(a);
             }
-
-
         }
         else {
             auto etat = a->updateStatut();
@@ -157,4 +158,8 @@ bool Partie::finDePartie() const {
         std::cout << "FÉLICITATION, VOUS AVEZ SU RECONQUERIR VOTRE TRÔNE, ET RAMENER LA PAIX DANS VOTRE ROYAUME" << std::endl;
         return true;
     }
+}
+
+void Partie::retraitPersonnageMort(Personnage* personnageMort) {
+    persoEnJeu.erase(std::remove(persoEnJeu.begin(), persoEnJeu.end(), personnageMort), persoEnJeu.end());
 }

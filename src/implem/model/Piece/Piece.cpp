@@ -82,8 +82,8 @@ void Piece::pushPiece(Piece * p){
     vecPiecesAdjacentes.push_back(p);
 }
 
-void Piece::removePerso() {
-    vecPerso.erase(vecPerso.begin());
+void Piece::removePerso(Personnage * personnage) {
+    vecPerso.erase(std::remove(vecPerso.begin(), vecPerso.end(), personnage), vecPerso.end())
 
 }
 

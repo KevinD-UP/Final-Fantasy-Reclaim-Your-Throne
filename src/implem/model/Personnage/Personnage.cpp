@@ -312,7 +312,7 @@ void Personnage::desequipe(){
 }
 
 Piece* Personnage::deplacement(int arrive) {
-    this->pieceCourante->removePerso();
+    this->pieceCourante->removePerso(this);
     this->pieceCourante->getVecPieceAdjacentes()[arrive]->pushPerso(this);
     return this->setPiece(pieceCourante->getVecPieceAdjacentes()[arrive]);
 }

@@ -20,7 +20,7 @@ private:
 public:
     Piece();
     void pushPerso(Personnage *);
-    void removePerso();
+    void removePerso(Personnage *);
     void pushObjet(Objet*);
     void pushPiece(Piece*);
     void setPiecesAdjacentes(std::vector<Piece*>);

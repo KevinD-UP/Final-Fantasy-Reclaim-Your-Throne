@@ -25,6 +25,7 @@ class Partie {
         bool finDePartie() const;
         void routine();
         Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg,const Map* mapArg);
+        void retraitPersonnageMort();
 };
 
 

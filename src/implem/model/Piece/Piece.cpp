@@ -67,9 +67,9 @@ void Piece::print(){
                   << " " << vecObjet[i]->getDescription() << std::endl;
         i++;
     }*/
-    std::cout << "sa print";
+    //std::cout << "sa print";
     while(i < vecPiecesAdjacentes.size()){
-        std::cout << i  << std::endl;
+        //std::cout << i  << std::endl;
         i++;
     }
 }
@@ -83,7 +83,7 @@ void Piece::pushPiece(Piece * p){
 }
 
 void Piece::removePerso(Personnage * personnage) {
-    vecPerso.erase(std::remove(vecPerso.begin(), vecPerso.end(), personnage), vecPerso.end())
+    vecPerso.erase(std::remove(vecPerso.begin(), vecPerso.end(), personnage), vecPerso.end());
 
 }
 

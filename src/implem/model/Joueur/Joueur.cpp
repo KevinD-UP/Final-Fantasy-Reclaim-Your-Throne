@@ -32,42 +32,35 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
 }
 
 Piece* Joueur::interactionHorsCombat() const {
-    //try {
-        std::cout << "1 - Haut " << "2 - Gauche " << "3 - Bas" << "4 - Droite";;
-        std::cout << std::endl;
-        std::string action;
-        std::cin >> action;
-        if (action == "1") {
-            if(getPerso()->getPieceCour()->getVecPieceAdjacentes()[0] != nullptr) {
-                std::cout << "Direction vers le haut " << std::endl;
-                return personnageJoueur->deplacement(0);
-            }
+
+    std::cout << "1 - Haut " << "2 - Gauche " << "3 - Bas " << "4 - Droite";;
+    std::cout << std::endl;
+    std::string action;
+    std::cin >> action;
+    if (action == "1") {
+        if(getPerso()->getPieceCour()->getVecPieceAdjacentes()[0] != nullptr) {
+            std::cout << "Direction vers le haut " << std::endl;
+            return personnageJoueur->deplacement(0);
         }
-        if (action == "2") {
-            if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[1] != nullptr) {
-                std::cout << "Direction vers le gauche " << std::endl;
-                return personnageJoueur->deplacement(1);
-            }
+    }
+    else if (action == "2") {
+        if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[1] != nullptr) {
+            std::cout << "Direction vers le gauche " << std::endl;
+            return personnageJoueur->deplacement(1);
         }
-        if (action == "3") {
-            if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[2] != nullptr) {
-                std::cout << "Direction vers le bas " << std::endl;
-                return personnageJoueur->deplacement(2);
-            }
+    }
+    else if (action == "3") {
+        if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[2] != nullptr) {
+            std::cout << "Direction vers le bas " << std::endl;
+            return personnageJoueur->deplacement(2);
         }
-        if (action == "4") {
-            if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[3] != nullptr) {
-                std::cout << "Direction vers le droite " << std::endl;
-                return personnageJoueur->deplacement(3);
-            }
-        } else {
-            std::cout << "Choissisez un chemin valide" << std::endl;
-            return this->interactionHorsCombat();
+    }
+    else if (action == "4") {
+        if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[3] != nullptr) {
+            std::cout << "Direction vers le droite " << std::endl;
+            return personnageJoueur->deplacement(3);
         }
-    /*} catch (const std::exception& e){
-        std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl;
-        return this->interactionHorsCombat();
-    }*/
+    }
     std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl;
     return this->interactionHorsCombat();
 }

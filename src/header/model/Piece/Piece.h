@@ -8,6 +8,8 @@
 
 #include "../Objet/Objet.h"
 #include <vector>
+#include <algorithm>
+
 class Personnage;
 
 class Piece {

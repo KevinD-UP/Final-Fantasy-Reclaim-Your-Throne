@@ -40,13 +40,15 @@ int Personnage::getSante() const {
 
 int Personnage::getSanteMax() const {
     return indice_de_sante_max;
-};
+}
+
 int Personnage::getAttaqueMax() const {
     return attaque_max;
-};
+}
+
 int Personnage::getDefenseMax() const {
     return defense_max;
-};
+}
 
 PersonnageType Personnage::getPersonnageType() const {
     return typePersonnage;

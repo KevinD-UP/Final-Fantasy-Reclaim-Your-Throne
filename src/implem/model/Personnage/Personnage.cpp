@@ -4,6 +4,8 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
+int Personnage::random = 0;
+
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
                        const int &attaque_arg,
@@ -310,22 +312,26 @@ void Personnage::desequipe(){
 }
 
 Piece* Personnage::deplacement(int arrive) {
-    this->pieceCourante->removePerso();
+    this->pieceCourante->removePerso(this);
     this->pieceCourante->getVecPieceAdjacentes()[arrive]->pushPerso(this);
     return this->setPiece(pieceCourante->getVecPieceAdjacentes()[arrive]);
 }
 
 Piece* Personnage::deplacementIA(){
     try {
-        //the random device that will seed the generator
         std::random_device seeder;
-        //then make a mersenne twister engine
         std::mt19937 engine(seeder());
-        //then the easy part... the distribution
         std::uniform_int_distribution<int> dist(0, 3);
-        //then just generate the integer like this:
         int deplacementAleatoire = dist(engine);
-        return this->deplacement(deplacementAleatoire);
+        //random ++;
+        //srand((int) time(0) + random);
+        //int deplacementAleatoire = rand() % 3;
+        if(pieceCourante->getVecPieceAdjacentes()[deplacementAleatoire] != nullptr) {
+            return this->deplacement(deplacementAleatoire);
+        }
+        else{
+            return this->deplacementIA();
+        }
     } catch(const std::exception& e) {
         return this->deplacementIA();
     }

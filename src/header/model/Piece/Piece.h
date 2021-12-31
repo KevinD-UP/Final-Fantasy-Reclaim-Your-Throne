@@ -8,6 +8,8 @@
 
 #include "../Objet/Objet.h"
 #include <vector>
+#include <algorithm>
+
 class Personnage;
 
 class Piece {
@@ -20,8 +22,9 @@ private:
 public:
     Piece();
     void pushPerso(Personnage *);
-    void removePerso();
+    void removePerso(Personnage *);
     void pushObjet(Objet*);
+    void pushPiece(Piece*);
     void setPiecesAdjacentes(std::vector<Piece*>);
     void fill(int);
     std::vector<Personnage*> getVecPerso() const;

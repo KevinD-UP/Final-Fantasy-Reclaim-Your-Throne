@@ -10,7 +10,7 @@
 class Map {
 
 private:
-    const std::vector<std::vector<Piece*>> map;
+    std::vector<std::vector<Piece*>> map;
 
 public:
     Map();

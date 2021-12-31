@@ -41,11 +41,11 @@ void Partie::routine() {
         }
         if(pieceArrive->combatPossible()) {
             if(personnage == joueur->getPerso()) {
-                std::cout << "Combat entre : " << personnage->getNom() << "et"
+                std::cout << "Combat entre : " << personnage->getNom() << " et "
                           << pieceArrive->getVecPerso()[0]->getNom() << std::endl;
             }
             Personnage * persoMort = deathBattle(personnage, pieceArrive->getVecPerso()[0]);
-            //TODO: remove from la piece arrive
+            pieceArrive->removePerso(persoMort);
             retraitPersonnageMort(persoMort);
             if(finDePartie()){
                 return;
@@ -71,7 +71,6 @@ Partie::Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg, 
 {}
 
 Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
-    std::cout << "Combat contre " << a->getNom() << " et " << b->getNom() << std::endl;
     while(!a->estMort() || !b->estMort()){
         if(a == joueur->getPerso()) {
             auto etat = a->updateStatut();

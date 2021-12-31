@@ -8,6 +8,7 @@
 #include "model/Personnage/Personnage.h"
 #include "model/Joueur/Joueur.h"
 #include "model/Piece/Map.h"
+#include <algorithm>
 
 class Partie {
 
@@ -25,7 +26,7 @@ class Partie {
         bool finDePartie() const;
         void routine();
         Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg,const Map* mapArg);
-        void retraitPersonnageMort();
+        void retraitPersonnageMort(Personnage *);
 };
 
 

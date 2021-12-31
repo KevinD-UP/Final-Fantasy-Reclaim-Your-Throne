@@ -7,9 +7,6 @@
 #include "header/model/Joueur/Joueur.h"
 #include "header/Partie.h"
 
-#include  <random>
-#include  <iterator>
-
 template<typename Iter, typename RandomGenerator>
 Iter select_randomly(Iter start, Iter end, RandomGenerator& g) {
     std::uniform_int_distribution<> dis(0, std::distance(start, end) - 1);
@@ -152,11 +149,9 @@ int main(){
     int choixPerso;
     Joueur* joueur;
     Personnage* personnageJoueur;
-    Personnage* Ennemie1;
-    Personnage* Ennemie2;
-    Personnage* Ennemie3;
-
-    //TODO: INIT LES PERSO EN FONCTION DU JOUEUR
+    Personnage* ennemie1;
+    Personnage* ennemie2;
+    Personnage* ennemie3;
 
     std::cout << "Bienvenue sur FINAL FANTASY RECLAIM YOUR THRONE" << std::endl;
     std::cout << "Veuillez écrire le nom de votre personnage : " << std::endl;

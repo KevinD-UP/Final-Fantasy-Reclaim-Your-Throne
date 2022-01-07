@@ -46,6 +46,7 @@ class Personnage {
 
     public:
         virtual void print() = 0;
+        virtual ~Personnage();
 
         //Getter
         std::string getNom() const;
@@ -60,7 +61,7 @@ class Personnage {
         std::vector<std::pair<Statut, int>> getStatut();
         std::vector<Objet*> getSac();
 
-        //Opé sur les sac
+        //Opération sur les sac
         Statut pushStatut(Statut,int);
         void pushSac(Objet*);
 

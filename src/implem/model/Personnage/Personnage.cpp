@@ -22,6 +22,10 @@ Personnage::Personnage(std::string nom_arg,
     equipeAll();
 }
 
+Personnage::~Personnage() {
+    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
+}
+
 std::string Personnage::getNom() const {
     return nom;
 }
@@ -40,13 +44,15 @@ int Personnage::getSante() const {
 
 int Personnage::getSanteMax() const {
     return indice_de_sante_max;
-};
+}
+
 int Personnage::getAttaqueMax() const {
     return attaque_max;
-};
+}
+
 int Personnage::getDefenseMax() const {
     return defense_max;
-};
+}
 
 PersonnageType Personnage::getPersonnageType() const {
     return typePersonnage;
@@ -270,7 +276,10 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
                     player->interactionEnCombat(cible);
                     return;
                 }
+                Objet* consomme = sac[i];
                 sac.erase(sac.begin() + i);
+                delete consomme;
+                consomme = nullptr;
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;

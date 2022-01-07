@@ -27,6 +27,7 @@ private:
     Objet(std::string, ObjetType, std::string);
 
 public:
+    virtual ~Objet();
     std::string getNom() const;
     ObjetType getObjetType() const;
     std::string getDescription() const;

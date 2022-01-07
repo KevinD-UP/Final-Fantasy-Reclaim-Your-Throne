@@ -46,6 +46,7 @@ class Personnage {
 
     public:
         virtual void print() = 0;
+        virtual ~Personnage();
 
         //Getter
         std::string getNom() const;

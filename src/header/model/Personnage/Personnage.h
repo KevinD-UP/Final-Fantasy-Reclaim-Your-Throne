@@ -61,7 +61,7 @@ class Personnage {
         std::vector<std::pair<Statut, int>> getStatut();
         std::vector<Objet*> getSac();
 
-        //Opé sur les sac
+        //Opération sur les sac
         Statut pushStatut(Statut,int);
         void pushSac(Objet*);
 

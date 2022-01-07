@@ -47,7 +47,7 @@ void Partie::routine() {
             Personnage * persoMort = deathBattle(personnage, pieceArrive->getVecPerso()[0]);
             pieceArrive->removePerso(persoMort);
             retraitPersonnageMort(persoMort);
-            delete(persoMort);
+            delete persoMort;
             persoMort = nullptr;
             if(finDePartie()){
                 return;

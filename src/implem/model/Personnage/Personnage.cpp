@@ -272,7 +272,10 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
                     player->interactionEnCombat(cible);
                     return;
                 }
+                Objet* consomme = sac[i];
                 sac.erase(sac.begin() + i);
+                delete consomme;
+                consomme = nullptr;
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;

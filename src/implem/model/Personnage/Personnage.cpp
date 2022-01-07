@@ -22,6 +22,10 @@ Personnage::Personnage(std::string nom_arg,
     equipeAll();
 }
 
+Personnage::~Personnage() {
+    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
+}
+
 std::string Personnage::getNom() const {
     return nom;
 }

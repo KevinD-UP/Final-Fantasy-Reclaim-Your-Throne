@@ -29,11 +29,32 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
     else if(action == "3"){
         personnageJoueur->actionObjet(this, cible);
     }
+    else {
+        std::cout << "Action non existante, rééssayer" << std::endl;
+        return interactionEnCombat(cible);
+    }
 }
 
 Piece* Joueur::interactionHorsCombat() const {
+    std::cout << "1 - Deplacement "
+              << "2 - Objet " << std::endl;
+    std::string action;
+    std::cin >> action;
+    if(action == "1") {
+        return deplacementJoueur();
+    }
+    else if(action == "2"){
+        //personnageJoueur->actionObjet(this);
+        return interactionHorsCombat();
+    }
+    else {
+        std::cout << "Action non existante, rééssayer" << std::endl;
+        return interactionHorsCombat();
+    }
+}
 
-    std::cout << "1 - Haut " << "2 - Gauche " << "3 - Bas " << "4 - Droite";;
+Piece* Joueur::deplacementJoueur() const {
+    std::cout << "1 - Haut " << "2 - Gauche " << "3 - Bas " << "4 - Droite " << "5 - Retour";
     std::cout << std::endl;
     std::string action;
     std::cin >> action;
@@ -61,10 +82,12 @@ Piece* Joueur::interactionHorsCombat() const {
             return personnageJoueur->deplacement(3);
         }
     }
+    else if (action == "5") {
+        return this->interactionHorsCombat();
+    }
     std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl;
-    return this->interactionHorsCombat();
+    return this->deplacementJoueur();
 }
-
 
 
 

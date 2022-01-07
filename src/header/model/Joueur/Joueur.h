@@ -18,7 +18,8 @@ class Joueur {
     public:
         explicit Joueur(Personnage* personnageJoueurArg);
         void interactionEnCombat (Personnage *cible) const;
-        Piece * interactionHorsCombat() const;
+        Piece* interactionHorsCombat() const;
+        Piece* deplacementJoueur() const;
         Personnage* getPerso() const;
 };
 

@@ -23,6 +23,9 @@ Equipement::Equipement
     //buffAutre(buffAutre_arg)
 {}
 
+bool Equipement::checkCible() {
+    return false;
+}
 void Equipement::appliquerEffet(Personnage *cible) {
     if(!estEquipe) {
         if (this->bonusClass == cible->getPersonnageType()) {

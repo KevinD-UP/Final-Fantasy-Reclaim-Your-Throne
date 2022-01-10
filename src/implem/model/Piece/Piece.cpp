@@ -42,36 +42,33 @@ auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque:5 Defense:10 Sante:15"
 std::vector<Objet *> Piece::allEquipement = {Epee,Armure,Toge,Masse,Lance,Arc,Baguette,Robe,Potion_Soin,Potion_Brulure,Potion_Poison,Potion_Somnol,
                                       Potion_Berserk,Potion_Affaiblie,Potion_Proteger,Potion_Ecorcher};
 
-int Piece::random = 0;
 Piece::Piece(){
-    random ++;
-    srand((int) time(0) + random);
-    int v1 = rand() % 3;
-    fill(v1);
+    std::random_device seeder;
+    std::mt19937 engine(seeder());
+    std::uniform_int_distribution<int> dist(0, 3);
+    int nombreObjet = dist(engine);
+    fill(nombreObjet);
 }
 
 void Piece::fill(int i) {
-    random ++;
-    srand((int) time(0) + random);
     while (i > 0){
-        int v1 = rand() % 16;
-        pushObjet(allEquipement.at(v1));
+        std::random_device seeder;
+        std::mt19937 engine(seeder());
+        std::uniform_int_distribution<int> dist(0, 15);
+        int objet = dist(engine);
+        pushObjet(allEquipement.at(objet));
         i--;
     }
 }
 
 void Piece::print(){
     size_t i = 0;
-    /*while(i < vecObjet.size()){
+    while(i < vecObjet.size()){
         std::cout << i << ":"<< vecObjet[i]->getNom()
                   << " " << vecObjet[i]->getDescription() << std::endl;
         i++;
-    }*/
-    //std::cout << "sa print";
-    while(i < vecPiecesAdjacentes.size()){
-        //std::cout << i  << std::endl;
-        i++;
     }
+
 }
 
 void Piece::pushPerso(Personnage* p) {
@@ -84,7 +81,10 @@ void Piece::pushPiece(Piece * p){
 
 void Piece::removePerso(Personnage * personnage) {
     vecPerso.erase(std::remove(vecPerso.begin(), vecPerso.end(), personnage), vecPerso.end());
+}
 
+void Piece::removeObjet(Objet * objet) {
+    vecObjet.erase(std::remove(vecObjet.begin(), vecObjet.end(), objet), vecObjet.end());
 }
 
 void Piece::pushObjet(Objet *o) {

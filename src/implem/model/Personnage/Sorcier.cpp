@@ -19,12 +19,6 @@ void Sorcier::print() {
 
 }
 
-void Sorcier::actionIa(Personnage * cible){
-    int v1 = rand() % 2;
-    std::string v2 = std::to_string(v1);
-    action(v2,cible);
-}
-
 
 void Sorcier::action(std::string nom, Personnage * ennemie)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;

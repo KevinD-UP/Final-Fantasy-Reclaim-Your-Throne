@@ -19,16 +19,22 @@ enum ConsommableType {
     CT_POTIONPROTEGER
 };
 
+enum ConsommableCible {
+    CC_SELF,
+    CC_OTHER
+};
 class Consommable : public Objet {
 
 private:
-    Consommable(const std::string, const ObjetType, std::string, ConsommableType);
+    Consommable(const std::string, const ObjetType, std::string, ConsommableType, ConsommableCible);
     ConsommableType typeConsommable;
+    ConsommableCible cibleConsommable;
 
 public:
     __attribute__((unused)) ConsommableType getTypeConsommable() const;
     void appliquerEffet(Personnage *) override;
     void enleverEffet(Personnage *) override;
+    bool checkCible() override;
     virtual void appliquerConsommable(Personnage *) = 0;
     friend class PotionSoin;
     friend class PotionBrulure;
@@ -44,7 +50,7 @@ public:
 class PotionSoin : public Consommable {
 
 private:
-    PotionSoin(const std::string&, const ObjetType, std::string, ConsommableType, int);
+    PotionSoin(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 
 public:
     void appliquerConsommable(Personnage *) override;
@@ -53,7 +59,7 @@ public:
 
 class PotionBrulure : public Consommable{
 private:
-    PotionBrulure(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionBrulure(const std::string&, const ObjetType, std::string, ConsommableType ,ConsommableCible);
 
 public:
     void appliquerConsommable(Personnage *) override;
@@ -62,7 +68,7 @@ public:
 
 class PotionPoison : public Consommable{
 private:
-    PotionPoison(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionPoison(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 
 public:
     void appliquerConsommable(Personnage *) override;
@@ -71,7 +77,7 @@ public:
 
 class PotionSomnolence : public Consommable{
 private:
-    PotionSomnolence(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionSomnolence(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionSomnolenceFactory;
@@ -79,7 +85,7 @@ public:
 
 class PotionBerserk : public Consommable{
 private:
-    PotionBerserk(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionBerserk(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionBerserkFactory;
@@ -87,7 +93,7 @@ public:
 
 class PotionAffaiblie: public Consommable{
 private:
-    PotionAffaiblie(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionAffaiblie(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionAffaiblieFactory;
@@ -95,7 +101,7 @@ public:
 
 class PotionEcorcher : public Consommable{
 private:
-    PotionEcorcher(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionEcorcher(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionEcorcherFactory;
@@ -103,7 +109,7 @@ public:
 
 class PotionProteger : public Consommable{
 private:
-    PotionProteger(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionProteger(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionProtegerFactory;
@@ -111,7 +117,7 @@ public:
 
 class PotionChallenge : public Consommable{
 private:
-    PotionChallenge(const std::string&, const ObjetType, std::string, ConsommableType);
+    PotionChallenge(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionProtegerFactory;

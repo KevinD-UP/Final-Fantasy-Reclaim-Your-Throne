@@ -33,6 +33,7 @@ public:
     std::string getDescription() const;
     virtual void appliquerEffet(Personnage *) = 0;
     virtual void enleverEffet(Personnage *) = 0;
+    virtual bool checkCible() = 0;
     friend class Consommable;
     friend class Equipement;
 };

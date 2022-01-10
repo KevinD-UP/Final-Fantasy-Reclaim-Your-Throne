@@ -6,8 +6,8 @@
 
 #include <utility>
 
-Consommable::Consommable( std::string nom_arg,  ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-: Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)), typeConsommable(consommableType_arg)
+Consommable::Consommable( std::string nom_arg,  ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+: Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)), typeConsommable(consommableType_arg), cibleConsommable(consommableCible_arg)
 {}
 
 void Consommable::appliquerEffet(Personnage * cible) {
@@ -20,41 +20,44 @@ __attribute__((unused)) ConsommableType Consommable::getTypeConsommable() const 
     return typeConsommable;
 }
 
-PotionSoin::PotionSoin(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, int pouvoirDeSoin_arg)
-: Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
+bool Consommable::checkCible(){
+    return this->cibleConsommable == CC_SELF ;
+}
+
+PotionSoin::PotionSoin(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+: Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionBrulure::PotionBrulure(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
+PotionBrulure::PotionBrulure(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionPoison::PotionPoison(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
+PotionPoison::PotionPoison(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionSomnolence::PotionSomnolence(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg)
+PotionSomnolence::PotionSomnolence(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionBerserk::PotionBerserk(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionBerserk::PotionBerserk(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionAffaiblie::PotionAffaiblie(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionAffaiblie::PotionAffaiblie(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionEcorcher::PotionEcorcher(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionEcorcher::PotionEcorcher(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionProteger::PotionProteger(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
+PotionProteger::PotionProteger(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionChallenge::PotionChallenge(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg)
-        : Consommable(nom_arg, objetType_arg, description_arg, consommableType_arg)
-{}
+PotionChallenge::PotionChallenge(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg){}
 
 void PotionSoin::appliquerConsommable(Personnage *cible) {
     cible->setSante(cible->getSante() + cible->getSanteMax()/4);

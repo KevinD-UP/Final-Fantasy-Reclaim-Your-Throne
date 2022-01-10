@@ -17,11 +17,7 @@ void Guerrier::print() {
     checkStatut();
 }
 
-void Guerrier::actionIa(Personnage * cible){
-    int v1 = rand() % 2;
-    std::string v2 = std::to_string(v1);
-    action(v2,cible);
-}
+
 
 
 void Guerrier::action(std::string nom, Personnage * ennemie)  {
@@ -53,6 +49,7 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
     }
     else{
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
+        //actionJoueur(,ennemie);
         return;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;

@@ -4,7 +4,6 @@
 
 #include "../../../header/model/Personnage/Personnage.h"
 
-int Personnage::random = 0;
 
 Personnage::Personnage(std::string nom_arg,
                        const int &sante_arg,
@@ -97,8 +96,8 @@ int Personnage::setMaxDefense(int defenseArg) {
 }
 
 void Personnage::pushSac(Objet * x) {
-    std::cout << x->getNom();
     sac.push_back(x);
+    getPieceCour()->removeObjet(x);
 }
 
 bool Personnage::estMort() {
@@ -263,18 +262,11 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
     while(i < sac.size()){
         if(std::to_string(i) == choix ){
             if(sac[i]->getObjetType() == OT_Consommable) {
-                std::cout << "Choisir cible: 1:Joueur 2:Ennemie" << std::endl;
-                std::cin >> choix;
-                if(choix == "1"){
+                if(sac[i]->checkCible()){
                     sac[i]->appliquerEffet(this);
                 }
-                else if(choix == "2"){
+                else {
                     sac[i]->appliquerEffet(cible);
-                }
-                else{
-                    std::cout << "Erreur ce choix n'est pas possible" << std::endl;
-                    player->interactionEnCombat(cible);
-                    return;
                 }
                 Objet* consomme = sac[i];
                 sac.erase(sac.begin() + i);
@@ -288,6 +280,62 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
             }
         }
         i++;
+    }
+    if(i == sac.size()){
+        std::cout << "Erreur cette commande n'existe pas" << std::endl;
+        player->interactionEnCombat(cible);
+        return;
+
+    }
+
+}
+
+void Personnage::actionObjetHC(const Joueur * player) {
+    size_t i = 0;
+    std::cout << "Objet disponible:" << std::endl;
+    std::string choix = "";
+    while(i < sac.size()){
+        std::cout << i << ":"<< sac[i]->getNom()
+                  << " " << sac[i]->getDescription() << std::endl;
+        i++;
+    }
+    if (i == 0){
+        std::cout << "Aucun Objet disponible" << std::endl;
+        player->interactionHorsCombat();
+        return;
+    }
+    std::cin >> choix;
+    i = 0;
+    while(i < sac.size()){
+        if(std::to_string(i) == choix ){
+            if(sac[i]->getObjetType() == OT_Consommable) {
+                if(sac[i]->checkCible()){
+                    sac[i]->appliquerEffet(this);
+                }
+                else {
+                    std::cout << "Erreur pas de cible" << std::endl;
+                    player->interactionHorsCombat();
+                    return;
+                }
+                Objet* consomme = sac[i];
+                sac.erase(sac.begin() + i);
+                delete consomme;
+                consomme = nullptr;
+                return;
+            }
+            else{
+                std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;
+                player->interactionHorsCombat();
+                return;
+            }
+        }
+        i++;
+    }
+    if(i == sac.size()){
+        std::cout << "Erreur cette commande n'existe pas" << std::endl;
+        player->interactionHorsCombat();
+        return;
+
     }
 
 }
@@ -315,10 +363,14 @@ void Personnage::desequipe(){
             getPieceCour()->pushObjet(sac.at(i));
             sac[i]->enleverEffet(this);
             sac.erase(sac.begin() + i);
+            return;
         }
         i++;
     }
+    std::cout << "Erreur Objet non trouvé" << std::endl;
+    desequipe();
 }
+
 
 Piece* Personnage::deplacement(int arrive) {
     this->pieceCourante->removePerso(this);
@@ -346,6 +398,16 @@ Piece* Personnage::deplacementIA(){
     }
 }
 
+void Personnage::actionIa(Personnage * cible) {
+    std::random_device seeder;
+    std::mt19937 engine(seeder());
+    std::uniform_int_distribution<int> dist(0, 2);
+    int choix = dist(engine);
+
+    //int v1 = rand() % 2;
+    std::string choix2 = std::to_string(choix);
+    this->action(choix2,cible);
+}
 void Personnage::buff(Statut effet, int tour) {
     if(effetPresent(Ecorcher) && effet == Proteger){
         enleverEffet(Ecorcher);

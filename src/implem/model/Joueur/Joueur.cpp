@@ -5,7 +5,7 @@
 #include "../../../header/model/Joueur/Joueur.h"
 
 
-Joueur::Joueur(Personnage * personnageJoueurArg) : personnageJoueur(personnageJoueurArg) {}
+Joueur::Joueur(Personnage * personnageJoueurArg, Map * carte_arg) : personnageJoueur(personnageJoueurArg), carte(carte_arg) {}
 
 Personnage* Joueur::getPerso() const {
     return personnageJoueur;
@@ -37,19 +37,50 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
 
 Piece* Joueur::interactionHorsCombat() const {
     std::cout << "1 - Deplacement "
-              << "2 - Objet " << std::endl;
+              << "2 - Objet "
+              << "3 - Carte "
+              << "4 - Check Piece" << std::endl;
     std::string action;
     std::cin >> action;
     if(action == "1") {
         return deplacementJoueur();
     }
     else if(action == "2"){
-        //personnageJoueur->actionObjet(this);
+        personnageJoueur->actionObjetHC(this);
+        return interactionHorsCombat();
+    }
+    else if(action == "3"){
+        carte->showMap(this);
+        return interactionHorsCombat();
+    }
+    else if(action == "4"){
+        this->swap();
         return interactionHorsCombat();
     }
     else {
         std::cout << "Action non existante, rééssayer" << std::endl;
         return interactionHorsCombat();
+    }
+}
+
+void Joueur::swap() const {
+    if(personnageJoueur->getPieceCour()->getVecObjet().size()>0){
+        personnageJoueur->getPieceCour()->print();
+        std::cout << "Choisissez un objet" << std::endl;
+        std::string action;
+        std::cin >> action;
+        if(stoi(action)<0 || (size_t (stoi(action)))>personnageJoueur->getPieceCour()->getVecObjet().size() -1){
+            std::cout << "Mauvais choix" << std::endl;
+            return;
+        }
+        if(this->personnageJoueur->getSac().size() == 4){
+            std::cout << "Le Sac est plein echangé avec un de vos objets" << std::endl;
+            this->personnageJoueur->desequipe();
+            this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
+        }else{
+            std::cout << "Vous prenez:" << personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]->getNom() << std::endl;
+            this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
+        }
     }
 }
 

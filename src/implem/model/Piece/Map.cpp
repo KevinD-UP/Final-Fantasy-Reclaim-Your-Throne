@@ -36,12 +36,26 @@ Map::Map() {
             }else{
                 map[i][j]->pushPiece(map[i][j+1]);
             }
-            map[i][j]->print();
+            //map[i][j]->print();
             j++;
         }
         i++;
     }
 
+}
+
+void Map::showMap(const Joueur * joueur) {
+    for(int i =0; i< 4; i++){
+        for(int j=0; j< 4;j++){
+            if(map[i][j] == joueur->getPerso()->getPieceCour()){
+                std::cout<<"|O|";
+            }
+            else{
+                std::cout<<"|X|";
+            }
+        }
+        std::cout<<std::endl;
+    }
 }
 
 std::vector<std::vector<Piece*>> Map::getMap() const {

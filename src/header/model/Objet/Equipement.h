@@ -25,6 +25,7 @@ public:
     //EquipementType getTypeEquipement() const;
     void appliquerEffet(Personnage *) override;
     void enleverEffet(Personnage *) override;
+    __attribute__((unused)) bool checkCible() override;
 };
 
 #endif //FINAL_FANTASY___RECLAIM_YOUR_THRONE_EQUIPEMENT_H

@@ -23,6 +23,7 @@ public:
     Piece();
     void pushPerso(Personnage *);
     void removePerso(Personnage *);
+    void removeObjet(Objet *);
     void pushObjet(Objet*);
     void pushPiece(Piece*);
     void setPiecesAdjacentes(std::vector<Piece*>);
@@ -33,7 +34,6 @@ public:
     bool combatPossible() const;
     void print();
     static std::vector<Objet *> allEquipement;
-    static int random;
 };
 
 #include "../Personnage/Personnage.h"

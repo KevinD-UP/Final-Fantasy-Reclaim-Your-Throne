@@ -18,11 +18,6 @@ void Amazone::print() {
 
 }
 
-void Amazone::actionIa(Personnage * cible){
-    int v1 = rand() % 2;
-    std::string v2 = std::to_string(v1);
-    action(v2,cible);
-}
 
 
 void Amazone::action(std::string nom, Personnage * ennemie)  {

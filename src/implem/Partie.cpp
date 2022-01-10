@@ -105,7 +105,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 std::cout << a << std::endl;
                 a->reset();
-                return a;
+                return b;
             }
             if (!etat) {
                 joueur->interactionEnCombat(a);
@@ -115,7 +115,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 std::cout << b << std::endl;
                 b->reset();
-                return b;
+                return a;
             }
             if (!etat) {
                a->actionIa(b);

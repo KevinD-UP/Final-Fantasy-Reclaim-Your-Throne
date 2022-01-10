@@ -65,6 +65,7 @@ class Personnage {
         Statut pushStatut(Statut,int);
         void pushSac(Objet*);
 
+
         //Setter
         int setSante(int santeArg);
         int setMaxSante(int santeArg);
@@ -92,15 +93,14 @@ class Personnage {
         Piece* deplacement(int);
         Piece* deplacementIA();
 
-        virtual void actionIa(Personnage *) = 0;
+        void actionIa(Personnage *);
         virtual void actionJoueur(const Joueur *, Personnage *) = 0;
         void actionObjet(const Joueur *, Personnage *);
+        void actionObjetHC(const Joueur *);
         virtual void action(std::string, Personnage *) = 0;
         friend std::ostream& operator<<(std::ostream& out, Personnage *personnageArg);
 
         bool estMort();
-
-        static int random;
 
         friend class Amazone;
         friend class Moine;

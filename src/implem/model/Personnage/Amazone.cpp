@@ -11,9 +11,11 @@ Amazone::Amazone(const std::string& nom, int sante, int attaque, int defense, Pe
 
 void Amazone::print() {
     std::cout << nom <<std::endl;
-    std::cout << getSante() << "HP "
-      << getAttaque() << ":Attaque "
-      << getDefense() << ":Defense" <<std::endl;
+    std::cout << "Niveau: " << getLevel()
+              << " " << getExp() << "Exp: "
+              << getSante() << "HP "
+              << getAttaque() << ":Attaque "
+              << getDefense() << ":Defense" <<std::endl;
     checkStatut();
 
 }

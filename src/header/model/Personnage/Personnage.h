@@ -27,6 +27,8 @@ class Personnage {
 
     private:
         const std::string nom;
+        int level = 1;
+        int exp = 0;
         int indice_de_sante_max;
         int indice_de_sante_actuel = indice_de_sante_max;
         int attaque_max;
@@ -56,6 +58,8 @@ class Personnage {
         int getAttaque() const;
         int getDefenseMax() const;
         int getDefense() const;
+        int getLevel() const;
+        int getExp() const;
         PersonnageType getPersonnageType() const;
         Piece* getPieceCour();
         std::vector<std::pair<Statut, int>> getStatut();
@@ -76,6 +80,8 @@ class Personnage {
         Piece* setPiece(Piece*);
 
         //Statut changement
+        void victoire(Personnage *);
+        void levelUp(int);
         void buff(Statut,int);
         void debuff(Statut,int,Personnage*);
         void checkStatut();

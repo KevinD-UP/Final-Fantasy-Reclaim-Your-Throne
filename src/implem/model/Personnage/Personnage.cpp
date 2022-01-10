@@ -65,6 +65,14 @@ std::vector<Objet *> Personnage::getSac() {
     return sac;
 }
 
+int Personnage::getLevel() const {
+    return level;
+}
+
+int Personnage::getExp() const {
+    return exp;
+}
+
 int Personnage::setSante(int santeArg) {
     indice_de_sante_actuel = santeArg;
     return indice_de_sante_actuel;
@@ -162,6 +170,25 @@ void Personnage::enleverEffet(Statut effet){
     }
 }
 
+void Personnage::victoire(Personnage * vaincu){
+    this->exp += vaincu->level * 10;
+    if((this->exp/100)>0){
+        levelUp(exp);
+    }
+}
+
+void Personnage::levelUp(int exp_arg) {
+    level += exp_arg/100;
+    exp = exp_arg%100;
+    std::cout << this->getNom() << " est maintenant de niveau " << this->level << std::endl;
+    setMaxSante(getSanteMax() + 25);
+    setMaxAttaque(getAttaqueMax() + 10);
+    setMaxDefense(getDefenseMax() + 10);
+
+    setAttaque(getAttaqueMax());
+    setDefense(getDefenseMax());
+    setSante(getSanteMax());
+}
 void Personnage::checkStatut() {
     size_t i = 0;
     while(i < statut.size()){

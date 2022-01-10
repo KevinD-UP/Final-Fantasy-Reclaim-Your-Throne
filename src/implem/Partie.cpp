@@ -83,6 +83,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 std::cout << a << std::endl;
                 a->reset();
+                a->victoire(b);
                 return b;
             }
             if (!etat) {
@@ -92,6 +93,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 std::cout << a << std::endl;
                 b->reset();
+                b->victoire(a);
                 return a;
             }
             if (!etat) {
@@ -105,6 +107,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 std::cout << a << std::endl;
                 a->reset();
+                a->victoire(b);
                 return b;
             }
             if (!etat) {
@@ -115,6 +118,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 std::cout << b << std::endl;
                 b->reset();
+                b->victoire(a);
                 return a;
             }
             if (!etat) {
@@ -125,6 +129,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             auto etat = b->updateStatut();
             if (b->estMort()) {
                 a->reset();
+                a->victoire(b);
                 std::cout << "Victoire de " << a->getNom() << std::endl;
                 return b;
             }
@@ -134,6 +139,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             etat = a->updateStatut();
             if (a->estMort()) {
                 b->reset();
+                b->victoire(a);
                 std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;
             }

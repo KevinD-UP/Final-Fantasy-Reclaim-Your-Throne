@@ -36,10 +36,11 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
 }
 
 Piece* Joueur::interactionHorsCombat() const {
-    std::cout << "1 - Deplacement "
-              << "2 - Objet "
-              << "3 - Carte "
-              << "4 - Check Piece" << std::endl;
+    std::cout << "1 -Deplacement "
+              << "2 -Objet "
+              << "3 -Carte "
+              << "4 -Check Piece "
+              << "5 -Check Stats" << std::endl;
     std::string action;
     std::cin >> action;
     if(action == "1") {
@@ -54,7 +55,11 @@ Piece* Joueur::interactionHorsCombat() const {
         return interactionHorsCombat();
     }
     else if(action == "4"){
-        this->swap();
+        swap();
+        return interactionHorsCombat();
+    }
+    else if(action == "5"){
+        getPerso()->print();
         return interactionHorsCombat();
     }
     else {

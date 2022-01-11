@@ -22,7 +22,7 @@ Personnage::Personnage(std::string nom_arg,
 }
 
 Personnage::~Personnage() {
-    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
+    //std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }
 
 std::string Personnage::getNom() const {
@@ -75,6 +75,9 @@ int Personnage::getExp() const {
 
 int Personnage::setSante(int santeArg) {
     indice_de_sante_actuel = santeArg;
+    if(indice_de_sante_actuel > indice_de_sante_max){
+        indice_de_sante_actuel = indice_de_sante_max;
+    }
     return indice_de_sante_actuel;
 }
 
@@ -171,15 +174,16 @@ void Personnage::enleverEffet(Statut effet){
 }
 
 void Personnage::victoire(Personnage * vaincu){
-    this->exp += vaincu->level * 10;
-    if((this->exp/100)>0){
-        levelUp(exp);
+    this->reset();
+    this->exp += vaincu->level * 25;
+    while((this->exp/100)>0){
+        levelUp();
+        exp -= 100;
     }
 }
 
-void Personnage::levelUp(int exp_arg) {
-    level += exp_arg/100;
-    exp = exp_arg%100;
+void Personnage::levelUp() {
+    level += 1;
     std::cout << this->getNom() << " est maintenant de niveau " << this->level << std::endl;
     setMaxSante(getSanteMax() + 25);
     setMaxAttaque(getAttaqueMax() + 10);
@@ -189,6 +193,7 @@ void Personnage::levelUp(int exp_arg) {
     setDefense(getDefenseMax());
     setSante(getSanteMax());
 }
+
 void Personnage::checkStatut() {
     size_t i = 0;
     while(i < statut.size()){
@@ -225,7 +230,7 @@ bool Personnage::updateStatut(){
           //  std::cout << "Bruler ";
         }
         if(statut[i].first == Empoisonner){
-            setSante(getSante() - (getSanteMax()/10));
+            setSante(getSante() - (getSanteMax()/8));
             statut[i].second -=1;
            // std::cout << "Empoisonner ";
         }
@@ -266,7 +271,7 @@ bool Personnage::updateStatut(){
         i++;
     }
 
-    std::cout << std::endl;
+    //std::cout << std::endl;
     return etourdit;
 }
 
@@ -367,6 +372,21 @@ void Personnage::actionObjetHC(const Joueur * player) {
 
 }
 
+void Personnage::autoloot() {
+    if(getPieceCour()->getVecObjet().size()>0){
+        if(getSac().size() < 4){
+            size_t i = 0;
+            while(i < getPieceCour()->getVecObjet().size()){
+                if(getPieceCour()->getVecObjet()[i]->getObjetType() == OT_Equipement){
+                    pushSac(getPieceCour()->getVecObjet()[i]);
+                    equipeAll();
+                }
+                i++;
+            }
+        }
+    }
+}
+
 void Personnage::equipeAll() {
     for (auto & objet: sac) {
         if(objet->getObjetType() == OT_Equipement){
@@ -407,6 +427,7 @@ Piece* Personnage::deplacement(int arrive) {
 
 Piece* Personnage::deplacementIA(){
     try {
+        autoloot();
         std::random_device seeder;
         std::mt19937 engine(seeder());
         std::uniform_int_distribution<int> dist(0, 3);
@@ -425,15 +446,14 @@ Piece* Personnage::deplacementIA(){
     }
 }
 
-void Personnage::actionIa(Personnage * cible) {
+void Personnage::actionIa(Personnage * cible, const Joueur * player) {
     std::random_device seeder;
     std::mt19937 engine(seeder());
     std::uniform_int_distribution<int> dist(0, 2);
     int choix = dist(engine);
 
-    //int v1 = rand() % 2;
     std::string choix2 = std::to_string(choix);
-    this->action(choix2,cible);
+    this->action(choix2,cible,player);
 }
 void Personnage::buff(Statut effet, int tour) {
     if(effetPresent(Ecorcher) && effet == Proteger){

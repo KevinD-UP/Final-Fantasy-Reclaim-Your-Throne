@@ -82,7 +82,7 @@ class Personnage {
 
         //Statut changement
         void victoire(Personnage *);
-        void levelUp(int);
+        void levelUp();
         void buff(Statut,int);
         void debuff(Statut,int,Personnage*);
         void checkStatut();
@@ -95,16 +95,18 @@ class Personnage {
         //Equipement check
         void equipeAll();
         void desequipe();
+        void drop();
+        void autoloot();
 
         //Déplacement
         Piece* deplacement(int);
         Piece* deplacementIA();
 
-        void actionIa(Personnage *);
+        void actionIa(Personnage *, const Joueur *);
         virtual void actionJoueur(const Joueur *, Personnage *) = 0;
         void actionObjet(const Joueur *, Personnage *);
         void actionObjetHC(const Joueur *);
-        virtual void action(std::string, Personnage *) = 0;
+        virtual void action(std::string, Personnage *, const Joueur *) = 0;
         friend std::ostream& operator<<(std::ostream& out, Personnage *personnageArg);
 
         bool estMort();

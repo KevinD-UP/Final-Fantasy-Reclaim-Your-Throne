@@ -36,11 +36,11 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
 }
 
 Piece* Joueur::interactionHorsCombat() const {
-    std::cout << "1 -Deplacement "
-              << "2 -Objet "
-              << "3 -Carte "
-              << "4 -Check Piece "
-              << "5 -Check Stats" << std::endl;
+    std::cout << "1-Deplacement "
+              << "2-Objet "
+              << "3-Carte "
+              << "4-Check_Piece "
+              << "5-Check_Stats" << std::endl;
     std::string action;
     std::cin >> action;
     if(action == "1") {
@@ -75,53 +75,53 @@ void Joueur::swap() const {
         std::string action;
         std::cin >> action;
         if(stoi(action)<0 || (size_t (stoi(action)))>personnageJoueur->getPieceCour()->getVecObjet().size() -1){
-            std::cout << "Mauvais choix" << std::endl;
+            std::cout << "Mauvais choix" << std::endl<< std::endl;
             return;
         }
         if(this->personnageJoueur->getSac().size() == 4){
             std::cout << "Le Sac est plein echangé avec un de vos objets" << std::endl;
             this->personnageJoueur->desequipe();
-            this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
-        }else{
-            std::cout << "Vous prenez:" << personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]->getNom() << std::endl;
-            this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
+
         }
+        std::cout << "Vous prenez:" << personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]->getNom() << std::endl  << std::endl;
+        this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
+        this->personnageJoueur->equipeAll();
     }
 }
 
 Piece* Joueur::deplacementJoueur() const {
-    std::cout << "1 - Haut " << "2 - Gauche " << "3 - Bas " << "4 - Droite " << "5 - Retour";
+    std::cout << "1-Haut " << "2-Gauche " << "3-Bas " << "4-Droite " << "5-Retour";
     std::cout << std::endl;
     std::string action;
     std::cin >> action;
     if (action == "1") {
         if(getPerso()->getPieceCour()->getVecPieceAdjacentes()[0] != nullptr) {
-            std::cout << "Direction vers le haut " << std::endl;
+            std::cout << "Direction vers le haut " << std::endl << std::endl;
             return personnageJoueur->deplacement(0);
         }
     }
     else if (action == "2") {
         if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[1] != nullptr) {
-            std::cout << "Direction vers le gauche " << std::endl;
+            std::cout << "Direction vers le gauche " << std::endl << std::endl;
             return personnageJoueur->deplacement(1);
         }
     }
     else if (action == "3") {
         if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[2] != nullptr) {
-            std::cout << "Direction vers le bas " << std::endl;
+            std::cout << "Direction vers le bas " << std::endl << std::endl;
             return personnageJoueur->deplacement(2);
         }
     }
     else if (action == "4") {
         if (getPerso()->getPieceCour()->getVecPieceAdjacentes()[3] != nullptr) {
-            std::cout << "Direction vers le droite " << std::endl;
+            std::cout << "Direction vers le droite " << std::endl << std::endl;
             return personnageJoueur->deplacement(3);
         }
     }
     else if (action == "5") {
         return this->interactionHorsCombat();
     }
-    std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl;
+    std::cout << "Il semblerait que vous allez droit vers un mur, réessayer" << std::endl << std::endl;
     return this->deplacementJoueur();
 }
 

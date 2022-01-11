@@ -51,9 +51,9 @@ void Partie::routine() {
         } else {
             std::random_device seeder;
             std::mt19937 engine(seeder());
-            std::uniform_int_distribution<int> dist(5, 5);
+            std::uniform_int_distribution<int> dist(0, 5);
             int combatAleatoire = dist(engine);
-            if(combatAleatoire == 5){
+            if(combatAleatoire >= 3 && combatAleatoire <= 5){
                 PersonnageType TYPE_Mob = PT_Mob;
                 Personnage* persoMort = deathBattle(PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin"), personnage);
                 if(persoMort->getPersonnageType() != PT_Mob){
@@ -99,19 +99,17 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             auto etat = b->updateStatut();
             if (b->estMort()) {
                 std::cout << "Victoire de " << a->getNom() << std::endl;
-                std::cout << a << std::endl;
-                a->reset();
+                std::cout << a->getNom() << " reçoit " << b->getLevel()*25  <<"EXP" << std::endl;
                 a->victoire(b);
+                std::cout << std::endl;
                 return b;
             }
             if (!etat) {
-                b->actionIa(a);
+                b->actionIa(a,joueur);
             }
             if (a->estMort()) {
-                std::cout << "Victoire de " << b->getNom() << std::endl;
-                std::cout << a << std::endl;
-                b->reset();
                 b->victoire(a);
+                std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;
             }
             if (!etat) {
@@ -122,9 +120,6 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
         else if(b == joueur->getPerso()) {
             auto etat = b->updateStatut();
             if (b->estMort()) {
-                std::cout << "Victoire de " << a->getNom() << std::endl;
-                std::cout << a << std::endl;
-                a->reset();
                 a->victoire(b);
                 return b;
             }
@@ -134,35 +129,33 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             etat = a->updateStatut();
             if (a->estMort()) {
                 std::cout << "Victoire de " << b->getNom() << std::endl;
-                std::cout << b << std::endl;
-                b->reset();
+                std::cout << b->getNom() << " reçoit " << a->getLevel()*25  <<"EXP" << std::endl;
                 b->victoire(a);
+                std::cout << std::endl;
                 return a;
             }
             if (!etat) {
-               a->actionIa(b);
+               a->actionIa(b,joueur);
             }
         }
         else {
             auto etat = b->updateStatut();
             if (b->estMort()) {
-                a->reset();
                 a->victoire(b);
                 //std::cout << "Victoire de " << a->getNom() << std::endl;
                 return b;
             }
             if (!etat) {
-                b->actionIa(a);
+                b->actionIa(a,joueur);
             }
             etat = a->updateStatut();
             if (a->estMort()) {
-                b->reset();
                 b->victoire(a);
                 //std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;
             }
             if (!etat) {
-                a->actionIa(b);
+                a->actionIa(b,joueur);
             }
         }
     }

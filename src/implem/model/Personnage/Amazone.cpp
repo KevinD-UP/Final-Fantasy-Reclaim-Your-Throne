@@ -11,9 +11,9 @@ Amazone::Amazone(const std::string& nom, int sante, int attaque, int defense, Pe
 
 void Amazone::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Niveau: " << getLevel()
+    std::cout << "Amazone de Niveau:" << getLevel()
               << " " << getExp() << "Exp: "
-              << getSante() << "HP "
+              << getSante() << "/" << getSanteMax() << "HP "
               << getAttaque() << ":Attaque "
               << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -22,7 +22,7 @@ void Amazone::print() {
 
 
 
-void Amazone::action(std::string nom, Personnage * ennemie)  {
+void Amazone::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage;
     std::string nomSort;
@@ -30,7 +30,7 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
     if(nom == "0"){
         type = Offensive;
         ennemie->pushStatut(Ecorcher,2);
-        dommage = attaque + 10 - ennemie->getDefense();
+        dommage = attaque + 20 - ennemie->getDefense();
         debuff(Ecorcher,2,ennemie);
         //inflige statut
         nomSort = "Ecorcher";
@@ -49,14 +49,14 @@ void Amazone::action(std::string nom, Personnage * ennemie)  {
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
         return;
     }
-    auto *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type, player);
     x->utilisation();
 }
 
 void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Ecorcher: Puissance:10. Reduit l'armure de l'ennemie" << std::endl;
-    std::cout << "1 - Execution: Puissance:5. Inflige 50% des PV manquant de la cible" << std::endl;
+    std::cout << "0 - Ecorcher: Puissance:20. Reduit l'armure de l'ennemie" << std::endl;
+    std::cout << "1 - Execution: Puissance:10. Inflige 50% des PV manquant de la cible" << std::endl;
     std::cout << "2 - Double attaque: Puissance:5. Attaque 2 fois" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
@@ -64,10 +64,15 @@ void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
         player->interactionEnCombat(cible);
     }
     else if(sort == "0" || sort == "1" || sort == "2" ) {
-        action(sort, cible);
+        action(sort, cible, player);
     }
     else{
         std::cout << "Cette attaque n'existe pas" << std::endl;
+        player->interactionEnCombat(cible);
     }
+}
 
+Amazone::~Amazone()
+noexcept {
+    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

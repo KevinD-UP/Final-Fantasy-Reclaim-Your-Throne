@@ -20,9 +20,10 @@ class Amazone : public IAmazone, public Personnage{
         Amazone(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
-        void action(std::string nom, Personnage * ennemie) override;
+        void action(std::string nom, Personnage * ennemie, const Joueur *) override;
         void actionJoueur(const Joueur *,Personnage *) override;
         void print() override;
+        virtual ~Amazone();
         friend class AmazoneFactory;
 };
 

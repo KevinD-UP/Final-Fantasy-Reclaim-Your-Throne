@@ -11,9 +11,9 @@ Moine::Moine(const std::string& nom, int sante, int attaque, int defense, Person
 
 void Moine::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Niveau: " << getLevel()
+    std::cout << "Moine de Niveau:" << getLevel()
               << " " << getExp() << "Exp: "
-              << getSante() << "HP "
+              << getSante() << "/" << getSanteMax() << "HP "
               << getAttaque() << ":Attaque "
               << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -21,7 +21,7 @@ void Moine::print() {
 
 
 
-void Moine::action(std::string nom, Personnage * ennemie)  {
+void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
     std::string nomSort;
@@ -54,7 +54,7 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
         return;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    auto *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type, player);
     x->utilisation();
 }
 
@@ -69,10 +69,16 @@ void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
         player->interactionEnCombat(cible);
     }
     else if(sort == "0" || sort == "1" || sort == "2" ) {
-        action(sort, cible);
+        action(sort, cible, player);
     }
     else{
         std::cout << "Cette attaque n'existe pas" << std::endl;
+        player->interactionEnCombat(cible);
     }
 
+}
+
+Moine::~Moine()
+noexcept {
+std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

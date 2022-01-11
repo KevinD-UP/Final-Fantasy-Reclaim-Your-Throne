@@ -19,9 +19,10 @@ class Sorcier : public ISorcier, public Personnage {
         Sorcier(std::string nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
-        void action(std::string nom, Personnage * ennemie) override;
+        void action(std::string nom, Personnage * ennemie, const Joueur *) override;
         void actionJoueur(const Joueur *,Personnage *) override;
         void print() override;
+        virtual ~Sorcier();
         friend class SorcierFactory;
 };
 

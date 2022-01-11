@@ -77,7 +77,7 @@ void PotionPoison::appliquerConsommable(Personnage *cible) {
 
 
 void PotionSomnolence::appliquerConsommable(Personnage *cible) {
-    cible->debuff(Etourdit,2,cible);
+    cible->debuff(Etourdit,3,cible);
 }
 
 void PotionBerserk::appliquerConsommable(Personnage *cible) {
@@ -93,7 +93,7 @@ void PotionEcorcher::appliquerConsommable(Personnage *cible) {
 }
 
 void PotionProteger::appliquerConsommable(Personnage *cible) {
-    cible->buff(Proteger,2);
+    cible->buff(Proteger,3);
 }
 
 void PotionChallenge::appliquerConsommable(Personnage *cible) {

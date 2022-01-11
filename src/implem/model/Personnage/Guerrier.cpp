@@ -10,9 +10,9 @@ Guerrier::Guerrier(const std::string& nom, int sante, int attaque, int defense, 
 
 void Guerrier::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Niveau: " << getLevel()
+    std::cout << "Guerrier de Niveau:" << getLevel()
               << " " << getExp() << "Exp "
-              << getSante() << "HP "
+              << getSante() << "/" << getSanteMax()<< "HP "
               << getAttaque() << ":Attaque "
               << getDefense() << ":Defense" <<std::endl;
     checkStatut();
@@ -21,21 +21,21 @@ void Guerrier::print() {
 
 
 
-void Guerrier::action(std::string nom, Personnage * ennemie)  {
+void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
     std::string nomSort;
     Type type;
     if(nom == "0"){
         type = Offensive;
-        dommage = attaque + 20 - ennemie->getDefense();
+        dommage = attaque + 25 - ennemie->getDefense();
         //inflige statut
         nomSort = "Lacérage";
     }
     else if(nom == "1"){
         type = Offensive;
         buff(Berserk,2);
-        dommage = attaque + 5  - ennemie->getDefense();
+        dommage = attaque + 10  - ennemie->getDefense();
         nomSort = "Berserk";
     }
     else if(nom == "2"){
@@ -43,18 +43,12 @@ void Guerrier::action(std::string nom, Personnage * ennemie)  {
         dommage = attaque + 5 + (getDefense() * 5/4) - ennemie->getDefense();
         nomSort = "Armure pointu";
     }
-    else if(nom == "4"){
-        type = Offensive;
-        dommage = 0;
-        nomSort = "Passer";
-    }
     else{
         std::cout<< "ECHEC cette action n'existe pas " << nom <<std::endl;
         //actionJoueur(,ennemie);
         return;
     }
-    //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    auto *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type, player);
     x->utilisation();
 }
 
@@ -68,11 +62,17 @@ void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
     if(sort == "3"){
         player->interactionEnCombat(cible);
     }
-    else if(sort == "0" || sort == "1" || sort == "2" || sort == "4") {
-        action(sort, cible);
+    else if(sort == "0" || sort == "1" || sort == "2") {
+        action(sort, cible, player);
     }
     else{
         std::cout << "Cette attaque n'existe pas" << std::endl;
+        player->interactionEnCombat(cible);
     }
 
+}
+
+Guerrier::~Guerrier()
+noexcept {
+std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

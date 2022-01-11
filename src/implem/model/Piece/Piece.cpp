@@ -45,7 +45,7 @@ std::vector<Objet *> Piece::allEquipement = {Epee,Armure,Toge,Masse,Lance,Arc,Ba
 Piece::Piece(){
     std::random_device seeder;
     std::mt19937 engine(seeder());
-    std::uniform_int_distribution<int> dist(0, 3);
+    std::uniform_int_distribution<int> dist(0, 2);
     int nombreObjet = dist(engine);
     fill(nombreObjet);
 }

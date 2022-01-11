@@ -3,8 +3,7 @@
 //
 
 #include "../../../header/model/Personnage/Guerrier.h"
-#include "../../../header/model/Action/Action.h"
-#include<string>
+
 Guerrier::Guerrier(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
     Personnage(nom, sante, attaque, defense, typePersonnage, sac)
 {}

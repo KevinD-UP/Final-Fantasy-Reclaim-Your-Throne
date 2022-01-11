@@ -5,6 +5,8 @@
 #ifndef LOA_ACTION_H
 #define LOA_ACTION_H
 #include "../Personnage/Personnage.h"
+#include "../Personnage/Mob.h"
+
 
 class Action{
     private:
@@ -14,7 +16,7 @@ class Action{
         std::string nom;
         int dommage;
     public:
-        Action(Personnage*,Personnage*, std::string, int, Type);
+        Action(Personnage*, Personnage*, std::string, int, Type);
         void utilisation();
 };
 #endif //LOA_ACTION_H

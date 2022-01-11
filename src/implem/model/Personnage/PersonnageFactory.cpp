@@ -21,6 +21,8 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
         return (new MoineFactory)->FactoryMethod(nom);
     } else if (personnagetype == PT_Sorcier){
         return (new SorcierFactory)->FactoryMethod(nom);
+    } else if (personnagetype == PT_Mob){
+        return (new MobFactory)->FactoryMethod(nom);
     } else {
         throw std::invalid_argument( "Aucun type de personnage ne correspond, échec de la création de personnage");
     }
@@ -69,4 +71,12 @@ Personnage *SorcierFactory::FactoryMethod(const std::string &nom) const {
     int defense = 10;
     std::vector<Objet *> sac = {Potion,Baguette,Robe};
     return new Sorcier(nom, sante, attaque, defense, PT_Sorcier, sac);
+}
+
+Personnage *MobFactory::FactoryMethod(const std::string &nom) const {
+    int sante = 20;
+    int attaque = 5;
+    int defense = 5;
+    std::vector<Objet *> sac;
+    return new Mob(nom, sante, attaque, defense, PT_Mob, sac);
 }

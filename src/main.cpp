@@ -26,7 +26,7 @@ PersonnageType TYPE_Amazone = PT_Amazone;
 PersonnageType TYPE_Moine = PT_Moine;
 PersonnageType TYPE_Sorcier = PT_Sorcier;
 
-static vector<std::string> names = {
+static std::vector<std::string> names = {
         "Aien Xilcan",
         "Gorwin Fenroris",
         "Sinaht Zinnorin",

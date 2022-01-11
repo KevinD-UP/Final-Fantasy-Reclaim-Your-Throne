@@ -9,6 +9,7 @@
 #include "Guerrier.h"
 #include "Moine.h"
 #include "Sorcier.h"
+#include "Mob.h"
 
 class PersonnageFactory {
 
@@ -39,6 +40,12 @@ class SorcierFactory : public PersonnageFactory {
 
     public:
         Personnage* FactoryMethod(const std::string& nom) const override;
+};
+
+class MobFactory : public PersonnageFactory {
+
+public:
+    Personnage* FactoryMethod(const std::string& nom) const override;
 };
 
 

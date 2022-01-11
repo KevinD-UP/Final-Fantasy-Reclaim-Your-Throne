@@ -8,8 +8,8 @@
 #include "Personnage.h"
 #include "../Objet/Objet.h"
 #include "../Joueur/Joueur.h"
+#include "../Action/Action.h"
 #include <iostream>
-using namespace std;
 
 class IGuerrier {
 };

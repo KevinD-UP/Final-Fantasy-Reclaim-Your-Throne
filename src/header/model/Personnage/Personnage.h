@@ -19,6 +19,7 @@ enum PersonnageType{
     PT_Amazone,
     PT_Moine,
     PT_Sorcier,
+    PT_Mob
 };
 
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent, Affaiblie, Berserk, Proteger, Ecorcher };
@@ -112,8 +113,7 @@ class Personnage {
         friend class Moine;
         friend class Guerrier;
         friend class Sorcier;
-
-
+        friend class Mob;
 };
 
 #include "../Joueur/Joueur.h"

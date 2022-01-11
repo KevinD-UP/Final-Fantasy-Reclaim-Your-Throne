@@ -8,6 +8,8 @@
 #include "model/Personnage/Personnage.h"
 #include "model/Joueur/Joueur.h"
 #include "model/Piece/Map.h"
+#include "model/Personnage/PersonnageFactory.h"
+
 #include <algorithm>
 
 class Partie {

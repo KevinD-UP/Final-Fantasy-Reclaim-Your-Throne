@@ -48,6 +48,24 @@ void Partie::routine() {
             if(finDePartie()){
                 return;
             }
+        } else {
+            std::random_device seeder;
+            std::mt19937 engine(seeder());
+            std::uniform_int_distribution<int> dist(5, 5);
+            int combatAleatoire = dist(engine);
+            if(combatAleatoire == 5){
+                PersonnageType TYPE_Mob = PT_Mob;
+                Personnage* persoMort = deathBattle(PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin"), personnage);
+                if(persoMort->getPersonnageType() != PT_Mob){
+                    pieceArrive->removePerso(persoMort);
+                    retraitPersonnageMort(persoMort);
+                }
+                delete persoMort;
+                persoMort = nullptr;
+                if(finDePartie()){
+                    return;
+                }
+            }
         }
     }
     routine();

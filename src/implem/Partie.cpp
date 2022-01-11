@@ -148,7 +148,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             if (b->estMort()) {
                 a->reset();
                 a->victoire(b);
-                std::cout << "Victoire de " << a->getNom() << std::endl;
+                //std::cout << "Victoire de " << a->getNom() << std::endl;
                 return b;
             }
             if (!etat) {
@@ -158,7 +158,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             if (a->estMort()) {
                 b->reset();
                 b->victoire(a);
-                std::cout << "Victoire de " << b->getNom() << std::endl;
+                //std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;
             }
             if (!etat) {

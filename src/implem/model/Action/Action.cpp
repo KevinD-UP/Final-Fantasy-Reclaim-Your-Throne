@@ -15,7 +15,7 @@ void Action::utilisation(){
     if (type == Defensive) {
         std::cout << "L'action " << nom << " a été utiliser sur " << lanceur->getNom() << std::endl;
         lanceur->setSante(lanceur->getSante() + dommage);
-        std::cout << receveur->getNom() << " recoit " << dommage << " de soin" << std::endl << std::endl;
+        std::cout << lanceur->getNom() << " recoit " << dommage << " de soin" << std::endl << std::endl;
     }
 
 }

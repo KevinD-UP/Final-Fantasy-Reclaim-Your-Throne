@@ -30,43 +30,51 @@ void Partie::startToPlay() {
 }
 
 void Partie::routine() {
-    for(auto personnage: persoEnJeu){
-        Piece * pieceArrive = nullptr;
-        if(personnage == joueur->getPerso()){
-            std::cout << "Tour du joueur: " << joueur->getPerso()->getNom() << std::endl;
-            pieceArrive = joueur->interactionHorsCombat();
-        } else {
-            std::cout << "Tour de l'IA: " << personnage->getNom() << std::endl;
-            pieceArrive = personnage->deplacementIA();
-        }
-        if(pieceArrive->combatPossible()) {
-            Personnage * persoMort = deathBattle(pieceArrive->getVecPerso()[0], personnage);
-            pieceArrive->removePerso(persoMort);
-            retraitPersonnageMort(persoMort);
-            delete persoMort;
-            persoMort = nullptr;
-            if(finDePartie()){
-                return;
+    std::vector<Personnage*> persosMort;
+    for(auto personnage: persoEnJeu) {
+        if (!personnage->estMort()) {
+            Piece *pieceArrive = nullptr;
+            if (personnage == joueur->getPerso()) {
+                std::cout << "Tour du joueur: " << joueur->getPerso()->getNom() << std::endl;
+                pieceArrive = joueur->interactionHorsCombat();
+            } else {
+                std::cout << "Tour de l'IA: " << personnage->getNom() << std::endl;
+                pieceArrive = personnage->deplacementIA();
             }
-        } else {
-            std::random_device seeder;
-            std::mt19937 engine(seeder());
-            std::uniform_int_distribution<int> dist(5, 5);
-            int combatAleatoire = dist(engine);
-            if(combatAleatoire == 5){
-                PersonnageType TYPE_Mob = PT_Mob;
-                Personnage* persoMort = deathBattle(PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin"), personnage);
-                if(persoMort->getPersonnageType() != PT_Mob){
-                    pieceArrive->removePerso(persoMort);
-                    retraitPersonnageMort(persoMort);
-                }
-                delete persoMort;
-                persoMort = nullptr;
-                if(finDePartie()){
+            if (pieceArrive->combatPossible()) {
+                Personnage *persoMort = deathBattle(pieceArrive->getVecPerso()[0], personnage);
+                pieceArrive->removePerso(persoMort);
+                persosMort.push_back(persoMort);
+                if (finDePartie()) {
                     return;
                 }
+            } else {
+                std::random_device seeder;
+                std::mt19937 engine(seeder());
+                std::uniform_int_distribution<int> dist(0, 5);
+                int combatAleatoire = dist(engine);
+                if (combatAleatoire == 5) {
+                    PersonnageType TYPE_Mob = PT_Mob;
+                    Personnage *mob = PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin");
+                    Personnage *persoMort = deathBattle(mob, personnage);
+                    if (persoMort->getPersonnageType() != PT_Mob) {
+                        pieceArrive->removePerso(persoMort);
+                        retraitPersonnageMort(persoMort);
+                        persosMort.push_back(persoMort);
+                    }
+                    delete mob;
+                    mob = nullptr;
+                    if (finDePartie()) {
+                        return;
+                    }
+                }
             }
         }
+    }
+    for(auto persoMort: persosMort){
+        retraitPersonnageMort(persoMort);
+        delete persoMort;
+        persoMort = nullptr;
     }
     routine();
 }

@@ -12,8 +12,8 @@ Personnage* Joueur::getPerso() const {
 }
 
 void Joueur::interactionEnCombat(Personnage *cible) const {
-    std::cout << "1 - Examiner "
-              << "2 - Attaque "
+    std::cout << "1 - Examiner | "
+              << "2 - Attaque | "
               << "3 - Objet " << std::endl;
     std::string action;
     std::cin >> action;
@@ -36,11 +36,11 @@ void Joueur::interactionEnCombat(Personnage *cible) const {
 }
 
 Piece* Joueur::interactionHorsCombat() const {
-    std::cout << "1-Deplacement "
-              << "2-Objet "
-              << "3-Carte "
-              << "4-Check_Piece "
-              << "5-Check_Stats" << std::endl;
+    std::cout << "1 - Deplacement | "
+              << "2 - Objet | "
+              << "3 - Carte | "
+              << "4 - Check_Piece | "
+              << "5 - Check_Stats " << std::endl;
     std::string action;
     std::cin >> action;
     if(action == "1") {
@@ -83,7 +83,7 @@ void Joueur::swap() const {
             return;
         }
         if(this->personnageJoueur->getSac().size() == 4){
-            std::cout << "Le Sac est plein echangé avec un de vos objets" << std::endl;
+            std::cout << "Le Sac est plein, echanger avec un de vos objets" << std::endl;
             this->personnageJoueur->desequipe();
 
         }
@@ -94,7 +94,7 @@ void Joueur::swap() const {
 }
 
 Piece* Joueur::deplacementJoueur() const {
-    std::cout << "1-Haut " << "2-Gauche " << "3-Bas " << "4-Droite " << "5-Retour";
+    std::cout << "1 - Haut | " << "2 - Gauche | " << "3 - Bas |" << " 4 - Droite |" << " 5 - Retour ";
     std::cout << std::endl;
     std::string action;
     std::cin >> action;

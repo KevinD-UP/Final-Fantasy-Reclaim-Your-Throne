@@ -12,19 +12,18 @@ Sorcier::Sorcier(std::string nom, int niveau, int sante, int attaque, int defens
 
 void Sorcier::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Sorcier de Niveau: " << getLevel()
+    std::cout << "Sorcier de Niveau:" << getLevel()
               << " " << getExp() << "Exp: "
               << getSante() << "/" << getSanteMax() << "HP "
-              << getAttaque() << ":Attaque "
-              << getDefense() << ":Defense" <<std::endl;
+              << "Attaque: " << getAttaque()
+              << "Defense: " << getDefense() <<std::endl;
     checkStatut();
 
 }
 
 
 void Sorcier::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
-    //std::cout<< "La sorciere utilise " << nom << std::endl;
-    int dommage = 0;
+    int dommage;
     std::string nomSort;
     Type type;
     if(nom == "0"){
@@ -57,10 +56,10 @@ void Sorcier::action(std::string nom, Personnage * ennemie, const Joueur * playe
 
 void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Boule de feu: Puissance:15. " << std::endl;
-    std::cout << "1 - Eclair: Puissance: 2/3 de l'attaque. Ignore 50% de l'armure ennemie" << std::endl;
-    std::cout << "2 - Drain: Puissance:5. Regenere 25% des dommages infligés et applique Affaiblie" << std::endl;
-    std::cout << "3 - Retour choix" << std::endl;
+    std::cout << "| 0 - Boule de feu: Puissance:15 | " << std::endl;
+    std::cout << "| 1 - Eclair: Puissance: 2/3 de l'attaque. Ignore 50% de l'armure ennemie |" << std::endl;
+    std::cout << "| 2 - Drain: Puissance:5. Regenere 25% des dommages infligés et applique Affaiblie |" << std::endl;
+    std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
         player->interactionEnCombat(cible);

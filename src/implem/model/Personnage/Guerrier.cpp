@@ -11,10 +11,10 @@ Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, i
 void Guerrier::print() {
     std::cout << nom <<std::endl;
     std::cout << "Guerrier de Niveau:" << getLevel()
-              << " " << getExp() << "Exp "
-              << getSante() << "/" << getSanteMax()<< "HP "
-              << getAttaque() << ":Attaque "
-              << getDefense() << ":Defense" <<std::endl;
+              << " " << getExp() << "Exp: "
+              << getSante() << "/" << getSanteMax() << "HP "
+              << "Attaque: " << getAttaque()
+              << "Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 
@@ -22,7 +22,7 @@ void Guerrier::print() {
 
 
 void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
-    int dommage = 0;
+    int dommage;
     std::string nomSort;
     Type type;
     if(nom == "0"){
@@ -53,10 +53,10 @@ void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * play
 
 void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Lacérage: Puissance:25. " << std::endl;
-    std::cout << "1 - Berserk: Puissance:10. Le personnage devient Berserk: augmente l'attaque selon la vie perdu" << std::endl;
-    std::cout << "2 - Armure pointu: Puissance:5. Inflige 25% de l'armure du personnage" << std::endl;
-    std::cout << "3 - Retour choix" << std::endl;
+    std::cout << "| 0 - Lacérage: Puissance:25 |" << std::endl;
+    std::cout << "| 1 - Berserk: Puissance:10. Le personnage devient Berserk: augmente l'attaque selon la vie perdu |" << std::endl;
+    std::cout << "| 2 - Armure pointu: Puissance:5. Inflige 25% de l'armure du personnage |" << std::endl;
+    std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
         player->interactionEnCombat(cible);

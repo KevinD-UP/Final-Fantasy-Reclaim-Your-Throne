@@ -14,16 +14,15 @@ void Moine::print() {
     std::cout << "Moine de Niveau:" << getLevel()
               << " " << getExp() << "Exp: "
               << getSante() << "/" << getSanteMax() << "HP "
-              << getAttaque() << ":Attaque "
-              << getDefense() << ":Defense" <<std::endl;
+              << "Attaque: " << getAttaque()
+              << "Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 
 
 
 void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
-    //std::cout<< "La sorciere utilise " << nom << std::endl;
-    int dommage = 0;
+    int dommage;
     std::string nomSort;
     Type type;
     if(nom == "0"){
@@ -60,10 +59,10 @@ void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)
 
 void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Frappe: Puissance:15. 25% de chance d'étourdir votre ennemie" << std::endl;
-    std::cout << "1 - Soin: Puissance:5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour" << std::endl;
-    std::cout << "2 - Chatiment: Puissance:x. Inflige 25% des PV courant" << std::endl;
-    std::cout << "3 - Retour choix" << std::endl;
+    std::cout << "| 0 - Frappe: Puissance:15. 25% de chance d'étourdir votre ennemie |" << std::endl;
+    std::cout << "| 1 - Soin: Puissance:5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour |" << std::endl;
+    std::cout << "| 2 - Chatiment: Puissance:x. Inflige 25% des PV courant |" << std::endl;
+    std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
         player->interactionEnCombat(cible);

@@ -135,8 +135,8 @@ Partie::Partie(std::vector<Personnage*> persoEnJeuArg, const Joueur* joueurArg, 
 
 Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
     if(a == joueur->getPerso() || b == joueur->getPerso()){
-        std::cout << "Combat entre : " << a->getNom() << " et "
-                  << b->getNom() << std::endl;
+        std::cout << "/!\\ Combat entre : " << a->getNom() << " et "
+                  << b->getNom() << " /!\\ " << std::endl;
     }
     while(!a->estMort() || !b->estMort()){
         if(a == joueur->getPerso()) {

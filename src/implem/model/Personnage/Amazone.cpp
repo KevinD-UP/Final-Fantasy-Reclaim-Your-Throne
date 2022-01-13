@@ -4,7 +4,7 @@
 
 #include "../../../header/model/Personnage/Amazone.h"
 #include "../../../header/model/Action/Action.h"
-#include<string>
+
 Amazone::Amazone(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte) :
     Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
@@ -14,16 +14,14 @@ void Amazone::print() {
     std::cout << "Amazone de Niveau:" << getLevel()
               << " " << getExp() << "Exp: "
               << getSante() << "/" << getSanteMax() << "HP "
-              << getAttaque() << ":Attaque "
-              << getDefense() << ":Defense" <<std::endl;
+              << "Attaque: " << getAttaque()
+              << "Defense: " << getDefense() <<std::endl;
     checkStatut();
-
 }
 
 
 
 void Amazone::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
-    //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage;
     std::string nomSort;
     Type type;
@@ -55,10 +53,10 @@ void Amazone::action(std::string nom, Personnage * ennemie, const Joueur * playe
 
 void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Ecorcher: Puissance:20. Reduit l'armure de l'ennemie" << std::endl;
-    std::cout << "1 - Execution: Puissance:10. Inflige 50% des PV manquant de la cible" << std::endl;
-    std::cout << "2 - Double attaque: Puissance:5. Attaque 2 fois" << std::endl;
-    std::cout << "3 - Retour choix" << std::endl;
+    std::cout << "| 0 - Ecorcher: Puissance:20. Reduit l'armure de l'ennemie |" << std::endl;
+    std::cout << "| 1 - Execution: Puissance:10. Inflige 50% des PV manquant de la cible |" << std::endl;
+    std::cout << "| 2 - Double attaque: Puissance:5. Attaque 2 fois |" << std::endl;
+    std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
         player->interactionEnCombat(cible);

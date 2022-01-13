@@ -4,8 +4,6 @@
 
 #include "../../../header/model/Objet/Consommable.h"
 
-#include <utility>
-
 Consommable::Consommable( std::string nom_arg,  ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
 : Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)), typeConsommable(consommableType_arg), cibleConsommable(consommableCible_arg)
 {}
@@ -98,7 +96,7 @@ void PotionProteger::appliquerConsommable(Personnage *cible) {
 }
 
 void PotionTeleportation::appliquerConsommable(Personnage *cible) {
-    std::cout << "Choisir une coordoné x y" << std::endl;
+    std::cout << "Choisir une coordonnée x y" << std::endl;
     std::string x = "";
     std::string y = "";
     std::cin >> x >> y;

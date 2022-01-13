@@ -13,7 +13,7 @@ class Mob : public Personnage {
 
 private:
 
-    Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+    Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
 public:
     void action(std::string nom, Personnage * ennemie, const Joueur *) override;

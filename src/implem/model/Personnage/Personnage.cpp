@@ -11,14 +11,16 @@ Personnage::Personnage(std::string nom_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
                        const PersonnageType &personnageType_arg,
-                       std::vector<Objet*> &sac_arg):
+                       std::vector<Objet*> &sac_arg,
+                       const Map* carte_arg):
                        nom(std::move(nom_arg)),
                        level(niveau),
                        indice_de_sante_max(sante_arg),
                        attaque_max(attaque_arg),
                        defense_max(defense_arg),
                        typePersonnage(personnageType_arg),
-                       sac(sac_arg)
+                       sac(sac_arg),
+                       carte(std::move(carte_arg))
 
 {
     equipeAll();
@@ -76,10 +78,17 @@ int Personnage::getExp() const {
     return exp;
 }
 
+const Map *Personnage::getMap() const {
+    return carte;
+}
+
 int Personnage::setSante(int santeArg) {
     indice_de_sante_actuel = santeArg;
     if(indice_de_sante_actuel > indice_de_sante_max){
         indice_de_sante_actuel = indice_de_sante_max;
+    }
+    if(indice_de_sante_actuel <= 0){
+        indice_de_sante_actuel = 0;
     }
     return indice_de_sante_actuel;
 }
@@ -133,7 +142,7 @@ Statut Personnage::pushStatut(Statut newStatut, int temp) {
 }
 
 void Personnage::reset(){
-    setSante(getSante() + getSanteMax()/6);
+    setSante(getSante() + getSanteMax()/10);
     setAttaque(getAttaqueMax());
     setDefense(getDefenseMax());
     statut.clear();
@@ -179,8 +188,8 @@ void Personnage::enleverEffet(Statut effet){
 void Personnage::victoire(Personnage * vaincu){
     this->reset();
     vaincu->drop();
-    this->exp += vaincu->level * 25;
-    while((this->exp/100)>0){
+    exp += vaincu->getLevel() * 25;
+    while((exp/100)>0){
         levelUp();
         exp -= 100;
     }
@@ -440,9 +449,6 @@ Piece* Personnage::deplacementIA(){
         std::mt19937 engine(seeder());
         std::uniform_int_distribution<int> dist(0, 3);
         int deplacementAleatoire = dist(engine);
-        //random ++;
-        //srand((int) time(0) + random);
-        //int deplacementAleatoire = rand() % 3;
         if(pieceCourante->getVecPieceAdjacentes()[deplacementAleatoire] != nullptr) {
             return this->deplacement(deplacementAleatoire);
         }

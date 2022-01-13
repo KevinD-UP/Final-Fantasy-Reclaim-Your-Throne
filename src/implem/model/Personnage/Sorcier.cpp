@@ -6,8 +6,8 @@
 #include "../../../header/model/Action/Action.h"
 #include<string>
 #include <utility>
-Sorcier::Sorcier(std::string nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(std::move(nom), niveau, sante, attaque, defense, typePersonnage, sac)
+Sorcier::Sorcier(std::string nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
+    Personnage(std::move(nom), niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Sorcier::print() {
@@ -76,7 +76,6 @@ void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
 }
 
 void Sorcier::drop() {
-    std::cout << "drop Sorcier" <<std::endl;
     size_t i = 0;
     while(getSac().size() > i){
         getPieceCour()->pushObjet(sac[i]);

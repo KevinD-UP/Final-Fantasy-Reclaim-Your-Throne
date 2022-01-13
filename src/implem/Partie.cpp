@@ -31,9 +31,9 @@ void Partie::startToPlay() {
 }
 
 void Partie::routine() {
-    tour ++;
-    std::vector<Personnage*> persosMort;
-    for(auto personnage: persoEnJeu) {
+    tour++;
+    std::vector < Personnage * > persosMort;
+    for (auto personnage: persoEnJeu) {
         if (!personnage->estMort()) {
             Piece *pieceArrive = nullptr;
             if (personnage == joueur->getPerso()) {
@@ -51,61 +51,63 @@ void Partie::routine() {
                     return;
                 }
             } else {
-            std::random_device seeder;
-            std::mt19937 engine(seeder());
-            std::uniform_int_distribution<int> dist(0, 10);
-            int combatAleatoire = dist(engine);
-            if(combatAleatoire > 8 && tour >= 10){
-                PersonnageType TYPE_Mob = PT_Dragon;
-                Personnage* Dragon = PersonnageFactory::initPersonnage(TYPE_Mob, "Dragon");
-                Dragon->setPiece(pieceArrive);
-                Personnage* persoMort = deathBattle(Dragon, personnage);
-                if(persoMort->getPersonnageType() != PT_Dragon){
-                    pieceArrive->removePerso(persoMort);
-                    retraitPersonnageMort(persoMort);
-                    persosMort.push_back(persoMort);
-                }
-                delete Dragon;
-                Dragon = nullptr;
-                if(finDePartie()){
-                    return;
-                }
-            }
-            else if(combatAleatoire > 5 && tour >= 5){
-                PersonnageType TYPE_Mob = PT_Loup;
-                Personnage* Loup = PersonnageFactory::initPersonnage(TYPE_Mob, "Loup");
-                Loup->setPiece(pieceArrive);
-                Personnage* persoMort = deathBattle(Loup, personnage);
-                if(persoMort->getPersonnageType() != PT_Loup){
-                    pieceArrive->removePerso(persoMort);
-                    retraitPersonnageMort(persoMort);
-                    persosMort.push_back(persoMort);
-                }
-                delete Loup;
-                Loup = nullptr;
-                if(finDePartie()){
-                    return;
-                }
-            }
-            else if(combatAleatoire >= 2){
-                PersonnageType TYPE_Mob = PT_Mob;
-                Personnage* Gobelin = PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin");
-                Gobelin->setPiece(pieceArrive);
-                Personnage* persoMort = deathBattle(Gobelin, personnage);
-                if(persoMort->getPersonnageType() != PT_Mob){
-                    pieceArrive->removePerso(persoMort);
-                    retraitPersonnageMort(persoMort);
-                    persosMort.push_back(persoMort);
-                }
-                delete Gobelin
-                Gobelin = nullptr;
-                if(finDePartie()){
-                    return;
+                std::random_device seeder;
+                std::mt19937 engine(seeder());
+                std::uniform_int_distribution<int> dist(0, 10);
+                int combatAleatoire = dist(engine);
+                if (combatAleatoire > 8 && tour >= 10) {
+                    PersonnageType TYPE_Mob = PT_Dragon;
+                    Personnage *Dragon = PersonnageFactory::initPersonnage(TYPE_Mob, "Dragon",chateau);
+                    Dragon->setPiece(pieceArrive);
+                    Personnage *persoMort = deathBattle(Dragon, personnage);
+                    if (persoMort->getPersonnageType() != PT_Dragon) {
+                        pieceArrive->removePerso(persoMort);
+                        retraitPersonnageMort(persoMort);
+                        persosMort.push_back(persoMort);
+                    }
+                    delete Dragon;
+                    Dragon = nullptr;
+                    if (finDePartie()) {
+                        return;
+                    }
+                } else if (combatAleatoire > 5 && tour >= 5) {
+                    PersonnageType TYPE_Mob = PT_Loup;
+                    Personnage *Loup = PersonnageFactory::initPersonnage(TYPE_Mob, "Loup",chateau);
+                    Loup->setPiece(pieceArrive);
+                    Personnage *persoMort = deathBattle(Loup, personnage);
+                    if (persoMort->getPersonnageType() != PT_Loup) {
+                        pieceArrive->removePerso(persoMort);
+                        retraitPersonnageMort(persoMort);
+                        persosMort.push_back(persoMort);
+                    }
+                    delete Loup;
+                    Loup = nullptr;
+                    if (finDePartie()) {
+                        return;
+                    }
+                } else if (combatAleatoire >= 2) {
+                    PersonnageType TYPE_Mob = PT_Mob;
+                    Personnage *Gobelin = PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin",chateau);
+                    Gobelin->setPiece(pieceArrive);
+                    Personnage *persoMort = deathBattle(Gobelin, personnage);
+                    if (persoMort->getPersonnageType() != PT_Mob) {
+                        pieceArrive->removePerso(persoMort);
+                        retraitPersonnageMort(persoMort);
+                        persosMort.push_back(persoMort);
+                    }
+                    delete Gobelin;
+                    Gobelin = nullptr;
+                    if (finDePartie()) {
+                        return;
+                    }
                 }
             }
         }
     }
-    for(auto persoMort: persosMort){
+    if (finDePartie()) {
+        return;
+    }
+    for (auto persoMort: persosMort) {
         retraitPersonnageMort(persoMort);
         delete persoMort;
         persoMort = nullptr;
@@ -185,7 +187,6 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
         else {
             auto etat = b->updateStatut();
             if (b->estMort()) {
-                a->reset();
                 a->victoire(b);
                 //std::cout << "Victoire de " << a->getNom() << std::endl;
                 return b;
@@ -195,7 +196,6 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             etat = a->updateStatut();
             if (a->estMort()) {
-                b->reset();
                 b->victoire(a);
                 //std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;

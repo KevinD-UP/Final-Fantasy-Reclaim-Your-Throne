@@ -16,7 +16,8 @@ enum ConsommableType {
     CT_POTIONBERSERK,
     CT_POTIONECORCHER,
     CT_POTIONAFFAIBLIE,
-    CT_POTIONPROTEGER
+    CT_POTIONPROTEGER,
+    CT_POTIONTELEPORTATION
 };
 
 enum ConsommableCible {
@@ -44,7 +45,7 @@ public:
     friend class PotionAffaiblie;
     friend class PotionEcorcher;
     friend class PotionProteger;
-    friend class PotionChallenge;
+    friend class PotionTeleportation;
 };
 
 class PotionSoin : public Consommable {
@@ -115,12 +116,12 @@ public:
     friend class PotionProtegerFactory;
 };
 
-class PotionChallenge : public Consommable{
+class PotionTeleportation : public Consommable{
 private:
-    PotionChallenge(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
+    PotionTeleportation(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
 public:
     void appliquerConsommable(Personnage *) override;
-    friend class PotionProtegerFactory;
+    friend class PotionTeleportationFactory;
 };
 
 

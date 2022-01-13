@@ -15,7 +15,7 @@ private:
 public:
     Map();
     std::vector<std::vector<Piece*>> getMap() const;
-    void showMap(const Joueur *);
+    void showMap(const Joueur *) const;
 };
 
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_MAP_H

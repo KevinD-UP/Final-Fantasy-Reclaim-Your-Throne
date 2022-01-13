@@ -153,7 +153,7 @@ int main(){
     Personnage* ennemie2;
     Personnage* ennemie3;
 
-    Map* carte = new Map();
+    const Map* carte = new Map();
 
     std::cout << "Bienvenue sur FINAL FANTASY RECLAIM YOUR THRONE" << std::endl;
     std::cout << "Veuillez écrire le nom de votre personnage : " << std::endl;
@@ -172,37 +172,37 @@ int main(){
     }
 
     if(choixPerso == 1){
-        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Guerrier, nomPerso);
-        joueur = new Joueur(personnageJoueur,carte);
+        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Guerrier, nomPerso,carte);
+        joueur = new Joueur(personnageJoueur);
         std::cout << "Votre personnage a été crée" << std::endl;
         std::cout << "Création des personnages non joueur..." << std::endl;
-        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()));
-        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()));
-        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()));
+        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()),carte);
+        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()),carte);
+        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()),carte);
     }else if (choixPerso == 2){
-        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Amazone, nomPerso);
-        joueur = new Joueur(personnageJoueur,carte);
+        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Amazone, nomPerso,carte);
+        joueur = new Joueur(personnageJoueur);
         std::cout << "Votre personnage a été crée" << std::endl;
         std::cout << "Création des personnages non joueur..." << std::endl;
-        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()));
-        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()));
-        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()));
+        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()),carte);
+        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()),carte);
+        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()),carte);
     }else if (choixPerso == 3){
-        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Moine, nomPerso);
-        joueur = new Joueur(personnageJoueur,carte);
+        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Moine, nomPerso,carte);
+        joueur = new Joueur(personnageJoueur);
         std::cout << "Votre personnage a été crée" << std::endl;
         std::cout << "Création des personnages non joueur..." << std::endl;
-        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()));
-        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()));
-        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()));
+        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()),carte);
+        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()),carte);
+        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Amazone,*select_randomly(names.begin(), names.end()),carte);
     }else if(choixPerso == 4){
-        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Sorcier, nomPerso);
-        joueur = new Joueur(personnageJoueur,carte);
+        personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Sorcier, nomPerso,carte);
+        joueur = new Joueur(personnageJoueur);
         std::cout << "Votre personnage a été crée" << std::endl;
         std::cout << "Création des personnages non joueur..." << std::endl;
-        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()));
-        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()));
-        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()));
+        ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()),carte);
+        ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()),carte);
+        ennemie3 = PersonnageFactory::initPersonnage(TYPE_Guerrier,*select_randomly(names.begin(), names.end()),carte);
     }
 
 

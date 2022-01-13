@@ -21,6 +21,8 @@ Consommable* ConsommableFactory::initConsommable(ConsommableType & consommableTy
         return (new PotionProtegerFactory)->FactoryMethod();
     } else if (consommableType == CT_POTIONECORCHER){
         return (new PotionEcorcherFactory)->FactoryMethod();
+    }else if (consommableType == CT_POTIONTELEPORTATION){
+        return (new PotionTeleportationFactory)->FactoryMethod();
     }
     else {
         throw std::invalid_argument( "Consommable inexistant");
@@ -57,4 +59,8 @@ Consommable *PotionEcorcherFactory::FactoryMethod() const {
 
 Consommable *PotionProtegerFactory::FactoryMethod() const {
     return new PotionProteger("Potion de protection", OT_Consommable, "Rend la cible Protéger pendant 3 tour",CT_POTIONPROTEGER, CC_SELF);
+}
+
+Consommable *PotionTeleportationFactory::FactoryMethod() const {
+    return new PotionTeleportation("Potion de teleportation", OT_Consommable, "Se téléporte au coordonées x y",CT_POTIONTELEPORTATION, CC_SELF);
 }

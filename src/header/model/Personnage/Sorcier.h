@@ -16,7 +16,7 @@ class Sorcier : public ISorcier, public Personnage {
 
 
     private:
-        Sorcier(std::string nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+        Sorcier(std::string nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
     public:
         void action(std::string nom, Personnage * ennemie, const Joueur *) override;

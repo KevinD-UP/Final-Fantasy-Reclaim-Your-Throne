@@ -15,7 +15,7 @@
 class Equipement;
 class Joueur;
 class Piece;
-
+class Map;
 enum PersonnageType{
     PT_Guerrier,
     PT_Amazone,
@@ -44,13 +44,15 @@ class Personnage {
         Piece* pieceCourante{};
         std::vector<std::pair<Statut, int>> statut;
         std::vector<Objet*> sac;
+        const Map* carte;
         Personnage(std::string nom_arg,
                    const int &niveau,
                    const int &sante_arg,
                    const int &attaque_arg,
                    const int &defense_arg,
                    const PersonnageType &personnageType_arg,
-                   std::vector<Objet*> &sac_arg);
+                   std::vector<Objet*> &sac_arg,
+                   const Map* carte);
 
     public:
         virtual void print() = 0;
@@ -70,6 +72,7 @@ class Personnage {
         Piece* getPieceCour();
         std::vector<std::pair<Statut, int>> getStatut();
         std::vector<Objet*> getSac();
+        const Map * getMap() const;
 
         //Opération sur les sac
         Statut pushStatut(Statut,int);
@@ -128,4 +131,5 @@ class Personnage {
 #include "../Joueur/Joueur.h"
 #include "../Piece/Piece.h"
 #include "../Objet/Equipement.h"
+#include "../Piece/Map.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_PERSONNAGE_H

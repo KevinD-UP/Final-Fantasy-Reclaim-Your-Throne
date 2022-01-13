@@ -4,8 +4,8 @@
 
 #include "../../../header/model/Personnage/Guerrier.h"
 
-Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac)
+Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
+    Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Guerrier::print() {
@@ -22,7 +22,6 @@ void Guerrier::print() {
 
 
 void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
-    //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
     std::string nomSort;
     Type type;
@@ -34,13 +33,13 @@ void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * play
     }
     else if(nom == "1"){
         type = Offensive;
-        buff(Berserk,2);
+        buff(Berserk,3);
         dommage = attaque + 10  - ennemie->getDefense();
         nomSort = "Berserk";
     }
     else if(nom == "2"){
         type = Offensive;
-        dommage = attaque + 5 + (getDefense() * 5/4) - ennemie->getDefense();
+        dommage = attaque + 5 + (getDefense() * 1/4) - ennemie->getDefense();
         nomSort = "Armure pointu";
     }
     else{
@@ -54,9 +53,9 @@ void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * play
 
 void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
-    std::cout << "0 - Lacérage: Puissance:20. " << std::endl;
-    std::cout << "1 - Berserk: Puissance:5. Le personnage devient Berserk: augmente l'attaque selon la vie perdu" << std::endl;
-    std::cout << "2 - Armure pointu: Puissance:5. Inflige 125% de l'armure du personnage" << std::endl;
+    std::cout << "0 - Lacérage: Puissance:25. " << std::endl;
+    std::cout << "1 - Berserk: Puissance:10. Le personnage devient Berserk: augmente l'attaque selon la vie perdu" << std::endl;
+    std::cout << "2 - Armure pointu: Puissance:5. Inflige 25% de l'armure du personnage" << std::endl;
     std::cout << "3 - Retour choix" << std::endl;
     std::cin >> sort;
     if(sort == "3"){
@@ -73,7 +72,6 @@ void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
 }
 
 void Guerrier::drop() {
-    std::cout << "drop Guerrier" <<std::endl;
     size_t i = 0;
     while(getSac().size() > i){
         getPieceCour()->pushObjet(sac[i]);

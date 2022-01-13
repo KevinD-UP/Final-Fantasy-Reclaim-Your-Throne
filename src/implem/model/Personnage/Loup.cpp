@@ -4,8 +4,8 @@
 
 #include "../../../header/model/Personnage/Loup.h"
 
-Loup::Loup(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-        Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac)
+Loup::Loup(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac,const Map* carte) :
+        Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Loup::action(std::string nom, Personnage *ennemie, const Joueur * player) {

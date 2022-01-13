@@ -15,10 +15,10 @@ class Map;
 class Joueur {
     private:
         Personnage* personnageJoueur;
-        Map* carte;
+        //Map* carte;
 
     public:
-        explicit Joueur(Personnage* personnageJoueurArg, Map* carte);
+        explicit Joueur(Personnage* personnageJoueurArg);
         void interactionEnCombat (Personnage *cible) const;
         Piece* interactionHorsCombat() const;
         Piece* deplacementJoueur() const;

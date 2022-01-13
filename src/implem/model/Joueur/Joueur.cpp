@@ -5,7 +5,7 @@
 #include "../../../header/model/Joueur/Joueur.h"
 
 
-Joueur::Joueur(Personnage * personnageJoueurArg, Map * carte_arg) : personnageJoueur(personnageJoueurArg), carte(carte_arg) {}
+Joueur::Joueur(Personnage * personnageJoueurArg) : personnageJoueur(personnageJoueurArg) {}
 
 Personnage* Joueur::getPerso() const {
     return personnageJoueur;
@@ -51,7 +51,7 @@ Piece* Joueur::interactionHorsCombat() const {
         return interactionHorsCombat();
     }
     else if(action == "3"){
-        carte->showMap(this);
+        getPerso()->getMap()->showMap(this);
         return interactionHorsCombat();
     }
     else if(action == "4"){
@@ -71,11 +71,15 @@ Piece* Joueur::interactionHorsCombat() const {
 void Joueur::swap() const {
     if(personnageJoueur->getPieceCour()->getVecObjet().size()>0){
         personnageJoueur->getPieceCour()->print();
+        std::cout << personnageJoueur->getPieceCour()->getVecObjet().size() << ":Retour" << std::endl;
         std::cout << "Choisissez un objet" << std::endl;
         std::string action;
         std::cin >> action;
-        if(stoi(action)<0 || (size_t (stoi(action)))>personnageJoueur->getPieceCour()->getVecObjet().size() -1){
+        if(stoi(action)<0 || (size_t (stoi(action)))>personnageJoueur->getPieceCour()->getVecObjet().size()){
             std::cout << "Mauvais choix" << std::endl<< std::endl;
+            return;
+        }
+        if(stoi(action) == (int)personnageJoueur->getPieceCour()->getVecObjet().size()){
             return;
         }
         if(this->personnageJoueur->getSac().size() == 4){

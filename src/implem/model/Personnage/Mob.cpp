@@ -4,8 +4,8 @@
 
 #include "../../../header/model/Personnage/Mob.h"
 
-Mob::Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-        Personnage(nom, niveau,sante, attaque, defense, typePersonnage, sac)
+Mob::Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
+        Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Mob::action(std::string nom, Personnage *ennemie, const Joueur * player) {

@@ -15,50 +15,50 @@
 class PersonnageFactory {
 
 public:
-    virtual Personnage* FactoryMethod(const std::string& nom) const = 0;
-    static Personnage* initPersonnage(PersonnageType& personnagetype, const std::string& nom);
+    virtual Personnage* FactoryMethod(const std::string& nom, const Map* carte) const = 0;
+    static Personnage* initPersonnage(PersonnageType& personnagetype, const std::string& nom, const Map* carte);
 };
 
 class GuerrierFactory : public PersonnageFactory {
 
     public:
-        Personnage* FactoryMethod(const std::string& nom) const override;
+        Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class AmazoneFactory : public PersonnageFactory {
 
     public:
-        Personnage* FactoryMethod(const std::string& nom) const override;
+        Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class MoineFactory : public PersonnageFactory {
 
     public:
-        Personnage* FactoryMethod(const std::string& nom) const override;
+        Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class SorcierFactory : public PersonnageFactory {
 
     public:
-        Personnage* FactoryMethod(const std::string& nom) const override;
+        Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class MobFactory : public PersonnageFactory {
 
 public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class LoupFactory: public PersonnageFactory {
 
 public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 class DragonFactory: public PersonnageFactory {
 
 public:
-    Personnage* FactoryMethod(const std::string& nom) const override;
+    Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
 

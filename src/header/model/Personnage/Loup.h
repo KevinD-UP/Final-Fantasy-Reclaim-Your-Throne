@@ -13,7 +13,7 @@ class Loup : public Personnage {
 
 private:
 
-    Loup(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+    Loup(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
 public:
     void action(std::string nom, Personnage * ennemie, const Joueur *) override;

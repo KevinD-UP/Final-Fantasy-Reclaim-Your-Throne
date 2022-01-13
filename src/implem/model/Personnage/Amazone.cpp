@@ -5,8 +5,8 @@
 #include "../../../header/model/Personnage/Amazone.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Amazone::Amazone(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac) :
-    Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac)
+Amazone::Amazone(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte) :
+    Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Amazone::print() {
@@ -73,7 +73,6 @@ void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
 }
 
 void Amazone::drop() {
-    std::cout << "drop Amazone" <<std::endl;
     size_t i = 0;
     while(getSac().size() > i){
         getPieceCour()->pushObjet(sac[i]);

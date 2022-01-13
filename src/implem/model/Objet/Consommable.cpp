@@ -56,8 +56,9 @@ PotionProteger::PotionProteger(const std::string& nom_arg, const ObjetType objet
         : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
-PotionChallenge::PotionChallenge(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
-        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg){}
+PotionTeleportation::PotionTeleportation(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
+{}
 
 void PotionSoin::appliquerConsommable(Personnage *cible) {
     cible->setSante(cible->getSante() + cible->getSanteMax()/4);
@@ -96,6 +97,22 @@ void PotionProteger::appliquerConsommable(Personnage *cible) {
     cible->buff(Proteger,3);
 }
 
-void PotionChallenge::appliquerConsommable(Personnage *cible) {
-    cible->buff(Proteger,2);
+void PotionTeleportation::appliquerConsommable(Personnage *cible) {
+    std::cout << "Choisir une coordoné x y" << std::endl;
+    std::string x = "";
+    std::string y = "";
+    std::cin >> x >> y;
+    if(stoi(x) < 0 || stoi(x) > 3){
+        std::cout << "Mauvaise coordonné x" << std::endl;
+        return this->appliquerConsommable(cible);
+    }
+    else if(stoi(y) < 0 || stoi(y) > 3){
+        std::cout << "Mauvaise coordonné x" << std::endl;
+        return this->appliquerConsommable(cible);
+    }
+    else{
+        cible->getPieceCour()->removePerso(cible);
+        cible->getMap()->getMap()[stoi(x)][stoi(y)]->pushPerso(cible);
+        cible->setPiece(cible->getMap()->getMap()[stoi(x)][stoi(y)]);
+    }
 }

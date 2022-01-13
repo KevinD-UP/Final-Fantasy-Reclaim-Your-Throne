@@ -4,8 +4,8 @@
 
 #include "../../../header/model/Personnage/Guerrier.h"
 
-Guerrier::Guerrier(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(nom, sante, attaque, defense, typePersonnage, sac)
+Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac)
 {}
 
 void Guerrier::print() {
@@ -70,6 +70,16 @@ void Guerrier::actionJoueur(const Joueur * player, Personnage * cible) {
         player->interactionEnCombat(cible);
     }
 
+}
+
+void Guerrier::drop() {
+    std::cout << "drop Guerrier" <<std::endl;
+    size_t i = 0;
+    while(getSac().size() > i){
+        getPieceCour()->pushObjet(sac[i]);
+        sac[i]->enleverEffet(this);
+        sac.erase(sac.begin() + i);
+    }
 }
 
 Guerrier::~Guerrier()

@@ -5,8 +5,8 @@
 #include "../../../header/model/Personnage/Moine.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Moine::Moine(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(nom, sante, attaque, defense, typePersonnage ,sac)
+Moine::Moine(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
+    Personnage(nom, niveau,  sante, attaque, defense, typePersonnage, sac)
 {}
 
 void Moine::print() {
@@ -76,6 +76,16 @@ void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
         player->interactionEnCombat(cible);
     }
 
+}
+
+void Moine::drop() {
+    std::cout << "drop Moine" <<std::endl;
+    size_t i = 0;
+    while(getSac().size() > i){
+        getPieceCour()->pushObjet(sac[i]);
+        sac[i]->enleverEffet(this);
+        sac.erase(sac.begin() + i);
+    }
 }
 
 Moine::~Moine()

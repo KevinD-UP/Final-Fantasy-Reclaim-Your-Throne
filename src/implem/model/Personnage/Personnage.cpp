@@ -6,17 +6,20 @@
 
 
 Personnage::Personnage(std::string nom_arg,
+                       const int &niveau,
                        const int &sante_arg,
                        const int &attaque_arg,
                        const int &defense_arg,
                        const PersonnageType &personnageType_arg,
-                       std::vector<Objet*> &sac_arg) :
+                       std::vector<Objet*> &sac_arg):
                        nom(std::move(nom_arg)),
+                       level(niveau),
                        indice_de_sante_max(sante_arg),
                        attaque_max(attaque_arg),
                        defense_max(defense_arg),
                        typePersonnage(personnageType_arg),
                        sac(sac_arg)
+
 {
     equipeAll();
 }
@@ -175,6 +178,7 @@ void Personnage::enleverEffet(Statut effet){
 
 void Personnage::victoire(Personnage * vaincu){
     this->reset();
+    vaincu->drop();
     this->exp += vaincu->level * 25;
     while((this->exp/100)>0){
         levelUp();
@@ -385,6 +389,10 @@ void Personnage::autoloot() {
             }
         }
     }
+}
+
+void Personnage::drop() {
+
 }
 
 void Personnage::equipeAll() {

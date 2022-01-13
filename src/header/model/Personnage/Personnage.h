@@ -11,6 +11,8 @@
 #include <iostream>
 #include <random>
 #include "../Objet/Objet.h"
+
+class Equipement;
 class Joueur;
 class Piece;
 
@@ -19,7 +21,9 @@ enum PersonnageType{
     PT_Amazone,
     PT_Moine,
     PT_Sorcier,
-    PT_Mob
+    PT_Mob,
+    PT_Loup,
+    PT_Dragon
 };
 
 enum Statut { Etourdit, Empoisonner, Bruler, Somnolent, Affaiblie, Berserk, Proteger, Ecorcher };
@@ -28,7 +32,7 @@ class Personnage {
 
     private:
         const std::string nom;
-        int level = 1;
+        int level;
         int exp = 0;
         int indice_de_sante_max;
         int indice_de_sante_actuel = indice_de_sante_max;
@@ -41,6 +45,7 @@ class Personnage {
         std::vector<std::pair<Statut, int>> statut;
         std::vector<Objet*> sac;
         Personnage(std::string nom_arg,
+                   const int &niveau,
                    const int &sante_arg,
                    const int &attaque_arg,
                    const int &defense_arg,
@@ -95,7 +100,7 @@ class Personnage {
         //Equipement check
         void equipeAll();
         void desequipe();
-        void drop();
+        virtual void drop() = 0;
         void autoloot();
 
         //Déplacement
@@ -116,8 +121,11 @@ class Personnage {
         friend class Guerrier;
         friend class Sorcier;
         friend class Mob;
+        friend class Loup;
+        friend class Dragon;
 };
 
 #include "../Joueur/Joueur.h"
 #include "../Piece/Piece.h"
+#include "../Objet/Equipement.h"
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_PERSONNAGE_H

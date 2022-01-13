@@ -20,6 +20,7 @@ class Partie {
         const Map* chateau{};
 
     public:
+        static int tour;
         std::vector<Personnage*> getPersoEnJeu() const;
         const Joueur* getJoueur() const;
         const Map* getChateau() const;

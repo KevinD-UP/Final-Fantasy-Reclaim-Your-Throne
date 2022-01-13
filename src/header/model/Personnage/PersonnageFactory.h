@@ -10,7 +10,8 @@
 #include "Moine.h"
 #include "Sorcier.h"
 #include "Mob.h"
-
+#include "Loup.h"
+#include "Dragon.h"
 class PersonnageFactory {
 
 public:
@@ -48,6 +49,17 @@ public:
     Personnage* FactoryMethod(const std::string& nom) const override;
 };
 
+class LoupFactory: public PersonnageFactory {
+
+public:
+    Personnage* FactoryMethod(const std::string& nom) const override;
+};
+
+class DragonFactory: public PersonnageFactory {
+
+public:
+    Personnage* FactoryMethod(const std::string& nom) const override;
+};
 
 
 #endif //FINAL_FANTASY___RECLAIM_YOUR_THRONE_PERSONNAGEFACTORY_H

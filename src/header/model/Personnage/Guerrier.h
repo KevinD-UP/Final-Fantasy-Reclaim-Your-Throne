@@ -18,12 +18,13 @@ class Guerrier : public IGuerrier, public Personnage{
 
 
     private:
-        Guerrier(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+        Guerrier(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
 
     public:
         void action(std::string nom, Personnage * ennemie, const Joueur *) override;
         void actionJoueur(const Joueur *,Personnage *) override;
         void print() override;
+        void drop() override;
         virtual ~Guerrier();
         friend class GuerrierFactory;
         friend std::ostream& operator<<(std::ostream& out, Guerrier *guerrierArg);

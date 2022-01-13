@@ -1,15 +1,21 @@
-CPP=g++ -std=c++20
+CPP=g++
 CFLAGS= -Wall
 
 all : final_fantasy
 
-final_fantasy: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o Map.o Mob.o
+final_fantasy: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o Map.o Mob.o Loup.o Dragon.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
 main.o : main.cpp
 	$(CPP) $(CFLAGS) -c $<
 
 Mob.o: implem/model/Personnage/Mob.cpp header/model/Personnage/Mob.h
+	$(CPP) $(CFLAGS) -c $<
+
+Loup.o: implem/model/Personnage/Loup.cpp header/model/Personnage/Loup.h
+	$(CPP) $(CFLAGS) -c $<
+
+Dragon.o: implem/model/Personnage/Dragon.cpp header/model/Personnage/Dragon.h
 	$(CPP) $(CFLAGS) -c $<
 
 Guerrier.o : implem/model/Personnage/Guerrier.cpp header/model/Personnage/Guerrier.h

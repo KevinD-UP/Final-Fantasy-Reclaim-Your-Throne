@@ -209,15 +209,6 @@ int main(){
 
     Partie partie = Partie({personnageJoueur, ennemie1, ennemie2, ennemie3}, joueur , carte);
     partie.startToPlay();
-    //partie.deathBattle(personnageJoueur,sorcier);
-    /*Piece *test = new Piece();
-    Piece *test2 = new Piece();
 
-    std::cout<<"Piece 0"<<std::endl;
-    test->print();
-    std::cout<<"Piece 1"<<std::endl;
-    test2->print();*/
-
-   // std::cout << "Fin de la partie" << std::endl;
 }
 

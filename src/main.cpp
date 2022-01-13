@@ -159,22 +159,27 @@ int main(){
     std::cout << "Veuillez écrire le nom de votre personnage : " << std::endl;
     std::cin >> nomPerso;
     std::cout << "Veuillez choisir la classe de votre personnage : " << std::endl;
-    std::cout << "1 - Guerrier " << std::endl;
-    std::cout << "2 - Amazone" << std::endl;
-    std::cout << "3 - Moine " << std::endl;
-    std::cout << "4 - Sorcier " << std::endl;
+    std::cout << "|==============|" << std::endl;
+    std::cout << "| 1 - Guerrier |" << std::endl;
+    std::cout << "|==============|" << std::endl;
+    std::cout << "| 2 - Amazone  |" << std::endl;
+    std::cout << "|==============|" << std::endl;
+    std::cout << "| 3 - Moine    |" << std::endl;
+    std::cout << "|==============|" << std::endl;
+    std::cout << "| 4 - Sorcier  |" << std::endl;
+    std::cout << "|==============|" << std::endl;
 
     while (!(choixPerso <= 4 && choixPerso >= 1)) {
         std::cin >> choixPerso;
         if(!(choixPerso <= 4 && choixPerso >= 1)){
-            std::cout << "Erreur personnage non existant" << std::endl;
+            std::cout << "Erreur personnage non existant !" << std::endl;
         }
     }
 
     if(choixPerso == 1){
         personnageJoueur = PersonnageFactory::initPersonnage(TYPE_Guerrier, nomPerso,carte);
         joueur = new Joueur(personnageJoueur);
-        std::cout << "Votre personnage a été crée" << std::endl;
+        std::cout << "Votre personnage a été crée !" << std::endl;
         std::cout << "Création des personnages non joueur..." << std::endl;
         ennemie1 = PersonnageFactory::initPersonnage(TYPE_Sorcier,*select_randomly(names.begin(), names.end()),carte);
         ennemie2 = PersonnageFactory::initPersonnage(TYPE_Moine,*select_randomly(names.begin(), names.end()),carte);

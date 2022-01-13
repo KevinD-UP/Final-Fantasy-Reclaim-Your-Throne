@@ -10,11 +10,11 @@ Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, i
 
 void Guerrier::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Guerrier de Niveau:" << getLevel()
-              << " " << getExp() << "Exp: "
-              << getSante() << "/" << getSanteMax() << "HP "
-              << "Attaque: " << getAttaque()
-              << "Defense: " << getDefense() <<std::endl;
+    std::cout << "Guerrier de Niveau: " << getLevel()
+              << " Exp: " << getExp()
+              << " HP: " << getSante() << "/" << getSanteMax()
+              << " Attaque: " << getAttaque()
+              << " Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 

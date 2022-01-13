@@ -19,12 +19,12 @@ void Loup::action(std::string nom, Personnage *ennemie, const Joueur * player) {
 }
 
 void Loup::print() {
-    std::cout << nom <<std::endl;
-    std::cout << getNom() << "de Niveau:" << getLevel()
-              << " " << getExp() << "Exp "
-              << getSante() << "/" << getSanteMax()<< "HP "
-              << getAttaque() << ":Attaque "
-              << getDefense() << ":Defense" <<std::endl;
+    std::cout << nom << std::endl;
+    std::cout << "Loup de Niveau: " << getLevel()
+              << " | Exp: " << getExp()
+              << " | HP: " << getSante() << "/" << getSanteMax()
+              << " | Attaque: " << getAttaque()
+              << " | Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 

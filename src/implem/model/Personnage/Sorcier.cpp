@@ -4,19 +4,18 @@
 
 #include "../../../header/model/Personnage/Sorcier.h"
 #include "../../../header/model/Action/Action.h"
-#include<string>
-#include <utility>
+
 Sorcier::Sorcier(std::string nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
     Personnage(std::move(nom), niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Sorcier::print() {
-    std::cout << nom <<std::endl;
-    std::cout << "Sorcier de Niveau:" << getLevel()
-              << " " << getExp() << "Exp: "
-              << getSante() << "/" << getSanteMax() << "HP "
-              << "Attaque: " << getAttaque()
-              << "Defense: " << getDefense() <<std::endl;
+    std::cout << nom << std::endl;
+    std::cout << "Sorcier de Niveau: " << getLevel()
+              << " Exp: " << getExp()
+              << " HP: " << getSante() << "/" << getSanteMax()
+              << " Attaque: " << getAttaque()
+              << " Defense: " << getDefense() <<std::endl;
     checkStatut();
 
 }

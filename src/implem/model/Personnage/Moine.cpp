@@ -4,18 +4,18 @@
 
 #include "../../../header/model/Personnage/Moine.h"
 #include "../../../header/model/Action/Action.h"
-#include<string>
+
 Moine::Moine(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
     Personnage(nom, niveau,  sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Moine::print() {
     std::cout << nom <<std::endl;
-    std::cout << "Moine de Niveau:" << getLevel()
-              << " " << getExp() << "Exp: "
-              << getSante() << "/" << getSanteMax() << "HP "
-              << "Attaque: " << getAttaque()
-              << "Defense: " << getDefense() <<std::endl;
+    std::cout << "Moine de Niveau: " << getLevel()
+              << " Exp: " << getExp()
+              << " HP: " << getSante() << "/" << getSanteMax()
+              << " Attaque: " << getAttaque()
+              << " Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 

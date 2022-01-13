@@ -9,7 +9,6 @@ void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
     int count = 0;
     for(auto personnage: persoEnJeu){
-        std::cout << personnage->getNom() <<  std::endl;
         if(count == 0) {
             personnage->setPiece(chateau->getMap()[0][0]);
             chateau->getMap()[0][0]->pushPerso(personnage);
@@ -33,25 +32,25 @@ void Partie::startToPlay() {
 
 void Partie::routine() {
     tour ++;
-    for(auto personnage: persoEnJeu){
-        Piece * pieceArrive = nullptr;
-        if(personnage == joueur->getPerso()){
-            std::cout << "Tour du joueur: " << joueur->getPerso()->getNom() << std::endl;
-            pieceArrive = joueur->interactionHorsCombat();
-        } else {
-            std::cout << "Tour de l'IA: " << personnage->getNom() << std::endl;
-            pieceArrive = personnage->deplacementIA();
-        }
-        if(pieceArrive->combatPossible()) {
-            Personnage * persoMort = deathBattle(pieceArrive->getVecPerso()[0], personnage);
-            pieceArrive->removePerso(persoMort);
-            retraitPersonnageMort(persoMort);
-            delete persoMort;
-            persoMort = nullptr;
-            if(finDePartie()){
-                return;
+    std::vector<Personnage*> persosMort;
+    for(auto personnage: persoEnJeu) {
+        if (!personnage->estMort()) {
+            Piece *pieceArrive = nullptr;
+            if (personnage == joueur->getPerso()) {
+                std::cout << "Tour du joueur: " << joueur->getPerso()->getNom() << std::endl;
+                pieceArrive = joueur->interactionHorsCombat();
+            } else {
+                std::cout << "Tour de l'IA: " << personnage->getNom() << std::endl;
+                pieceArrive = personnage->deplacementIA();
             }
-        } else {
+            if (pieceArrive->combatPossible()) {
+                Personnage *persoMort = deathBattle(pieceArrive->getVecPerso()[0], personnage);
+                pieceArrive->removePerso(persoMort);
+                persosMort.push_back(persoMort);
+                if (finDePartie()) {
+                    return;
+                }
+            } else {
             std::random_device seeder;
             std::mt19937 engine(seeder());
             std::uniform_int_distribution<int> dist(0, 10);
@@ -64,11 +63,10 @@ void Partie::routine() {
                 if(persoMort->getPersonnageType() != PT_Dragon){
                     pieceArrive->removePerso(persoMort);
                     retraitPersonnageMort(persoMort);
+                    persosMort.push_back(persoMort);
                 }
-                delete persoMort;
                 delete Dragon;
                 Dragon = nullptr;
-                persoMort = nullptr;
                 if(finDePartie()){
                     return;
                 }
@@ -81,11 +79,10 @@ void Partie::routine() {
                 if(persoMort->getPersonnageType() != PT_Loup){
                     pieceArrive->removePerso(persoMort);
                     retraitPersonnageMort(persoMort);
+                    persosMort.push_back(persoMort);
                 }
-                delete persoMort;
                 delete Loup;
                 Loup = nullptr;
-                persoMort = nullptr;
                 if(finDePartie()){
                     return;
                 }
@@ -98,15 +95,20 @@ void Partie::routine() {
                 if(persoMort->getPersonnageType() != PT_Mob){
                     pieceArrive->removePerso(persoMort);
                     retraitPersonnageMort(persoMort);
+                    persosMort.push_back(persoMort);
                 }
-                delete persoMort;
+                delete Gobelin
                 Gobelin = nullptr;
-                persoMort = nullptr;
                 if(finDePartie()){
                     return;
                 }
             }
         }
+    }
+    for(auto persoMort: persosMort){
+        retraitPersonnageMort(persoMort);
+        delete persoMort;
+        persoMort = nullptr;
     }
     routine();
 }
@@ -149,8 +151,8 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             etat = a->updateStatut();
             if (a->estMort()) {
-                b->victoire(a);
                 std::cout << "Victoire de " << b->getNom() << std::endl;
+                b->victoire(a);
                 return a;
             }
             if (!etat) {
@@ -161,6 +163,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
         else if(b == joueur->getPerso()) {
             auto etat = b->updateStatut();
             if (b->estMort()) {
+                std::cout << "Victoire de " << a->getNom() << std::endl;
                 a->victoire(b);
                 return b;
             }
@@ -182,6 +185,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
         else {
             auto etat = b->updateStatut();
             if (b->estMort()) {
+                a->reset();
                 a->victoire(b);
                 //std::cout << "Victoire de " << a->getNom() << std::endl;
                 return b;
@@ -191,6 +195,7 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             etat = a->updateStatut();
             if (a->estMort()) {
+                b->reset();
                 b->victoire(a);
                 //std::cout << "Victoire de " << b->getNom() << std::endl;
                 return a;

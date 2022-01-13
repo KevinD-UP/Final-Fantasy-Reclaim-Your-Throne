@@ -4,7 +4,6 @@
 
 #include "../../../header/model/Piece/Piece.h"
 #include "../../../header/model/Objet/ConsommableFactory.h"
-#include "../../../header/model/Objet/Equipement.h"
 #include <unistd.h>
 
 ConsommableType T_PotionSoin = CT_POTIONSOIN;
@@ -31,17 +30,17 @@ Consommable* Potion_Ecorcher = ConsommableFactory::initConsommable(T_PotionEcorc
 
 Consommable* Potion_Teleportation = ConsommableFactory::initConsommable(T_PotionTeleportation);
 
-auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0);
-auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20);
+auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque: 10 Defense: 5", PT_Guerrier, false, 10, 5, 0);
+auto* Armure = new Equipement("Armure", OT_Equipement, "Defense: 10 Sante: 20", PT_Guerrier, false, 0, 10, 20);
 
-auto* Toge = new Equipement("Toge",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,0,10,30);
-auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque:5 Defense:5 Sante:15",PT_Moine,false,5,5,15);
+auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moine,false,0,10,30);
+auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5,5,15);
 
-auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque:10 Defense:5 Sante:5",PT_Amazone,false,10,5,5);
-auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque:10 Sante:15",PT_Amazone,false,10,0,10);
+auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5 Sante: 5",PT_Amazone,false,10,5,5);
+auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 15",PT_Amazone,false,10,0,10);
 
-auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque:15 Sante:5",PT_Sorcier,false,15,0,5);
-auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque:5 Defense:10 Sante:15",PT_Sorcier,false,5,10,15);
+auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15,0,5);
+auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque: 5 Defense: 10 Sante: 15",PT_Sorcier,false,5,10,15);
 
 std::vector<Objet *> Piece::allEquipement = {Epee,Armure,Toge,Masse,Lance,Arc,Baguette,Robe,Potion_Soin,Potion_Brulure,Potion_Poison,Potion_Somnol,
                                       Potion_Berserk,Potion_Affaiblie,Potion_Proteger,Potion_Ecorcher,Potion_Teleportation};

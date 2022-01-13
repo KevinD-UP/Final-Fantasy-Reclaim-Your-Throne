@@ -337,13 +337,14 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
 
 void Personnage::actionObjetHC(const Joueur * player) {
     size_t i = 0;
-    std::cout << "Objet disponible:" << std::endl;
+    std::cout << "Objet disponible: " << std::endl;
     std::string choix = "";
     while(i < sac.size()){
-        std::cout << i << ":"<< sac[i]->getNom()
+        std::cout << "| " << i << " - "<< sac[i]->getNom()
                   << " " << sac[i]->getDescription() << std::endl;
         i++;
     }
+    std::cout << "| 4 - Retour choix " << std::endl;
     if (i == 0){
         std::cout << "Aucun Objet disponible" << std::endl;
         player->interactionHorsCombat();
@@ -376,11 +377,13 @@ void Personnage::actionObjetHC(const Joueur * player) {
         }
         i++;
     }
+    if(choix == "4"){
+        player->interactionHorsCombat();
+    }
     if(i == sac.size()){
         std::cout << "Erreur cette commande n'existe pas" << std::endl;
         player->interactionHorsCombat();
         return;
-
     }
 
 }
@@ -416,7 +419,7 @@ void Personnage::desequipe(){
     size_t i = 0;
     std::string choix;
     while(i < sac.size()){
-        std::cout << i << ":"<< sac[i]->getNom()
+        std::cout << i << " - "<< sac[i]->getNom()
                   << " " << sac[i]->getDescription() << std::endl;
         i++;
     }

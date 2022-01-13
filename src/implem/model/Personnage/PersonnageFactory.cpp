@@ -44,8 +44,8 @@ Personnage *GuerrierFactory::FactoryMethod(const std::string &nom,const Map* car
 
 
 Personnage *AmazoneFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
-    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque:10 Defense:5",PT_Amazone,false,10,5,0);
-    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque:10 Sante:10",PT_Amazone,false,10,0,10);
+    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5",PT_Amazone,false,10,5,0);
+    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 10",PT_Amazone,false,10,0,10);
     int sante = 85;
     int attaque = 25;
     int defense = 15;
@@ -54,8 +54,8 @@ Personnage *AmazoneFactory::FactoryMethod(const std::string &nom, const Map* car
 }
 
 Personnage *MoineFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
-    auto* Toge = new Equipement("Toge",OT_Equipement,"Defense:10 Sante 30",PT_Moine,false,0,10,30);
-    auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque:5 Defense:5 Sante:15",PT_Moine,false,5,5,15);
+    auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moine,false,0,10,30);
+    auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5,5,15);
     int sante = 90;
     int attaque = 15;
     int defense = 20;
@@ -64,8 +64,8 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom, const Map* carte
 }
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
-    auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque:15 Sante:5",PT_Sorcier,false,15,0,5);
-    auto* Robe = new Equipement("Robe",OT_Equipement,"Defense:10 Sante:15",PT_Sorcier,false,0,10,15);
+    auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15,0,5);
+    auto* Robe = new Equipement("Robe",OT_Equipement,"Defense: 10 Sante: 15",PT_Sorcier,false,0,10,15);
     int sante = 80;
     int attaque = 30;
     int defense = 15;

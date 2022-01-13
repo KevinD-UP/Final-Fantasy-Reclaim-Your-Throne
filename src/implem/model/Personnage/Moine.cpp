@@ -87,7 +87,6 @@ void Moine::drop() {
     }
 }
 
-Moine::~Moine()
-noexcept {
-std::cout << nom << " est mort et ne reviendra plus." << std::endl;
+Moine::~Moine() {
+    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

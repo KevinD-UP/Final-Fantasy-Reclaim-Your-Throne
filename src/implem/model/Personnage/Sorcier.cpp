@@ -84,7 +84,6 @@ void Sorcier::drop() {
     }
 }
 
-Sorcier::~Sorcier()
-noexcept {
+Sorcier::~Sorcier() {
 std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

@@ -54,5 +54,4 @@ void Loup::drop() {
     getPieceCour()->pushObjet(sac[0]);
 }
 
-Loup::~Loup()
-noexcept {}
+Loup::~Loup() {}

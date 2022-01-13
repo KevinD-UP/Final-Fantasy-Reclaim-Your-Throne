@@ -54,5 +54,4 @@ void Dragon::drop() {
     getPieceCour()->pushObjet(sac[0]);
 }
 
-Dragon::~Dragon()
-noexcept {}
+Dragon::~Dragon() {}

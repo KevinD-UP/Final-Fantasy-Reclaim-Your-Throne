@@ -53,8 +53,7 @@ void Mob::drop() {
     getPieceCour()->pushObjet(sac[0]);
 }
 
-Mob::~Mob()
-noexcept {}
+Mob::~Mob() {}
 
 
 

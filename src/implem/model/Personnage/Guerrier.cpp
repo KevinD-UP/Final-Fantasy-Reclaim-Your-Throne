@@ -80,7 +80,6 @@ void Guerrier::drop() {
     }
 }
 
-Guerrier::~Guerrier()
-noexcept {
+Guerrier::~Guerrier() {
 std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

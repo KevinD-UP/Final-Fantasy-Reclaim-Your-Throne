@@ -81,7 +81,6 @@ void Amazone::drop() {
     }
 }
 
-Amazone::~Amazone()
-noexcept {
+Amazone::~Amazone() {
     std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

@@ -8,6 +8,8 @@
 #include "model/Personnage/Personnage.h"
 #include "model/Joueur/Joueur.h"
 #include "model/Piece/Map.h"
+#include "model/Personnage/PersonnageFactory.h"
+
 #include <algorithm>
 
 class Partie {
@@ -18,6 +20,7 @@ class Partie {
         const Map* chateau{};
 
     public:
+        static int tour;
         std::vector<Personnage*> getPersoEnJeu() const;
         const Joueur* getJoueur() const;
         const Map* getChateau() const;

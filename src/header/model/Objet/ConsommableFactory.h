@@ -61,7 +61,7 @@ public:
     Consommable* FactoryMethod() const override;
 };
 
-class PotionChallengeFactory : public ConsommableFactory {
+class PotionTeleportationFactory : public ConsommableFactory {
 
 public:
     Consommable* FactoryMethod() const override;

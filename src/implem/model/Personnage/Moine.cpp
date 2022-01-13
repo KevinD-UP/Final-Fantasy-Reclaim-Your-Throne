@@ -5,26 +5,23 @@
 #include "../../../header/model/Personnage/Moine.h"
 #include "../../../header/model/Action/Action.h"
 #include<string>
-Moine::Moine(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac) :
-    Personnage(nom, sante, attaque, defense, typePersonnage ,sac)
+Moine::Moine(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
+    Personnage(nom, niveau,  sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
 void Moine::print() {
     std::cout << nom <<std::endl;
-    std::cout << getSante() << "HP "
-      << getAttaque() << ":Attaque "
-      << getDefense() << ":Defense" <<std::endl;
+    std::cout << "Moine de Niveau:" << getLevel()
+              << " " << getExp() << "Exp: "
+              << getSante() << "/" << getSanteMax() << "HP "
+              << getAttaque() << ":Attaque "
+              << getDefense() << ":Defense" <<std::endl;
     checkStatut();
 }
 
-void Moine::actionIa(Personnage * cible){
-    int v1 = rand() % 2;
-    std::string v2 = std::to_string(v1);
-    action(v2,cible);
-}
 
 
-void Moine::action(std::string nom, Personnage * ennemie)  {
+void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)  {
     //std::cout<< "La sorciere utilise " << nom << std::endl;
     int dommage = 0;
     std::string nomSort;
@@ -43,7 +40,7 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
     }
     else if(nom == "1"){
         type = Defensive;
-        dommage = 10 + ((getSanteMax()-getSante())*1/4);
+        dommage = ((getSanteMax()-getSante())*1/4);
         buff(Proteger,1);
         nomSort = "Soin";
     }
@@ -57,7 +54,7 @@ void Moine::action(std::string nom, Personnage * ennemie)  {
         return;
     }
     //std::pair<Statut,int> effet = std::pair<Bruler,2>;
-    auto *x = new Action(this, ennemie, nomSort, dommage, type);
+    auto *x = new Action(this, ennemie, nomSort, dommage, type, player);
     x->utilisation();
 }
 
@@ -72,10 +69,24 @@ void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
         player->interactionEnCombat(cible);
     }
     else if(sort == "0" || sort == "1" || sort == "2" ) {
-        action(sort, cible);
+        action(sort, cible, player);
     }
     else{
         std::cout << "Cette attaque n'existe pas" << std::endl;
+        player->interactionEnCombat(cible);
     }
 
+}
+
+void Moine::drop() {
+    size_t i = 0;
+    while(getSac().size() > i){
+        getPieceCour()->pushObjet(sac[i]);
+        sac[i]->enleverEffet(this);
+        sac.erase(sac.begin() + i);
+    }
+}
+
+Moine::~Moine() {
+    std::cout << nom << " est mort et ne reviendra plus." << std::endl;
 }

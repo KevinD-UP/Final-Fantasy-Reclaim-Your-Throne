@@ -23,6 +23,9 @@ Equipement::Equipement
     //buffAutre(buffAutre_arg)
 {}
 
+bool Equipement::checkCible() {
+    return false;
+}
 void Equipement::appliquerEffet(Personnage *cible) {
     if(!estEquipe) {
         if (this->bonusClass == cible->getPersonnageType()) {
@@ -33,7 +36,7 @@ void Equipement::appliquerEffet(Personnage *cible) {
             cible->setDefense(cible->getDefenseMax());
 
             cible->setMaxSante(cible->getSanteMax() + buffSante);
-            cible->setSante(cible->getSanteMax());
+            cible->setSante(cible->getSante() + buffSante);
         } else {
             cible->setMaxAttaque(cible->getAttaqueMax() + buffAttaque/2);
             cible->setAttaque(cible->getAttaqueMax());
@@ -42,7 +45,7 @@ void Equipement::appliquerEffet(Personnage *cible) {
             cible->setDefense(cible->getDefenseMax());
 
             cible->setMaxSante(cible->getSanteMax() + buffSante/2);
-            cible->setSante(cible->getSanteMax());
+            cible->setSante(cible->getSante() + buffSante);
         }
         estEquipe = true;
     }
@@ -58,7 +61,7 @@ void Equipement::enleverEffet(Personnage *cible){
             cible->setDefense(cible->getDefenseMax());
 
             cible->setMaxSante(cible->getSanteMax() - buffSante);
-            cible->setSante(cible->getSanteMax());
+            cible->setSante(cible->getSante() - buffSante);
         } else {
             cible->setMaxAttaque(cible->getAttaqueMax() - buffAttaque/2);
             cible->setAttaque(cible->getAttaqueMax());
@@ -67,7 +70,7 @@ void Equipement::enleverEffet(Personnage *cible){
             cible->setDefense(cible->getDefenseMax());
 
             cible->setMaxSante(cible->getSanteMax() - buffSante/2);
-            cible->setSante(cible->getSanteMax());
+            cible->setSante(cible->getSante() - buffSante);
         }
         estEquipe = false;
     }

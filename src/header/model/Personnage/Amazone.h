@@ -17,13 +17,14 @@ class Amazone : public IAmazone, public Personnage{
 
 
     private:
-        Amazone(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+        Amazone(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
     public:
-        void action(std::string nom, Personnage * ennemie) override;
+        void action(std::string nom, Personnage * ennemie, const Joueur *) override;
         void actionJoueur(const Joueur *,Personnage *) override;
-        void actionIa(Personnage *) override;
         void print() override;
+        void drop() override;
+        virtual ~Amazone();
         friend class AmazoneFactory;
 };
 

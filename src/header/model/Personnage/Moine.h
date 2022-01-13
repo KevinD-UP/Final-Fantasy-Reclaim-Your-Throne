@@ -16,13 +16,14 @@ class IMoine{
 class Moine : public IMoine, public Personnage {
 
     private:
-        Moine(const std::string& nom, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac);
+        Moine(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
     public:
-        void action(std::string nom, Personnage * ennemie) override;
+        void action(std::string nom, Personnage * ennemie, const Joueur *) override;
         void actionJoueur(const Joueur *,Personnage *) override;
-        void actionIa(Personnage *) override;
         void print() override;
+        void drop() override;
+        virtual ~Moine();
         friend class MoineFactory;
 };
 

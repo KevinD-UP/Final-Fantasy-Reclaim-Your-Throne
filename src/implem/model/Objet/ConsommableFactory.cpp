@@ -23,6 +23,8 @@ Consommable* ConsommableFactory::initConsommable(ConsommableType & consommableTy
         return (new PotionEcorcherFactory)->FactoryMethod();
     }else if (consommableType == CT_POTIONTELEPORTATION){
         return (new PotionTeleportationFactory)->FactoryMethod();
+    }else if (consommableType == CT_POTIONELIXIR){
+        return (new PotionElixirFactory)->FactoryMethod();
     }
     else {
         throw std::invalid_argument( "Consommable inexistant");
@@ -63,4 +65,8 @@ Consommable *PotionProtegerFactory::FactoryMethod() const {
 
 Consommable *PotionTeleportationFactory::FactoryMethod() const {
     return new PotionTeleportation("Potion de teleportation", OT_Consommable, "Se téléporte au coordonées x y",CT_POTIONTELEPORTATION, CC_SELF);
+}
+
+Consommable *PotionElixirFactory::FactoryMethod() const {
+    return new PotionElixir("Elixir de soin", OT_Consommable, "Regénère tous les HP",CT_POTIONELIXIR, CC_SELF);
 }

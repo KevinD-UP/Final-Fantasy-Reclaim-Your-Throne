@@ -17,7 +17,8 @@ enum ConsommableType {
     CT_POTIONECORCHER,
     CT_POTIONAFFAIBLIE,
     CT_POTIONPROTEGER,
-    CT_POTIONTELEPORTATION
+    CT_POTIONTELEPORTATION,
+    CT_POTIONELIXIR
 };
 
 enum ConsommableCible {
@@ -36,6 +37,7 @@ public:
     void appliquerEffet(Personnage *) override;
     void enleverEffet(Personnage *) override;
     bool checkCible() override;
+    int getRarete() override;
     virtual void appliquerConsommable(Personnage *) = 0;
     friend class PotionSoin;
     friend class PotionBrulure;
@@ -46,6 +48,7 @@ public:
     friend class PotionEcorcher;
     friend class PotionProteger;
     friend class PotionTeleportation;
+    friend class PotionElixir;
 };
 
 class PotionSoin : public Consommable {
@@ -123,6 +126,15 @@ public:
     void appliquerConsommable(Personnage *) override;
     friend class PotionTeleportationFactory;
 };
+
+class PotionElixir : public Consommable{
+private:
+    PotionElixir(const std::string&, const ObjetType, std::string, ConsommableType, ConsommableCible);
+public:
+    void appliquerConsommable(Personnage *) override;
+    friend class PotionElixirFactory;
+};
+
 
 
 #endif //FINAL_FANTASY___RECLAIM_YOUR_THRONE_CONSOMMABLE_H

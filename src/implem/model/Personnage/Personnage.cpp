@@ -317,10 +317,10 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
                 else {
                     sac[i]->appliquerEffet(cible);
                 }
-                Objet* consomme = sac[i];
+                //Objet* consomme = sac[i];
                 sac.erase(sac.begin() + i);
-                delete consomme;
-                consomme = nullptr;
+                //delete consomme;
+                //consomme = nullptr;
                 return;
             }
             else{
@@ -371,10 +371,10 @@ void Personnage::actionObjetHC(const Joueur * player) {
                     //player->interactionHorsCombat();
                     return;
                 }
-                Objet* consomme = sac[i];
+                //Objet* consomme = sac[i];
                 sac.erase(sac.begin() + i);
-                delete consomme;
-                consomme = nullptr;
+                //delete consomme;
+                //consomme = nullptr;
                 return;
             }
             else{
@@ -398,13 +398,36 @@ void Personnage::actionObjetHC(const Joueur * player) {
 }
 
 void Personnage::autoloot() {
-    if(getPieceCour()->getVecObjet().size()>0){
+    if(!getPieceCour()->getVecObjet().empty()){
         if(getSac().size() < 4){
             size_t i = 0;
             while(i < getPieceCour()->getVecObjet().size()){
                 if(getPieceCour()->getVecObjet()[i]->getObjetType() == OT_Equipement){
                     pushSac(getPieceCour()->getVecObjet()[i]);
                     equipeAll();
+                }
+                i++;
+            }
+        }
+        else if(getSac().size() == 4){
+            size_t i = 0;
+            while(i < getPieceCour()->getVecObjet().size()){
+                if(getPieceCour()->getVecObjet()[i]->getObjetType() == OT_Equipement){
+                    if(getPieceCour()->getVecObjet()[i]->getRarete() > 0){
+                        size_t j = 0;
+                        while(j < getSac().size()){
+                            if(getPieceCour()->getVecObjet()[i]->getRarete() > getSac()[j]->getRarete()){
+                                pushSac(getPieceCour()->getVecObjet()[i]);
+                                getPieceCour()->pushObjet(sac[j]);
+                                sac[j]->enleverEffet(this);
+                                sac.erase(sac.begin() + j);
+                                equipeAll();
+                                autoloot();
+                                return;
+                            }
+                            j++;
+                        }
+                    }
                 }
                 i++;
             }
@@ -436,7 +459,7 @@ void Personnage::desequipe(){
     i = 0;
     while(i < sac.size()) {
         if (std::to_string(i) == choix) {
-            getPieceCour()->pushObjet(sac.at(i));
+            getPieceCour()->pushObjet(sac[i]);
             sac[i]->enleverEffet(this);
             sac.erase(sac.begin() + i);
             return;

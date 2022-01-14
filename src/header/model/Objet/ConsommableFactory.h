@@ -66,4 +66,10 @@ class PotionTeleportationFactory : public ConsommableFactory {
 public:
     Consommable* FactoryMethod() const override;
 };
+
+class PotionElixirFactory : public ConsommableFactory {
+
+public:
+    Consommable* FactoryMethod() const override;
+};
 #endif //FINAL_FANTASY_RECLAIM_YOUR_THRONE_CONSOMMABLEFACTORY_H

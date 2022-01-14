@@ -22,6 +22,10 @@ bool Consommable::checkCible(){
     return this->cibleConsommable == CC_SELF ;
 }
 
+int Consommable::getRarete() {
+    return 0;
+}
+
 PotionSoin::PotionSoin(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
 : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
@@ -58,11 +62,19 @@ PotionTeleportation::PotionTeleportation(const std::string& nom_arg, const Objet
         : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
 {}
 
+PotionElixir::PotionElixir(const std::string& nom_arg, const ObjetType objetType_arg, std::string description_arg, ConsommableType consommableType_arg, ConsommableCible consommableCible_arg)
+        : Consommable(nom_arg, objetType_arg, std::move(description_arg), consommableType_arg, consommableCible_arg)
+{}
+
 void PotionSoin::appliquerConsommable(Personnage *cible) {
     cible->setSante(cible->getSante() + cible->getSanteMax()/4);
     if(cible->getSante() > cible->getSanteMax()){
         cible->setSante(cible->getSanteMax());
     }
+}
+
+void PotionElixir::appliquerConsommable(Personnage *cible) {
+    cible->setSante(cible->getSanteMax());
 }
 
 void PotionBrulure::appliquerConsommable(Personnage *cible) {

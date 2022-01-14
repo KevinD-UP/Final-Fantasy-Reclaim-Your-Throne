@@ -17,6 +17,7 @@ ConsommableType T_PotionProteger = CT_POTIONPROTEGER;
 ConsommableType T_PotionEcorcher = CT_POTIONECORCHER;
 
 ConsommableType T_PotionTeleportation= CT_POTIONTELEPORTATION;
+ConsommableType T_PotionElixir= CT_POTIONELIXIR;
 
 Consommable* Potion_Soin = ConsommableFactory::initConsommable(T_PotionSoin);
 Consommable* Potion_Brulure = ConsommableFactory::initConsommable(T_PotionBrulure);
@@ -29,21 +30,22 @@ Consommable* Potion_Proteger = ConsommableFactory::initConsommable(T_PotionProte
 Consommable* Potion_Ecorcher = ConsommableFactory::initConsommable(T_PotionEcorcher);
 
 Consommable* Potion_Teleportation = ConsommableFactory::initConsommable(T_PotionTeleportation);
+Consommable* Potion_Elixir = ConsommableFactory::initConsommable(T_PotionElixir);
 
-auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque: 10 Defense: 5", PT_Guerrier, false, 10, 5, 0);
-auto* Armure = new Equipement("Armure", OT_Equipement, "Defense: 10 Sante: 20", PT_Guerrier, false, 0, 10, 20);
+auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque: 10 Defense: 5", PT_Guerrier, false, 10, 5, 0, 0);
+auto* Armure = new Equipement("Armure", OT_Equipement, "Defense: 10 Sante: 20", PT_Guerrier, false, 0, 10, 20, 0);
 
-auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moine,false,0,10,30);
-auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5,5,15);
+auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moine,false,0, 10, 30, 0);
+auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5, 5, 15, 0);
 
-auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5 Sante: 5",PT_Amazone,false,10,5,5);
-auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 15",PT_Amazone,false,10,0,10);
+auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5 Sante: 5",PT_Amazone,false,10, 5, 5, 0);
+auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 15",PT_Amazone,false,10, 0, 10, 0);
 
-auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15,0,5);
-auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque: 5 Defense: 10 Sante: 15",PT_Sorcier,false,5,10,15);
+auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15, 0, 5, 0);
+auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque: 5 Defense: 10 Sante: 15",PT_Sorcier,false,5, 10, 15, 0);
 
 std::vector<Objet *> Piece::allEquipement = {Epee,Armure,Toge,Masse,Lance,Arc,Baguette,Robe,Potion_Soin,Potion_Brulure,Potion_Poison,Potion_Somnol,
-                                      Potion_Berserk,Potion_Affaiblie,Potion_Proteger,Potion_Ecorcher,Potion_Teleportation};
+                                      Potion_Berserk,Potion_Affaiblie,Potion_Proteger,Potion_Ecorcher,Potion_Teleportation,Potion_Elixir};
 
 Piece::Piece(){
     std::random_device seeder;
@@ -57,7 +59,7 @@ void Piece::fill(int i) {
     while (i > 0){
         std::random_device seeder;
         std::mt19937 engine(seeder());
-        std::uniform_int_distribution<int> dist(0, 16);
+        std::uniform_int_distribution<int> dist(0, 17);
         int objet = dist(engine);
         pushObjet(allEquipement.at(objet));
         i--;

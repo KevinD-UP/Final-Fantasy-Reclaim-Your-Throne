@@ -9,17 +9,22 @@ Equipement::Equipement
      ObjetType objetType_arg,
      std::string description_arg,
      PersonnageType personnageType_arg,
-     bool estEquipe_arg, int buffAttaque_arg, int buffDefense_arg, int buffSante_arg)
+     bool estEquipe_arg, int buffAttaque_arg, int buffDefense_arg, int buffSante_arg, int rarete_arg)
     : Objet(std::move(nom_arg), objetType_arg, std::move(description_arg)),
     bonusClass(personnageType_arg),
     estEquipe(estEquipe_arg),
     buffAttaque(buffAttaque_arg),
     buffDefense(buffDefense_arg),
-    buffSante(buffSante_arg)
+    buffSante(buffSante_arg),
+    rarete(rarete_arg)
 {}
 
 bool Equipement::checkCible() {
     return false;
+}
+
+int Equipement::getRarete(){
+    return rarete;
 }
 void Equipement::appliquerEffet(Personnage *cible) {
     if(!estEquipe) {

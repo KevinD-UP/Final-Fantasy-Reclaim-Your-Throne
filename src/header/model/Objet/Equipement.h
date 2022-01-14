@@ -18,11 +18,13 @@ private:
     int buffAttaque;
     int buffDefense;
     int buffSante;
+    int rarete;
     //int buffAutre;
 
 public:
-    Equipement(std::string, ObjetType, std::string, PersonnageType, bool, int, int, int);
+    Equipement(std::string, ObjetType, std::string, PersonnageType, bool, int, int, int, int);
     //EquipementType getTypeEquipement() const;
+    int getRarete() override;
     void appliquerEffet(Personnage *) override;
     void enleverEffet(Personnage *) override;
     __attribute__((unused)) bool checkCible() override;

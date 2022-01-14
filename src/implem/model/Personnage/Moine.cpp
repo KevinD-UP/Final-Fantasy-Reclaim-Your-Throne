@@ -33,7 +33,6 @@ void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)
         std::string v2 = std::to_string(v1);
         if(v2 == "0"){
             ennemie->pushStatut(Etourdit,1);
-            std::cout << "La cible est etourdit" << std::endl;
         }
         //inflige statut
         nomSort = "Frappe";

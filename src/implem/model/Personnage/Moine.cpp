@@ -33,19 +33,20 @@ void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)
         std::string v2 = std::to_string(v1);
         if(v2 == "0"){
             ennemie->pushStatut(Etourdit,1);
+            std::cout << "La cible est etourdit" << std::endl;
         }
         //inflige statut
         nomSort = "Frappe";
     }
     else if(nom == "1"){
         type = Defensive;
-        dommage = ((getSanteMax()-getSante())*1/4);
+        dommage = ((getSanteMax()-getSante())*1/3);
         buff(Proteger,1);
         nomSort = "Soin";
     }
     else if(nom == "2"){
         type = Offensive;
-        dommage =  getSante() * 1/4;
+        dommage =  getSante() * 1/3;
         nomSort = "Chatiment";
     }
     else{
@@ -60,8 +61,8 @@ void Moine::action(std::string nom, Personnage * ennemie, const Joueur * player)
 void Moine::actionJoueur(const Joueur * player, Personnage * cible) {
     std::string sort;
     std::cout << "| 0 - Frappe: Puissance:15. 25% de chance d'étourdir votre ennemie |" << std::endl;
-    std::cout << "| 1 - Soin: Puissance:5. Soigne le personnage de 25% des PV manquant et augmente votre defense pour 1 tour |" << std::endl;
-    std::cout << "| 2 - Chatiment: Puissance:x. Inflige 25% des PV courant |" << std::endl;
+    std::cout << "| 1 - Soin: Puissance:x. Soigne le personnage de 33% des PV manquant et augmente votre defense pour 1 tour |" << std::endl;
+    std::cout << "| 2 - Chatiment: Puissance:x. Inflige 33% des PV courant |" << std::endl;
     std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

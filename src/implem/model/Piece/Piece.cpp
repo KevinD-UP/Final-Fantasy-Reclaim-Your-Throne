@@ -87,7 +87,15 @@ void Piece::removePerso(Personnage * personnage) {
 }
 
 void Piece::removeObjet(Objet * objet) {
-    vecObjet.erase(std::remove(vecObjet.begin(), vecObjet.end(), objet), vecObjet.end());
+    size_t i = 0;
+    while(i < vecObjet.size()){
+        if(objet == vecObjet[i]){
+            vecObjet.erase(vecObjet.begin() + i);
+            return;
+        }
+        i++;
+    }
+    //vecObjet.erase(std::remove(vecObjet.begin(), vecObjet.end(), objet), vecObjet.end());
 }
 
 void Piece::pushObjet(Objet *o) {

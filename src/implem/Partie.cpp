@@ -5,6 +5,7 @@
 #include "../header/Partie.h"
 
 int Partie::tour = 0;
+
 void Partie::startToPlay() {
     std::cout << "Partie Lancée" << std::endl;
     int count = 0;
@@ -86,11 +87,11 @@ void Partie::routine() {
                         return;
                     }
                 } else if (combatAleatoire >= 2) {
-                    PersonnageType TYPE_Mob = PT_Mob;
+                    PersonnageType TYPE_Mob = PT_Gobelin;
                     Personnage *Gobelin = PersonnageFactory::initPersonnage(TYPE_Mob, "Gobelin",chateau);
                     Gobelin->setPiece(pieceArrive);
                     Personnage *persoMort = deathBattle(Gobelin, personnage);
-                    if (persoMort->getPersonnageType() != PT_Mob) {
+                    if (persoMort->getPersonnageType() != PT_Gobelin) {
                         pieceArrive->removePerso(persoMort);
                         retraitPersonnageMort(persoMort);
                         persosMort.push_back(persoMort);

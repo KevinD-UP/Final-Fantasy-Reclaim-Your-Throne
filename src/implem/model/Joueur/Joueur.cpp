@@ -43,6 +43,7 @@ Piece* Joueur::interactionHorsCombat() const {
               << "5 - Check_Stats " << std::endl;
     std::string action;
     std::cin >> action;
+    std::cout << std::endl;
     if(action == "1") {
         return deplacementJoueur();
     }
@@ -90,6 +91,7 @@ void Joueur::swap() const {
         std::cout << "Vous prenez:" << personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]->getNom() << std::endl  << std::endl;
         this->personnageJoueur->pushSac(personnageJoueur->getPieceCour()->getVecObjet()[stoi(action)]);
         this->personnageJoueur->equipeAll();
+        return;
     }
 }
 

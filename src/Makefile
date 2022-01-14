@@ -3,13 +3,13 @@ CFLAGS= -Wall
 
 all : final_fantasy
 
-final_fantasy: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o Map.o Mob.o Loup.o Dragon.o
+final_fantasy: main.o PersonnageFactory.o ConsommableFactory.o Personnage.o Guerrier.o Amazone.o Moine.o Sorcier.o Consommable.o Equipement.o Objet.o Action.o Joueur.o Partie.o Piece.o Map.o Gobelin.o Loup.o Dragon.o
 	$(CPP) $(CFLAGS) -o $@ $^
 
 main.o : main.cpp
 	$(CPP) $(CFLAGS) -c $<
 
-Mob.o: implem/model/Personnage/Mob.cpp header/model/Personnage/Mob.h
+Gobelin.o: implem/model/Personnage/Gobelin.cpp header/model/Personnage/Gobelin.h
 	$(CPP) $(CFLAGS) -c $<
 
 Loup.o: implem/model/Personnage/Loup.cpp header/model/Personnage/Loup.h

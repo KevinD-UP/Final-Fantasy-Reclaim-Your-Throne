@@ -5,7 +5,7 @@
 #ifndef LOA_ACTION_H
 #define LOA_ACTION_H
 #include "../Personnage/Personnage.h"
-#include "../Personnage/Mob.h"
+#include "../Personnage/Gobelin.h"
 
 class Partie;
 

@@ -2,13 +2,13 @@
 // Created by kevin on 11/01/2022.
 //
 
-#include "../../../header/model/Personnage/Mob.h"
+#include "../../../header/model/Personnage/Gobelin.h"
 
-Mob::Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
+Gobelin::Gobelin(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet *> sac, const Map* carte) :
         Personnage(nom, niveau, sante, attaque, defense, typePersonnage, sac, carte)
 {}
 
-void Mob::action(std::string nom, Personnage *ennemie, const Joueur * player) {
+void Gobelin::action(std::string nom, Personnage *ennemie, const Joueur * player) {
     int dommage = attaque + 5 - ennemie->getDefense();
     std::string nomSort;
     Type type = Offensive;
@@ -17,7 +17,7 @@ void Mob::action(std::string nom, Personnage *ennemie, const Joueur * player) {
     x->utilisation();
 }
 
-void Mob::print() {
+void Gobelin::print() {
     std::cout << nom << std::endl;
     std::cout << "Gobelin de Niveau: " << getLevel()
               << " | Exp: " << getExp()
@@ -27,9 +27,9 @@ void Mob::print() {
     checkStatut();
 }
 
-void Mob::actionJoueur(const Joueur *, Personnage *) {}
+void Gobelin::actionJoueur(const Joueur *, Personnage *) {}
 
-void Mob::drop() {
+void Gobelin::drop() {
     std::random_device seeder;
     std::mt19937 engine(seeder());
     std::uniform_int_distribution<int> dist(0, 3);
@@ -53,7 +53,7 @@ void Mob::drop() {
     getPieceCour()->pushObjet(sac[0]);
 }
 
-Mob::~Mob() {}
+Gobelin::~Gobelin() {}
 
 
 

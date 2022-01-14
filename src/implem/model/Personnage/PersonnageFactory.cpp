@@ -4,12 +4,6 @@
 
 #include "../../../header/model/Personnage/PersonnageFactory.h"
 #include "../../../header/model/Objet/ConsommableFactory.h"
-#include "../../../header/model/Objet/Equipement.h"
-
-ConsommableType TYPE_PotionSoin = CT_POTIONSOIN;
-ConsommableType TYPE_PotionBrulure = CT_POTIONBRULURE;
-ConsommableType TYPE_PotionPoison = CT_POTIONPOISON;
-ConsommableType TYPE_PotionSomnol = CT_POTIONSOMNOLENCE;
 
 
 Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, const std::string& nom, const Map* carte){
@@ -21,8 +15,8 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
         return (new MoineFactory)->FactoryMethod(nom,carte);
     } else if (personnagetype == PT_Sorcier){
         return (new SorcierFactory)->FactoryMethod(nom,carte);
-    } else if (personnagetype == PT_Mob){
-        return (new MobFactory)->FactoryMethod(nom,carte);
+    } else if (personnagetype == PT_Gobelin){
+        return (new GobelinFactory)->FactoryMethod(nom,carte);
     } else if (personnagetype == PT_Loup){
         return (new LoupFactory)->FactoryMethod(nom,carte);
     } else if (personnagetype == PT_Dragon){
@@ -73,12 +67,12 @@ Personnage *SorcierFactory::FactoryMethod(const std::string &nom, const Map* car
     return new Sorcier(nom, 1, sante, attaque, defense, PT_Sorcier, sac, carte);
 }
 
-Personnage *MobFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
+Personnage *GobelinFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
     int sante = 100;
     int attaque = 40;
     int defense = 10;
     std::vector<Objet *> sac;
-    return new Mob(nom, 1, sante, attaque, defense, PT_Mob, sac, carte);
+    return new Gobelin(nom, 1, sante, attaque, defense, PT_Gobelin, sac, carte);
 }
 
 Personnage *LoupFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
@@ -90,8 +84,8 @@ Personnage *LoupFactory::FactoryMethod(const std::string &nom, const Map* carte)
 }
 
 Personnage *DragonFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
-    int sante = 230;
-    int attaque = 90;
+    int sante = 180;
+    int attaque = 75;
     int defense = 60;
     std::vector<Objet *> sac;
     return new Dragon(nom, 5, sante, attaque, defense, PT_Dragon, sac, carte);

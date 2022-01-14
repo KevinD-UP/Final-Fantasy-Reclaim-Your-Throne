@@ -228,6 +228,9 @@ void Personnage::checkStatut() {
         if(statut[i].first == Ecorcher){
             std::cout << "Ecorcher ";
         }
+        if(statut[i].first == Proteger){
+            std::cout << "Proteger ";
+        }
         i++;
     }
     std::cout << std::endl;
@@ -293,8 +296,8 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
     std::cout << "Objet disponible:" << std::endl;
     std::string choix = "";
     while(i < sac.size()){
-        std::cout << i << ":"<< sac[i]->getNom()
-        << " " << sac[i]->getDescription() << std::endl;
+        std::cout << "| " << i << " - "<< sac[i]->getNom()
+                  << " " << sac[i]->getDescription() << std::endl;
         i++;
     }
     if (i == 0){
@@ -302,6 +305,7 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
         player->interactionEnCombat(cible);
         return;
     }
+    std::cout << "| 4 - Retour choix " << std::endl;
     std::cin >> choix;
     i = 0;
     while(i < sac.size()){
@@ -317,6 +321,7 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
                 sac.erase(sac.begin() + i);
                 delete consomme;
                 consomme = nullptr;
+                return;
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;
@@ -326,11 +331,14 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
         }
         i++;
     }
-    if(i == sac.size()){
-        std::cout << "Erreur cette commande n'existe pas" << std::endl;
+    if(choix == "4"){
         player->interactionEnCombat(cible);
         return;
-
+    }
+    if(i == sac.size()){
+        std::cout << "Erreur cette commande n'existe pas " << std::endl;
+        player->interactionEnCombat(cible);
+        return;
     }
 
 }
@@ -347,7 +355,7 @@ void Personnage::actionObjetHC(const Joueur * player) {
     std::cout << "| 4 - Retour choix " << std::endl;
     if (i == 0){
         std::cout << "Aucun Objet disponible" << std::endl;
-        player->interactionHorsCombat();
+        //player->interactionHorsCombat();
         return;
     }
     std::cin >> choix;
@@ -360,7 +368,7 @@ void Personnage::actionObjetHC(const Joueur * player) {
                 }
                 else {
                     std::cout << "Erreur pas de cible" << std::endl;
-                    player->interactionHorsCombat();
+                    //player->interactionHorsCombat();
                     return;
                 }
                 Objet* consomme = sac[i];
@@ -371,18 +379,19 @@ void Personnage::actionObjetHC(const Joueur * player) {
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;
-                player->interactionHorsCombat();
+                //player->interactionHorsCombat();
                 return;
             }
         }
         i++;
     }
     if(choix == "4"){
-        player->interactionHorsCombat();
+        //player->interactionHorsCombat();
+        return;
     }
     if(i == sac.size()){
         std::cout << "Erreur cette commande n'existe pas" << std::endl;
-        player->interactionHorsCombat();
+        //player->interactionHorsCombat();
         return;
     }
 

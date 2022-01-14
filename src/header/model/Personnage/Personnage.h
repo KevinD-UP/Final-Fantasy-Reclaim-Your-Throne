@@ -21,7 +21,7 @@ enum PersonnageType{
     PT_Amazone,
     PT_Moine,
     PT_Sorcier,
-    PT_Mob,
+    PT_Gobelin,
     PT_Loup,
     PT_Dragon
 };
@@ -123,7 +123,7 @@ class Personnage {
         friend class Moine;
         friend class Guerrier;
         friend class Sorcier;
-        friend class Mob;
+        friend class Gobelin;
         friend class Loup;
         friend class Dragon;
 };

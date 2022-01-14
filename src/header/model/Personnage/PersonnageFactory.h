@@ -9,7 +9,7 @@
 #include "Guerrier.h"
 #include "Moine.h"
 #include "Sorcier.h"
-#include "Mob.h"
+#include "Gobelin.h"
 #include "Loup.h"
 #include "Dragon.h"
 class PersonnageFactory {
@@ -43,7 +43,7 @@ class SorcierFactory : public PersonnageFactory {
         Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;
 };
 
-class MobFactory : public PersonnageFactory {
+class GobelinFactory : public PersonnageFactory {
 
 public:
     Personnage* FactoryMethod(const std::string& nom, const Map* carte) const override;

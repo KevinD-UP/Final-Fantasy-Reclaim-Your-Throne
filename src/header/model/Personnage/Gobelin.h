@@ -9,20 +9,20 @@
 #include "../Action/Action.h"
 #include <iostream>
 
-class Mob : public Personnage {
+class Gobelin : public Personnage {
 
 private:
 
-    Mob(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
+    Gobelin(const std::string& nom, int niveau, int sante, int attaque, int defense, PersonnageType typePersonnage, std::vector<Objet*> sac, const Map* carte);
 
 public:
     void action(std::string nom, Personnage * ennemie, const Joueur *) override;
     void actionJoueur(const Joueur *,Personnage *) override;
     void print() override;
     void drop() override;
-    virtual ~Mob();
-    friend std::ostream& operator<<(std::ostream& out, Mob *mobArg);
-    friend class MobFactory;
+    virtual ~Gobelin();
+    friend std::ostream& operator<<(std::ostream& out, Gobelin *mobArg);
+    friend class GobelinFactory;
 };
 
 

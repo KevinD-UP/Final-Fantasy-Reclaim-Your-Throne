@@ -7,7 +7,7 @@
 
 #include "Objet.h"
 #include "../Personnage/Personnage.h"
-
+#include "../../Partie.h"
 enum ConsommableType {
     CT_POTIONSOIN,
     CT_POTIONBRULURE,

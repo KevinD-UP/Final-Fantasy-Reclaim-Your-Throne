@@ -37,6 +37,7 @@ public:
     void appliquerEffet(Personnage *) override;
     void enleverEffet(Personnage *) override;
     bool checkCible() override;
+    bool checkTp() override;
     int getRarete() override;
     virtual void appliquerConsommable(Personnage *) = 0;
     friend class PotionSoin;

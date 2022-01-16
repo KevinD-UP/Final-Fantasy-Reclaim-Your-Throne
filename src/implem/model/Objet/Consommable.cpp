@@ -12,9 +12,13 @@ void Consommable::appliquerEffet(Personnage * cible) {
     this->appliquerConsommable(cible);
 }
 
+bool Consommable::checkTp() {
+    return getTypeConsommable() == CT_POTIONTELEPORTATION;
+}
+
 void Consommable::enleverEffet(Personnage * cible) {}
 
-__attribute__((unused)) ConsommableType Consommable::getTypeConsommable() const {
+ConsommableType Consommable::getTypeConsommable() const {
     return typeConsommable;
 }
 

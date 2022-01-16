@@ -311,17 +311,22 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
     while(i < sac.size()){
         if(std::to_string(i) == choix ){
             if(sac[i]->getObjetType() == OT_Consommable) {
-                if(sac[i]->checkCible()){
-                    sac[i]->appliquerEffet(this);
+                if(!sac[i]->checkTp()) {
+                    if (sac[i]->checkCible()) {
+                        sac[i]->appliquerEffet(this);
+                    } else {
+                        sac[i]->appliquerEffet(cible);
+                    }
+                    //Objet* consomme = sac[i];
+                    sac.erase(sac.begin() + i);
+                    //delete consomme;
+                    //consomme = nullptr;
+                    return;
+                }else{
+                    std::cout << "Erreur la teleportation ne peut être utilisé en combat" << std::endl;
+                    player->interactionEnCombat(cible);
+                    return;
                 }
-                else {
-                    sac[i]->appliquerEffet(cible);
-                }
-                //Objet* consomme = sac[i];
-                sac.erase(sac.begin() + i);
-                //delete consomme;
-                //consomme = nullptr;
-                return;
             }
             else{
                 std::cout << "Erreur cette objet n'est pas un consommable" << std::endl;
@@ -363,10 +368,9 @@ void Personnage::actionObjetHC(const Joueur * player) {
     while(i < sac.size()){
         if(std::to_string(i) == choix ){
             if(sac[i]->getObjetType() == OT_Consommable) {
-                if(sac[i]->checkCible()){
+                if (sac[i]->checkCible()) {
                     sac[i]->appliquerEffet(this);
-                }
-                else {
+                } else {
                     std::cout << "Erreur pas de cible" << std::endl;
                     //player->interactionHorsCombat();
                     return;

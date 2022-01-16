@@ -23,6 +23,10 @@ bool Equipement::checkCible() {
     return false;
 }
 
+bool Equipement::checkTp() {
+    return false;
+}
+
 int Equipement::getRarete(){
     return rarete;
 }

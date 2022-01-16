@@ -34,6 +34,7 @@ public:
     virtual void appliquerEffet(Personnage *) = 0;
     virtual void enleverEffet(Personnage *) = 0;
     virtual bool checkCible() = 0;
+    virtual bool checkTp() = 0;
     virtual int getRarete() = 0;
     friend class Consommable;
     friend class Equipement;

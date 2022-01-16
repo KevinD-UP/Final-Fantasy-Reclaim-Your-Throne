@@ -12,10 +12,10 @@ Moine::Moine(const std::string& nom, int niveau, int sante, int attaque, int def
 void Moine::print() {
     std::cout << nom <<std::endl;
     std::cout << "Moine de Niveau: " << getLevel()
-              << " Exp: " << getExp()
-              << " HP: " << getSante() << "/" << getSanteMax()
-              << " Attaque: " << getAttaque()
-              << " Defense: " << getDefense() <<std::endl;
+              << " | Exp: " << getExp()
+              << " | HP: " << getSante() << "/" << getSanteMax()
+              << " | Attaque: " << getAttaque()
+              << " | Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 

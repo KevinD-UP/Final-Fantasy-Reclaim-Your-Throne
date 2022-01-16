@@ -151,6 +151,8 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             if (!etat) {
                 b->actionIa(a,joueur);
+            }else{
+                std::cout << b->getNom()  <<" est étourdi !!"<< std::endl;
             }
             etat = a->updateStatut();
             if (a->estMort()) {
@@ -160,7 +162,10 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             if (!etat) {
                 joueur->interactionEnCombat(b);
+            }else{
+                std::cout << a->getNom()  <<" est étourdi !!"<< std::endl;
             }
+
 
         }
         else if(b == joueur->getPerso()) {
@@ -172,6 +177,8 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             if (!etat) {
                 joueur->interactionEnCombat(a);
+            }else{
+                std::cout << b->getNom()  <<" est étourdi !!"<< std::endl;
             }
             etat = a->updateStatut();
             if (a->estMort()) {
@@ -183,6 +190,8 @@ Personnage* Partie::deathBattle(Personnage *a, Personnage *b) const {
             }
             if (!etat) {
                a->actionIa(b,joueur);
+            }else{
+                std::cout << a->getNom()  <<" est étourdi !!"<< std::endl;
             }
         }
         else {

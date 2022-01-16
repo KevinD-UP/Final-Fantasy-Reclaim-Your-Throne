@@ -371,6 +371,7 @@ void Personnage::actionObjetHC(const Joueur * player) {
         if(std::to_string(i) == choix ){
             if(sac[i]->getObjetType() == OT_Consommable) {
                 if (sac[i]->checkCible()) {
+                    std::cout << "L'objet " << sac[i]->getNom() << " a été utilise sur " << getNom() <<std::endl;
                     sac[i]->appliquerEffet(this);
                 } else {
                     std::cout << "Erreur pas de cible" << std::endl;

@@ -39,7 +39,7 @@ auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moin
 auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5, 5, 15, 0);
 
 auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5 Sante: 5",PT_Amazone,false,10, 5, 5, 0);
-auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 15",PT_Amazone,false,10, 0, 10, 0);
+auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 15",PT_Amazone,false,10, 0, 15, 0);
 
 auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15, 0, 5, 0);
 auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque: 5 Defense: 10 Sante: 15",PT_Sorcier,false,5, 10, 15, 0);

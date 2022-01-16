@@ -27,8 +27,8 @@ Personnage* PersonnageFactory::initPersonnage(PersonnageType & personnagetype, c
 }
 
 Personnage *GuerrierFactory::FactoryMethod(const std::string &nom,const Map* carte) const {
-    auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque:10 Defense:5", PT_Guerrier, false, 10, 5, 0, 0);
-    auto* Armure = new Equipement("Armure", OT_Equipement, "Defense:10 Sante:20", PT_Guerrier, false, 0, 10, 20, 0);
+    auto* Epee = new Equipement("Epee", OT_Equipement, "Attaque: 10 Defense: 7", PT_Guerrier, false, 10, 7, 0, 0);
+    auto* Armure = new Equipement("Armure", OT_Equipement, "Defense: 10 Sante: 20", PT_Guerrier, false, 0, 10, 20, 0);
     int sante = 95;
     int attaque = 20;
     int defense = 20;
@@ -38,9 +38,9 @@ Personnage *GuerrierFactory::FactoryMethod(const std::string &nom,const Map* car
 
 
 Personnage *AmazoneFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
-    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5",PT_Amazone,false,10, 5, 0, 0);
-    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 10",PT_Amazone,false,10, 0, 10, 0);
-    int sante = 85;
+    auto* Lance = new Equipement("Lance",OT_Equipement,"Attaque: 10 Defense: 5 Sante: 5",PT_Amazone,false,10, 5, 5, 0);
+    auto* Arc = new Equipement("Arc",OT_Equipement,"Attaque: 10 Sante: 20",PT_Amazone,false,10, 0, 20, 0);
+    int sante = 95;
     int attaque = 25;
     int defense = 15;
     std::vector<Objet *> sac = {Lance,Arc};
@@ -50,7 +50,7 @@ Personnage *AmazoneFactory::FactoryMethod(const std::string &nom, const Map* car
 Personnage *MoineFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
     auto* Toge = new Equipement("Toge",OT_Equipement,"Defense: 10 Sante: 30",PT_Moine,false,0, 10, 30, 0);
     auto* Masse = new Equipement("Masse",OT_Equipement,"Attaque: 5 Defense: 5 Sante: 15",PT_Moine,false,5, 5, 15, 0);
-    int sante = 90;
+    int sante = 95;
     int attaque = 15;
     int defense = 20;
     std::vector<Objet *> sac = {Toge,Masse};
@@ -59,10 +59,10 @@ Personnage *MoineFactory::FactoryMethod(const std::string &nom, const Map* carte
 
 Personnage *SorcierFactory::FactoryMethod(const std::string &nom, const Map* carte) const {
     auto* Baguette = new Equipement("Baguette",OT_Equipement,"Attaque: 15 Sante: 5",PT_Sorcier,false,15, 0, 5, 0);
-    auto* Robe = new Equipement("Robe",OT_Equipement,"Defense: 10 Sante: 15",PT_Sorcier,false,0, 10, 15, 0);
-    int sante = 80;
+    auto* Robe = new Equipement("Robe",OT_Equipement,"Attaque: 5 Defense: 10 Sante: 15",PT_Sorcier,false,5, 10, 15, 0);
+    int sante = 90;
     int attaque = 30;
-    int defense = 15;
+    int defense = 10;
     std::vector<Objet *> sac = {Baguette,Robe};
     return new Sorcier(nom, 1, sante, attaque, defense, PT_Sorcier, sac, carte);
 }

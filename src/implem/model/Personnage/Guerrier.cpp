@@ -11,10 +11,10 @@ Guerrier::Guerrier(const std::string& nom, int niveau, int sante, int attaque, i
 void Guerrier::print() {
     std::cout << nom <<std::endl;
     std::cout << "Guerrier de Niveau: " << getLevel()
-              << " Exp: " << getExp()
-              << " HP: " << getSante() << "/" << getSanteMax()
-              << " Attaque: " << getAttaque()
-              << " Defense: " << getDefense() <<std::endl;
+              << " | Exp: " << getExp()
+              << " | HP: " << getSante() << "/" << getSanteMax()
+              << " | Attaque: " << getAttaque()
+              << " | Defense: " << getDefense() <<std::endl;
     checkStatut();
 }
 
@@ -28,7 +28,6 @@ void Guerrier::action(std::string nom, Personnage * ennemie, const Joueur * play
     if(nom == "0"){
         type = Offensive;
         dommage = attaque + 25 - ennemie->getDefense();
-        //inflige statut
         nomSort = "Lacérage";
     }
     else if(nom == "1"){

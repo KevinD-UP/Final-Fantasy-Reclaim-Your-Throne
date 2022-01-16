@@ -12,10 +12,10 @@ Sorcier::Sorcier(std::string nom, int niveau, int sante, int attaque, int defens
 void Sorcier::print() {
     std::cout << nom << std::endl;
     std::cout << "Sorcier de Niveau: " << getLevel()
-              << " Exp: " << getExp()
-              << " HP: " << getSante() << "/" << getSanteMax()
-              << " Attaque: " << getAttaque()
-              << " Defense: " << getDefense() <<std::endl;
+              << " | Exp: " << getExp()
+              << " | HP: " << getSante() << "/" << getSanteMax()
+              << " | Attaque: " << getAttaque()
+              << " | Defense: " << getDefense() <<std::endl;
     checkStatut();
 
 }
@@ -27,20 +27,20 @@ void Sorcier::action(std::string nom, Personnage * ennemie, const Joueur * playe
     Type type;
     if(nom == "0"){
         type = Offensive;
-        dommage = attaque + 15 - ennemie->getDefense();
+        dommage = attaque + 10 - ennemie->getDefense();
         //inflige statut
         ennemie->pushStatut(Bruler,2);
         nomSort = "Boule de Feu";
     }
     else if(nom == "1"){
         type = Offensive;
-        dommage = attaque*2/3  - ennemie->getDefense()/2 ;
+        dommage = attaque*2/3  - ennemie->getDefense()/3 ;
         nomSort = "Eclair";
     }
     else if(nom == "2"){
         type = Offensive;
         dommage = attaque + 10 - ennemie->getDefense();
-        setSante(getSante() + dommage/2);
+        setSante(getSante() + dommage/4);
         debuff(Affaiblie,2,ennemie);
         nomSort = "Drain";
     }
@@ -55,9 +55,9 @@ void Sorcier::action(std::string nom, Personnage * ennemie, const Joueur * playe
 
 void Sorcier::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "| 0 - Boule de feu: Puissance:15 | " << std::endl;
-    std::cout << "| 1 - Eclair: Puissance: 2/3 de l'attaque. Ignore 50% de l'armure ennemie |" << std::endl;
-    std::cout << "| 2 - Drain: Puissance:5. Regenere 25% des dommages infligés et applique Affaiblie |" << std::endl;
+    std::cout << "| 0 - Boule de feu: Puissance:10. Brule la cible | " << std::endl;
+    std::cout << "| 1 - Eclair: Puissance: 2/3 de l'attaque. Ignore 66% de l'armure ennemie |" << std::endl;
+    std::cout << "| 2 - Drain: Puissance:10. Regenere 25% des dommages infligés et applique Affaiblie |" << std::endl;
     std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;
     if(sort == "3"){

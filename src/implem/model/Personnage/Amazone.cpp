@@ -28,7 +28,7 @@ void Amazone::action(std::string nom, Personnage * ennemie, const Joueur * playe
     if(nom == "0"){
         type = Offensive;
         ennemie->pushStatut(Ecorcher,2);
-        dommage = attaque + 20 - ennemie->getDefense();
+        dommage = attaque + 15 - ennemie->getDefense();
         debuff(Ecorcher,2,ennemie);
         //inflige statut
         nomSort = "Ecorcher";
@@ -53,8 +53,8 @@ void Amazone::action(std::string nom, Personnage * ennemie, const Joueur * playe
 
 void Amazone::actionJoueur(const Joueur * player,Personnage * cible) {
     std::string sort;
-    std::cout << "| 0 - Ecorcher: Puissance:20. Reduit l'armure de l'ennemie |" << std::endl;
-    std::cout << "| 1 - Execution: Puissance:10. Inflige 50% des PV manquant de la cible |" << std::endl;
+    std::cout << "| 0 - Ecorcher: Puissance:15. Reduit l'armure de l'ennemie |" << std::endl;
+    std::cout << "| 1 - Execution: Puissance:5. Inflige 50% des PV manquant de la cible |" << std::endl;
     std::cout << "| 2 - Double attaque: Puissance:5. Attaque 2 fois |" << std::endl;
     std::cout << "| 3 - Retour choix |" << std::endl;
     std::cin >> sort;

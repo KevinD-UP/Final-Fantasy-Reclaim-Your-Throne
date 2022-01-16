@@ -313,8 +313,10 @@ void Personnage::actionObjet(const Joueur * player, Personnage *cible) {
             if(sac[i]->getObjetType() == OT_Consommable) {
                 if(!sac[i]->checkTp()) {
                     if (sac[i]->checkCible()) {
+                        std::cout << "L'objet " << sac[i]->getNom() << " a été utilise sur " << getNom() <<std::endl;
                         sac[i]->appliquerEffet(this);
                     } else {
+                        std::cout << "L'objet " << sac[i]->getNom() << " a été utilise sur " << cible->getNom() <<std::endl;
                         sac[i]->appliquerEffet(cible);
                     }
                     //Objet* consomme = sac[i];

@@ -1,13 +1,14 @@
-#Projet langages à objets avancés
-##Sujet N°3
+# Projet langages à objets avancés
 
-###Configuration
+## Sujet N°3
+
+### Configuration
 
 - GNU Make 4.3
 - gcc (GCC) 11.1.0
 - C++ standard 17
 
-###Compilation
+### Compilation
 
 Depuis la racine 
 ```
@@ -15,7 +16,7 @@ cd src/
 make
 ```
 
-###Execution
+### Execution
 ```
 ./final_fantasy
 ```
@@ -24,7 +25,7 @@ ou
 make test
 ```
 
-###Nettoyage
+### Nettoyage
 ```
 make clean
 ```

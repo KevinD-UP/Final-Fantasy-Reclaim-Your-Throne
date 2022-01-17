@@ -9,8 +9,8 @@ Dragon::Dragon(const std::string& nom, int niveau, int sante, int attaque, int d
 {}
 
 void Dragon::action(std::string nom, Personnage *ennemie, const Joueur * player) {
-    int dommage = attaque + 40 - ennemie->getDefense();
-    debuff(Bruler,4,ennemie);
+    int dommage = attaque + 25 - ennemie->getDefense();
+    debuff(Bruler,3,ennemie);
     std::string nomSort;
     Type type = Offensive;
     nomSort = "Souffle de Feu";

@@ -241,12 +241,12 @@ bool Personnage::updateStatut(){
     bool etourdit = false;
     while(i < statut.size()){
         if(statut[i].first == Bruler){
-            setSante(getSante() - (getSanteMax()/10));
+            setSante(getSante() - (getSanteMax()/16));
             statut[i].second -=1;
           //  std::cout << "Bruler ";
         }
         if(statut[i].first == Empoisonner){
-            setSante(getSante() - (getSanteMax()/8));
+            setSante(getSante() - (getSanteMax()/12));
             statut[i].second -=1;
            // std::cout << "Empoisonner ";
         }

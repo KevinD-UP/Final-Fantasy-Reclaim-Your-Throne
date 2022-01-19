@@ -66,5 +66,5 @@ Map.o : implem/model/Piece/Map.cpp header/model/Piece/Map.h
 clean :
 	rm *.o final_fantasy
 
-test: all
+start: all
 	./final_fantasy

@@ -22,7 +22,7 @@ make
 ```
 ou
 ```
-make test
+make start
 ```
 
 ### Nettoyage

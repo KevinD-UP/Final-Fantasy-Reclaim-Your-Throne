@@ -1,4 +1,4 @@
-CPP=g++
+CPP=g++ -std=c++17
 CFLAGS= -Wall
 
 all : final_fantasy
